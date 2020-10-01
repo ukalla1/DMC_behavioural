@@ -2,8 +2,8 @@
 # Vivado v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:36:41 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Thu Oct  1 13:05:56 2020
-# Process ID: 237825
+# Start of session at: Thu Oct  1 09:51:59 2020
+# Process ID: 215219
 # Current directory: /home/ukallakuri/hardware_design/designs/direct_mapped_cache
 # Command line: vivado
 # Log file: /home/ukallakuri/hardware_design/designs/direct_mapped_cache/vivado.log
@@ -14,27 +14,43 @@ open_project /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_be
 update_compile_order -fileset sources_1
 launch_simulation
 source chip_top_tb.tcl
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+run 10 us
+relaunch_sim
+run 10 us
+relaunch_sim
 run 10 us
 close_sim
 launch_simulation
-source chip_top_tb.tcl
-run 10 us
-save_wave_config {/home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/chip_top_tb_behav.wcfg}
-add_files -fileset sim_1 -norecurse /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/chip_top_tb_behav.wcfg
-set_property xsim.view /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/chip_top_tb_behav.wcfg [get_filesets sim_1]
-run 10 us
-run 10 us
-run 10 us
-run all
-close_sim
-launch_simulation
-open_wave_config /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/chip_top_tb_behav.wcfg
 source chip_top_tb.tcl
 run 10 us
 relaunch_sim
 run 10 us
+relaunch_sim
 run 10 us
+relaunch_sim
 run 10 us
+relaunch_sim
+run 10 us
+relaunch_sim
+run 10 us
+relaunch_sim
+run 10 us
+relaunch_sim
+run 10 us
+relaunch_sim
+run 10 us
+relaunch_sim
 run 10 us
 relaunch_sim
 run 10 us

@@ -55,7 +55,7 @@ module chip_top_tb #( parameter DATA_WIDTH = 8
         .busy(busy)
     );
     
-    assign cpu_data = (rd_wrn == 1'b0) ? cpu_data_reg : cpu_data;
+    assign cpu_data = (out_en || !rd_wrn) ? cpu_data_reg : {8{1'bz}};
     
     initial begin
         clk = 1'b0;
@@ -63,11 +63,11 @@ module chip_top_tb #( parameter DATA_WIDTH = 8
     
     initial begin
         rst = 1'b1;
-        cpu_address = 8'bxxxx_xxxx;
-        cpu_data_reg = 8'bxxxx_xxxx;
-        memory_data = 8'bxxxx_xxxx;
-        rd_wrn = 1'bx;
-        start = 1'bx;
+        cpu_address = 8'bzzzz_zzzz;
+        cpu_data_reg = 8'bzzzz_zzzz;
+        memory_data = 8'bzzzz_zzzz;
+        rd_wrn = 1'bz;
+        start = 1'bz;
     end
     
     initial begin
@@ -100,6 +100,8 @@ module chip_top_tb #( parameter DATA_WIDTH = 8
             read_hit_sequence;
             
             #(2*period);
+            
+            write_hit_sequence;
         end
     endtask
     
@@ -109,9 +111,9 @@ module chip_top_tb #( parameter DATA_WIDTH = 8
             cpu_address = 8'b001_000_00;
             rd_wrn = 1'b1;
             #(1.5*period);
-            start = 1'bx;
-            cpu_address = 8'bxxx_xxx_xx;
-            rd_wrn = 1'bx;
+            start = 1'bz;
+            cpu_address = 8'bzzzz_zzzz;
+            rd_wrn = 1'bz;
             #(9*period);
                 memory_data = 8'b10110110;
             #(2*period);
@@ -130,9 +132,23 @@ module chip_top_tb #( parameter DATA_WIDTH = 8
             rd_wrn = 1'b1;
             cpu_address = 8'b001_000_10;
             #(2*period);
+            start = 1'bz;
+            cpu_address = 8'bzzzz_zzzz;
+            rd_wrn = 1'bz;
+            #(2*period);
+        end
+    endtask
+    
+    task write_hit_sequence;
+        begin
+            start = 1'b1;
+            rd_wrn = 1'b0;
+            cpu_address = 8'b001_000_10;
+            cpu_data_reg = 8'b10100011;
+            #(2*period);
             start = 1'bx;
-            cpu_address = 8'bxxx_xxx_xx;
-            rd_wrn = 1'bx;
+            cpu_address = 8'bzzz_zzz_zz;
+            rd_wrn = 1'bz;
             #(2*period);
             end_sim;
         end
@@ -140,7 +156,7 @@ module chip_top_tb #( parameter DATA_WIDTH = 8
     
     task end_sim;
         begin
-            #(20*period);
+            #(10*period);
 //            rst = 1'b1;
             $finish;
         end
