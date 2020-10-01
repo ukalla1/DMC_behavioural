@@ -1,0 +1,13 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../DMC_behavioural.srcs/sources_1/new/memory.v" \
+"../../../../DMC_behavioural.srcs/sources_1/new/one_b_cell.v" \
+"../../../../DMC_behavioural.srcs/sources_1/new/one_row_cells.v" \
+"../../../../DMC_behavioural.srcs/sources_1/new/tag_valid.v" \
+"../../../../DMC_behavioural.srcs/sim_1/new/memory_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
