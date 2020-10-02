@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="2125000001fs"></ZoomEndTime>
+      <ZoomStartTime time="202640000fs"></ZoomStartTime>
+      <ZoomEndTime time="2327640001fs"></ZoomEndTime>
       <Cursor1Time time="988665000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="175"></NameColumnWidth>
-      <ValueColumnWidth column_width="146"></ValueColumnWidth>
+      <ValueColumnWidth column_width="142"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="14" />
+   <WVObjectSize size="12" />
    <wvobject type="array" fp_name="/chip_top_tb/cpu_data">
       <obj_property name="ElementShortName">cpu_data[7:0]</obj_property>
       <obj_property name="ObjectShortName">cpu_data[7:0]</obj_property>
@@ -67,13 +67,5 @@
    <wvobject type="logic" fp_name="/chip_top_tb/busy">
       <obj_property name="ElementShortName">busy</obj_property>
       <obj_property name="ObjectShortName">busy</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/chip_top_tb/period">
-      <obj_property name="ElementShortName">period[31:0]</obj_property>
-      <obj_property name="ObjectShortName">period[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/chip_top_tb/DATA_WIDTH">
-      <obj_property name="ElementShortName">DATA_WIDTH[31:0]</obj_property>
-      <obj_property name="ObjectShortName">DATA_WIDTH[31:0]</obj_property>
    </wvobject>
 </wave_config>

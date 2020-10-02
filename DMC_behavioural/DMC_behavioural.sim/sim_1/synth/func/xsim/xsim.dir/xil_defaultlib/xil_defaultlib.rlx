@@ -1,0 +1,6 @@
+0.6
+2018.3
+Dec  6 2018
+23:39:36
+/home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.sim/sim_1/synth/func/xsim/chip_top_tb_func_synth.v,1601644580,verilog,,/home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/sim_1/new/chip_top_tb.v,,chip_top;glbl;memory;one_b_cell;one_b_cell_10;one_b_cell_11;one_b_cell_12;one_b_cell_13;one_b_cell_15;one_b_cell_16;one_b_cell_17;one_b_cell_18;one_b_cell_20;one_b_cell_21;one_b_cell_22;one_b_cell_23;one_b_cell_25;one_b_cell_26;one_b_cell_27;one_b_cell_28;one_b_cell_30;one_b_cell_31;one_b_cell_32;one_b_cell_33;one_b_cell_35;one_b_cell_36;one_b_cell_37;one_b_cell_38;one_b_cell_40;one_b_cell_41;one_b_cell_42;one_b_cell_43;one_b_cell_7;one_b_cell_8;one_b_cell_9;one_row_cells;one_row_cells_0;one_row_cells_1;one_row_cells_2;one_row_cells_3;one_row_cells_4;one_row_cells_5;one_row_cells_6;tag_valid;tag_valid_14;tag_valid_19;tag_valid_24;tag_valid_29;tag_valid_34;tag_valid_39;tag_valid_44,,,,,,,,
+/home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/sim_1/new/chip_top_tb.v,1601573481,verilog,,,,chip_top_tb,,,,,,,,

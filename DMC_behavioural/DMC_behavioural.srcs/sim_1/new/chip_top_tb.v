@@ -58,7 +58,7 @@ module chip_top_tb #( parameter DATA_WIDTH = 8
     assign cpu_data = (out_en || !rd_wrn) ? cpu_data_reg : {8{1'bz}};
     
     initial begin
-        clk = 1'b0;
+        clk = 1'b1;
     end
     
     initial begin
@@ -92,6 +92,13 @@ module chip_top_tb #( parameter DATA_WIDTH = 8
             #(2*period);
             
             rst = 1'b0;
+            cpu_address = 8'bzzzz_zzzz;
+            cpu_data_reg = 8'bzzzz_zzzz;
+            memory_data = 8'bzzzz_zzzz;
+            rd_wrn = 1'bz;
+            start = 1'b0;
+            
+            #(period);
             
             read_miss_sequence;
             
@@ -110,8 +117,8 @@ module chip_top_tb #( parameter DATA_WIDTH = 8
             start = 1'b1;
             cpu_address = 8'b001_000_00;
             rd_wrn = 1'b1;
-            #(1.5*period);
-            start = 1'bz;
+            #(2*period);
+            start = 1'b0;
             cpu_address = 8'bzzzz_zzzz;
             rd_wrn = 1'bz;
             #(9*period);
@@ -132,7 +139,7 @@ module chip_top_tb #( parameter DATA_WIDTH = 8
             rd_wrn = 1'b1;
             cpu_address = 8'b001_000_10;
             #(2*period);
-            start = 1'bz;
+            start = 1'b0;
             cpu_address = 8'bzzzz_zzzz;
             rd_wrn = 1'bz;
             #(2*period);
@@ -146,7 +153,7 @@ module chip_top_tb #( parameter DATA_WIDTH = 8
             cpu_address = 8'b001_000_10;
             cpu_data_reg = 8'b10100011;
             #(2*period);
-            start = 1'bx;
+            start = 1'b0;
             cpu_address = 8'bzzz_zzz_zz;
             rd_wrn = 1'bz;
             #(2*period);

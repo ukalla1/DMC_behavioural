@@ -37,7 +37,7 @@ module chip_top #(
     );
     
     reg [DATA_WIDTH-1:0] cpu_address_reg, cpu_data_reg;
-    reg rd_wrn_reg, start_reg, busy_reg, mem_en_reg, out_en_reg, set_valid_reg, load_tag_reg;
+    reg rd_wrn_reg, busy_reg, mem_en_reg, out_en_reg, set_valid_reg, load_tag_reg;
     
     reg compare_tag_valid;
     
@@ -85,7 +85,6 @@ module chip_top #(
             cpu_address_reg <= {(8){1'b0}};
             cpu_data_reg <= {(DATA_WIDTH){1'b0}};
             rd_wrn_reg <= 1'b0;
-            start_reg <= 1'b0;
             busy_reg <= 1'b0;
             mem_en_reg <= 1'b0;
             out_en_reg <= 1'b0;
@@ -100,8 +99,7 @@ module chip_top #(
                     set_valid_reg <= 1'b0;
                     load_tag_reg <= 1'b0;
                     out_en_reg <= 1'b0;
-                    rd_wrn_reg <= 1'bx;
-                    start_reg <= 1'b0;
+                    rd_wrn_reg <= 1'bz;
                     if(start) begin
                         currentState <= state1;
                     end
@@ -115,7 +113,6 @@ module chip_top #(
                         cpu_data_reg <= cpu_data;
                         cpu_address_reg <= cpu_address;
                         rd_wrn_reg <= rd_wrn;
-                        start_reg <= start;
                         busy_reg <= 1'b1;
                         currentState <= state3;
                         compare_tag_valid <= 1'b1;
@@ -124,7 +121,6 @@ module chip_top #(
                         cpu_data_reg <= {(DATA_WIDTH){1'b0}};
                         cpu_address_reg <= cpu_address;
                         rd_wrn_reg <= rd_wrn;
-                        start_reg <= start;
                         busy_reg <= 1'b1;
                         currentState <= state2;
                         compare_tag_valid <= 1'b1;
@@ -189,6 +185,19 @@ module chip_top #(
                         currentState <= state0;
                         busy_reg <= 1'b0;
                     end
+                end
+                
+                default: begin
+                    currentState <= state0;
+                    cpu_address_reg <= {(8){1'b0}};
+                    cpu_data_reg <= {(DATA_WIDTH){1'b0}};
+                    rd_wrn_reg <= 1'b0;
+                    busy_reg <= 1'b0;
+                    mem_en_reg <= 1'b0;
+                    out_en_reg <= 1'b0;
+                    compare_tag_valid <= 1'b0;
+                    data_to_cache <= {(8){1'b0}};
+                    counter <= {(5){1'b0}};
                 end
                 
             endcase

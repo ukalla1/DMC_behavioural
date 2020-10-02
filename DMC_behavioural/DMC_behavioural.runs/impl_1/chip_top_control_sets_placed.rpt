@@ -1,0 +1,107 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (lin64) Build 2405991 Thu Dec  6 23:36:41 MST 2018
+| Date         : Fri Oct  2 08:53:56 2020
+| Host         : ukallakuri-Lenovo-YOGA-910-13IKB running 64-bit Ubuntu 20.04.1 LTS
+| Command      : report_control_sets -verbose -file chip_top_control_sets_placed.rpt
+| Design       : chip_top
+| Device       : xc7a100t
+-------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Number of unique control sets                            |    39 |
+| Unused register locations in slices containing registers |    25 |
++----------------------------------------------------------+-------+
+
+
+2. Histogram
+------------
+
++--------+--------------+
+| Fanout | Control Sets |
++--------+--------------+
+|      1 |            2 |
+|      6 |            1 |
+|      8 |           34 |
+|     14 |            1 |
+|    16+ |            1 |
++--------+--------------+
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               1 |            1 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              41 |           19 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |             293 |           88 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------+---------------------------------------------------+------------------+------------------+----------------+
+|  Clock Signal  |                   Enable Signal                   | Set/Reset Signal | Slice Load Count | Bel Load Count |
++----------------+---------------------------------------------------+------------------+------------------+----------------+
+| ~clk_IBUF_BUFG |                                                   |                  |                1 |              1 |
+| ~clk_IBUF_BUFG | m0/r4/t_v/counter_reg[4]                          | rst_IBUF         |                1 |              1 |
+| ~clk_IBUF_BUFG | cpu_address_reg[7]_i_1_n_0                        | rst_IBUF         |                3 |              6 |
+| ~clk_IBUF_BUFG | m0/r7/c1/one_b_cell[7]_i_1__28_n_0                | rst_IBUF         |                1 |              8 |
+| ~clk_IBUF_BUFG | m0/r2/c1/one_b_cell[7]_i_1__23_n_0                | rst_IBUF         |                1 |              8 |
+| ~clk_IBUF_BUFG | m0/r3/c1/one_b_cell[7]_i_1__24_n_0                | rst_IBUF         |                1 |              8 |
+| ~clk_IBUF_BUFG | m0/r4/t_v/FSM_sequential_currentState_reg[0][0]   | rst_IBUF         |                3 |              8 |
+| ~clk_IBUF_BUFG | m0/r4/t_v/FSM_sequential_currentState_reg[2]_1[0] | rst_IBUF         |                4 |              8 |
+| ~clk_IBUF_BUFG | m0/r7/c2/one_b_cell[7]_i_1__8_n_0                 | rst_IBUF         |                2 |              8 |
+| ~clk_IBUF_BUFG | m0/r5/c2/one_b_cell[7]_i_1__10_n_0                | rst_IBUF         |                1 |              8 |
+| ~clk_IBUF_BUFG | m0/r5/c3/one_b_cell[7]_i_1__2_n_0                 | rst_IBUF         |                1 |              8 |
+| ~clk_IBUF_BUFG | m0/r5/c4/one_b_cell[7]_i_1__18_n_0                | rst_IBUF         |                1 |              8 |
+| ~clk_IBUF_BUFG | m0/r4/c3/one_b_cell[7]_i_1__1_n_0                 | rst_IBUF         |                4 |              8 |
+| ~clk_IBUF_BUFG | m0/r6/c1/one_b_cell[7]_i_1__27_n_0                | rst_IBUF         |                1 |              8 |
+| ~clk_IBUF_BUFG | m0/r6/c2/one_b_cell[7]_i_1__9_n_0                 | rst_IBUF         |                2 |              8 |
+| ~clk_IBUF_BUFG | m0/r6/c3/one_b_cell[7]_i_1__3_n_0                 | rst_IBUF         |                2 |              8 |
+| ~clk_IBUF_BUFG | m0/r5/c1/one_b_cell[7]_i_1__26_n_0                | rst_IBUF         |                1 |              8 |
+| ~clk_IBUF_BUFG | m0/r7/c4/one_b_cell[7]_i_1__16_n_0                | rst_IBUF         |                4 |              8 |
+| ~clk_IBUF_BUFG | m0/r7/c3/one_b_cell[7]_i_1__4_n_0                 | rst_IBUF         |                2 |              8 |
+| ~clk_IBUF_BUFG | m0/r4/c1/one_b_cell[7]_i_1__25_n_0                | rst_IBUF         |                2 |              8 |
+| ~clk_IBUF_BUFG | m0/r1/c1/one_b_cell[7]_i_1__30_n_0                | rst_IBUF         |                1 |              8 |
+| ~clk_IBUF_BUFG | m0/r4/c2/one_b_cell[7]_i_1__11_n_0                | rst_IBUF         |                4 |              8 |
+| ~clk_IBUF_BUFG | m0/r3/c2/one_b_cell[7]_i_1__12_n_0                | rst_IBUF         |                5 |              8 |
+| ~clk_IBUF_BUFG | m0/r2/c3/one_b_cell[7]_i_1_n_0                    | rst_IBUF         |                3 |              8 |
+| ~clk_IBUF_BUFG | m0/r2/c4/one_b_cell[7]_i_1__21_n_0                | rst_IBUF         |                1 |              8 |
+| ~clk_IBUF_BUFG | m0/r6/c4/one_b_cell[7]_i_1__17_n_0                | rst_IBUF         |                1 |              8 |
+| ~clk_IBUF_BUFG | m0/r4/c4/one_b_cell[7]_i_1__19_n_0                | rst_IBUF         |                5 |              8 |
+| ~clk_IBUF_BUFG | m0/r8/c3/one_b_cell[7]_i_1__5_n_0                 | rst_IBUF         |                3 |              8 |
+| ~clk_IBUF_BUFG | m0/r8/c1/one_b_cell[7]_i_1__29_n_0                | rst_IBUF         |                1 |              8 |
+| ~clk_IBUF_BUFG | m0/r1/c2/one_b_cell[7]_i_1__14_n_0                | rst_IBUF         |                2 |              8 |
+| ~clk_IBUF_BUFG | m0/r1/c3/one_b_cell[7]_i_1__6_n_0                 | rst_IBUF         |                1 |              8 |
+| ~clk_IBUF_BUFG | m0/r1/c4/one_b_cell[7]_i_1__22_n_0                | rst_IBUF         |                2 |              8 |
+| ~clk_IBUF_BUFG | m0/r3/c3/one_b_cell[7]_i_1__0_n_0                 | rst_IBUF         |                5 |              8 |
+| ~clk_IBUF_BUFG | m0/r8/c2/one_b_cell[7]_i_1__7_n_0                 | rst_IBUF         |                5 |              8 |
+| ~clk_IBUF_BUFG | m0/r8/c4/one_b_cell[7]_i_1__15_n_0                | rst_IBUF         |                4 |              8 |
+| ~clk_IBUF_BUFG | m0/r2/c2/one_b_cell[7]_i_1__13_n_0                | rst_IBUF         |                2 |              8 |
+| ~clk_IBUF_BUFG | m0/r3/c4/one_b_cell[7]_i_1__20_n_0                | rst_IBUF         |                1 |              8 |
+| ~clk_IBUF_BUFG | m0/r4/t_v/E[0]                                    | rst_IBUF         |                5 |             14 |
+| ~clk_IBUF_BUFG |                                                   | rst_IBUF         |               19 |             41 |
++----------------+---------------------------------------------------+------------------+------------------+----------------+
+
+

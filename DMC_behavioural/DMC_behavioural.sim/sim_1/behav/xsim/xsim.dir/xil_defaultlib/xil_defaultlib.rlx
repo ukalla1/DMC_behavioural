@@ -3,9 +3,9 @@
 Dec  6 2018
 23:39:36
 /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.sim/sim_1/behav/xsim/glbl.v,1544155481,verilog,,,,glbl,,,,,,,,
-/home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/sim_1/new/chip_top_tb.v,1601573481,verilog,,,,chip_top_tb,,,,,,,,
+/home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/sim_1/new/chip_top_tb.v,1601644162,verilog,,,,chip_top_tb,,,,,,,,
 /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/sim_1/new/memory_tb.v,1601332859,verilog,,,,memory_tb,,,,,,,,
-/home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/sources_1/new/chip_top.v,1601571009,verilog,,/home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/sources_1/new/memory.v,,chip_top,,,,,,,,
+/home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/sources_1/new/chip_top.v,1601594789,verilog,,/home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/sources_1/new/memory.v,,chip_top,,,,,,,,
 /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/sources_1/new/memory.v,1601494217,verilog,,/home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/sources_1/new/one_b_cell.v,,memory,,,,,,,,
 /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/sources_1/new/one_b_cell.v,1601396363,verilog,,/home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/sources_1/new/one_row_cells.v,,one_b_cell,,,,,,,,
 /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/sources_1/new/one_row_cells.v,1601494131,verilog,,/home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/sources_1/new/tag_valid.v,,one_row_cells,,,,,,,,
