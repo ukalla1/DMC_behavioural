@@ -89,3 +89,164 @@ INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
 INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 4 CPUs
 close_design
 close_project
+open_project /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2018.3/data/ip'.
+update_compile_order -fileset sources_1
+open_run synth_1 -name synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xc7a100tcsg324-1
+INFO: [Netlist 29-17] Analyzing 57 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [/home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/constrs_1/new/tim.xdc]
+Finished Parsing XDC File [/home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/constrs_1/new/tim.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 7323.527 ; gain = 0.000 ; free physical = 1477 ; free virtual = 5744
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 8 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 8 instances
+
+close_design
+open_run synth_1 -name synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xc7a100tcsg324-1
+INFO: [Netlist 29-17] Analyzing 57 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [/home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/constrs_1/new/tim.xdc]
+Finished Parsing XDC File [/home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.srcs/constrs_1/new/tim.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 7323.527 ; gain = 0.000 ; free physical = 1434 ; free virtual = 5701
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 8 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 8 instances
+
+report_utilization -name utilization_1
+report_utilization -name utilization_2
+close_design
+open_run impl_1
+INFO: [Netlist 29-17] Analyzing 57 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.03 . Memory (MB): peak = 7330.547 ; gain = 0.000 ; free physical = 1331 ; free virtual = 5597
+Restored from archive | CPU: 0.040000 secs | Memory: 0.634201 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.03 . Memory (MB): peak = 7330.547 ; gain = 0.000 ; free physical = 1331 ; free virtual = 5597
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 7330.547 ; gain = 0.000 ; free physical = 1332 ; free virtual = 5599
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 8 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 8 instances
+
+report_utilization -name utilization_1
+report_timing -through  [get_cells {m0/r3/t_v}] -delay_type min_max -max_paths 10 -sort_by group -input_pins -routable_nets -name {[get_cells {m0/r3/t_v}]}
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 4 CPUs
+INFO: [Timing 38-78] ReportTimingParams: -through_pins  -max_paths 10 -nworst 1 -delay_type min_max -sort_by group.
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 4 CPUs
+set_property SLEW SLOW [get_ports [list {cpu_data[7]} {cpu_data[6]} {cpu_data[5]} {cpu_data[4]} {cpu_data[3]} {cpu_data[2]} {cpu_data[1]} {cpu_data[0]}]]
+set_property is_loc_fixed true [get_ports [list  {cpu_address[7]} {cpu_address[6]} {cpu_address[5]} {cpu_address[4]} {cpu_address[3]} {cpu_address[2]} {cpu_address[1]} {cpu_address[0]}]]
+set_property is_loc_fixed true [get_ports [list  {cpu_data[7]} {cpu_data[6]} {cpu_data[5]} {cpu_data[4]} {cpu_data[3]} {cpu_data[2]} {cpu_data[1]} {cpu_data[0]}]]
+set_property is_loc_fixed true [get_ports [list  {memory_address[7]} {memory_address[6]} {memory_address[5]} {memory_address[4]} {memory_address[3]} {memory_address[2]} {memory_address[1]} {memory_address[0]}]]
+set_property is_loc_fixed true [get_ports [list  {memory_data[7]} {memory_data[6]} {memory_data[5]} {memory_data[4]} {memory_data[3]} {memory_data[2]} {memory_data[1]} {memory_data[0]}]]
+set_property is_loc_fixed true [get_ports [list  busy]]
+set_property is_loc_fixed true [get_ports [list  clk]]
+set_property is_loc_fixed true [get_ports [list  mem_en]]
+set_property is_loc_fixed true [get_ports [list  out_en]]
+set_property is_loc_fixed true [get_ports [list  rd_wrn]]
+set_property is_loc_fixed true [get_ports [list  rst]]
+set_property is_loc_fixed true [get_ports [list  start]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list {cpu_address[7]} {cpu_address[6]} {cpu_address[5]} {cpu_address[4]} {cpu_address[3]} {cpu_address[2]} {cpu_address[1]} {cpu_address[0]}]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list {cpu_address[7]} {cpu_address[6]} {cpu_address[5]} {cpu_address[4]} {cpu_address[3]} {cpu_address[2]} {cpu_address[1]} {cpu_address[0]}]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list {cpu_data[7]} {cpu_data[6]} {cpu_data[5]} {cpu_data[4]} {cpu_data[3]} {cpu_data[2]} {cpu_data[1]} {cpu_data[0]}]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list {memory_address[7]} {memory_address[6]} {memory_address[5]} {memory_address[4]} {memory_address[3]} {memory_address[2]} {memory_address[1]} {memory_address[0]}]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list {memory_data[7]} {memory_data[6]} {memory_data[5]} {memory_data[4]} {memory_data[3]} {memory_data[2]} {memory_data[1]} {memory_data[0]}]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list busy]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list clk]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list mem_en]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list out_en]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list rd_wrn]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list rst]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list start]]
+save_constraints
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 7423.965 ; gain = 0.000 ; free physical = 1339 ; free virtual = 5640
+close_design
+reset_run impl_1
+launch_runs impl_1 -jobs 2
+[Sun Oct  4 08:57:51 2020] Launched impl_1...
+Run output will be captured here: /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.runs/impl_1/runme.log
+open_run impl_1
+INFO: [Netlist 29-17] Analyzing 57 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 7423.965 ; gain = 0.000 ; free physical = 1397 ; free virtual = 5715
+Restored from archive | CPU: 0.040000 secs | Memory: 0.634201 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 7423.965 ; gain = 0.000 ; free physical = 1397 ; free virtual = 5715
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 7423.965 ; gain = 0.000 ; free physical = 1397 ; free virtual = 5716
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 8 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 8 instances
+
+report_methodology -name ultrafast_methodology_1 -checks {PDRC-204 PDRC-190 TIMING-43 TIMING-42 TIMING-41 TIMING-40 TIMING-39 TIMING-38 TIMING-37 TIMING-36 TIMING-35 TIMING-34 TIMING-33 TIMING-32 TIMING-31 TIMING-30 TIMING-29 TIMING-28 TIMING-27 TIMING-26 TIMING-25 TIMING-24 TIMING-23 TIMING-22 TIMING-21 TIMING-20 TIMING-19 TIMING-18 TIMING-17 TIMING-16 TIMING-15 TIMING-14 TIMING-13 TIMING-12 TIMING-11 TIMING-10 TIMING-9 TIMING-8 TIMING-7 TIMING-6 TIMING-5 TIMING-4 TIMING-3 TIMING-2 TIMING-1 XDCV-2 XDCV-1 XDCH-2 XDCH-1 XDCC-8 XDCC-7 XDCC-6 XDCC-5 XDCC-4 XDCC-3 XDCC-2 XDCC-1 XDCB-5 XDCB-4 XDCB-3 XDCB-2 XDCB-1 CLKC-54 CLKC-53 CLKC-9 CLKC-5 CLKC-38 CLKC-37 CLKC-36 CLKC-35 CLKC-4 CLKC-18 CLKC-3 CLKC-2 CLKC-1 REQP-1959 LUTAR-1 HPDR-1 NTCN-1 CKLD-2 CKLD-1 DPIR-1 CKBF-1 SYNTH-14 SYNTH-13 SYNTH-12 SYNTH-11 SYNTH-10 SYNTH-9 SYNTH-16 SYNTH-15 SYNTH-6 SYNTH-5 SYNTH-4}
+Command: report_methodology -name ultrafast_methodology_1 -checks {PDRC-204 PDRC-190 TIMING-43 TIMING-42 TIMING-41 TIMING-40 TIMING-39 TIMING-38 TIMING-37 TIMING-36 TIMING-35 TIMING-34 TIMING-33 TIMING-32 TIMING-31 TIMING-30 TIMING-29 TIMING-28 TIMING-27 TIMING-26 TIMING-25 TIMING-24 TIMING-23 TIMING-22 TIMING-21 TIMING-20 TIMING-19 TIMING-18 TIMING-17 TIMING-16 TIMING-15 TIMING-14 TIMING-13 TIMING-12 TIMING-11 TIMING-10 TIMING-9 TIMING-8 TIMING-7 TIMING-6 TIMING-5 TIMING-4 TIMING-3 TIMING-2 TIMING-1 XDCV-2 XDCV-1 XDCH-2 XDCH-1 XDCC-8 XDCC-7 XDCC-6 XDCC-5 XDCC-4 XDCC-3 XDCC-2 XDCC-1 XDCB-5 XDCB-4 XDCB-3 XDCB-2 XDCB-1 CLKC-54 CLKC-53 CLKC-9 CLKC-5 CLKC-38 CLKC-37 CLKC-36 CLKC-35 CLKC-4 CLKC-18 CLKC-3 CLKC-2 CLKC-1 REQP-1959 LUTAR-1 HPDR-1 NTCN-1 CKLD-2 CKLD-1 DPIR-1 CKBF-1 SYNTH-14 SYNTH-13 SYNTH-12 SYNTH-11 SYNTH-10 SYNTH-9 SYNTH-16 SYNTH-15 SYNTH-6 SYNTH-5 SYNTH-4}
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-133] Running Methodology with 4 threads
+report_methodology completed successfully
+report_utilization -name utilization_1
+report_clock_networks -name {clk}
+close_design
+open_run impl_1
+INFO: [Netlist 29-17] Analyzing 57 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.3
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 7470.301 ; gain = 0.000 ; free physical = 1254 ; free virtual = 5572
+Restored from archive | CPU: 0.030000 secs | Memory: 0.634201 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.04 . Memory (MB): peak = 7470.301 ; gain = 0.000 ; free physical = 1254 ; free virtual = 5572
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 7470.301 ; gain = 0.000 ; free physical = 1255 ; free virtual = 5573
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 8 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 8 instances
+
+report_clock_interaction -delay_type min_max -significant_digits 3 -name timing_1
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 4 CPUs
+report_datasheet -name timing_2
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 4 CPUs
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 4 CPUs
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 4 CPUs
+close_design
+exit
+INFO: [Common 17-206] Exiting Vivado at Sun Oct  4 15:10:19 2020...

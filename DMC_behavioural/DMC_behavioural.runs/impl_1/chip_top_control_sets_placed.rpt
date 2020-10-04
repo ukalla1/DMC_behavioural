@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (lin64) Build 2405991 Thu Dec  6 23:36:41 MST 2018
-| Date         : Sat Oct  3 14:10:58 2020
+| Date         : Sun Oct  4 08:58:17 2020
 | Host         : ukallakuri-Lenovo-YOGA-910-13IKB running 64-bit Ubuntu 20.04.1 LTS
 | Command      : report_control_sets -verbose -file chip_top_control_sets_placed.rpt
 | Design       : chip_top

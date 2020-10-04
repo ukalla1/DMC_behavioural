@@ -27,3 +27,53 @@ report_timing_summary -delay_type min_max -report_unconstrained -check_timing_ve
 report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
 close_design
 close_project
+open_project /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.xpr
+update_compile_order -fileset sources_1
+open_run synth_1 -name synth_1
+close_design
+open_run synth_1 -name synth_1
+report_utilization -name utilization_1
+report_utilization -name utilization_2
+close_design
+open_run impl_1
+report_utilization -name utilization_1
+report_timing -through  [get_cells {m0/r3/t_v}] -delay_type min_max -max_paths 10 -sort_by group -input_pins -routable_nets -name {[get_cells {m0/r3/t_v}]}
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+set_property SLEW SLOW [get_ports [list {cpu_data[7]} {cpu_data[6]} {cpu_data[5]} {cpu_data[4]} {cpu_data[3]} {cpu_data[2]} {cpu_data[1]} {cpu_data[0]}]]
+set_property is_loc_fixed true [get_ports [list  {cpu_address[7]} {cpu_address[6]} {cpu_address[5]} {cpu_address[4]} {cpu_address[3]} {cpu_address[2]} {cpu_address[1]} {cpu_address[0]}]]
+set_property is_loc_fixed true [get_ports [list  {cpu_data[7]} {cpu_data[6]} {cpu_data[5]} {cpu_data[4]} {cpu_data[3]} {cpu_data[2]} {cpu_data[1]} {cpu_data[0]}]]
+set_property is_loc_fixed true [get_ports [list  {memory_address[7]} {memory_address[6]} {memory_address[5]} {memory_address[4]} {memory_address[3]} {memory_address[2]} {memory_address[1]} {memory_address[0]}]]
+set_property is_loc_fixed true [get_ports [list  {memory_data[7]} {memory_data[6]} {memory_data[5]} {memory_data[4]} {memory_data[3]} {memory_data[2]} {memory_data[1]} {memory_data[0]}]]
+set_property is_loc_fixed true [get_ports [list  busy]]
+set_property is_loc_fixed true [get_ports [list  clk]]
+set_property is_loc_fixed true [get_ports [list  mem_en]]
+set_property is_loc_fixed true [get_ports [list  out_en]]
+set_property is_loc_fixed true [get_ports [list  rd_wrn]]
+set_property is_loc_fixed true [get_ports [list  rst]]
+set_property is_loc_fixed true [get_ports [list  start]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list {cpu_address[7]} {cpu_address[6]} {cpu_address[5]} {cpu_address[4]} {cpu_address[3]} {cpu_address[2]} {cpu_address[1]} {cpu_address[0]}]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list {cpu_address[7]} {cpu_address[6]} {cpu_address[5]} {cpu_address[4]} {cpu_address[3]} {cpu_address[2]} {cpu_address[1]} {cpu_address[0]}]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list {cpu_data[7]} {cpu_data[6]} {cpu_data[5]} {cpu_data[4]} {cpu_data[3]} {cpu_data[2]} {cpu_data[1]} {cpu_data[0]}]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list {memory_address[7]} {memory_address[6]} {memory_address[5]} {memory_address[4]} {memory_address[3]} {memory_address[2]} {memory_address[1]} {memory_address[0]}]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list {memory_data[7]} {memory_data[6]} {memory_data[5]} {memory_data[4]} {memory_data[3]} {memory_data[2]} {memory_data[1]} {memory_data[0]}]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list busy]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list clk]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list mem_en]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list out_en]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list rd_wrn]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list rst]]
+set_property IOSTANDARD LVCMOS18 [get_ports [list start]]
+save_constraints
+close_design
+reset_run impl_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+open_run impl_1
+report_methodology -name ultrafast_methodology_1 -checks {PDRC-204 PDRC-190 TIMING-43 TIMING-42 TIMING-41 TIMING-40 TIMING-39 TIMING-38 TIMING-37 TIMING-36 TIMING-35 TIMING-34 TIMING-33 TIMING-32 TIMING-31 TIMING-30 TIMING-29 TIMING-28 TIMING-27 TIMING-26 TIMING-25 TIMING-24 TIMING-23 TIMING-22 TIMING-21 TIMING-20 TIMING-19 TIMING-18 TIMING-17 TIMING-16 TIMING-15 TIMING-14 TIMING-13 TIMING-12 TIMING-11 TIMING-10 TIMING-9 TIMING-8 TIMING-7 TIMING-6 TIMING-5 TIMING-4 TIMING-3 TIMING-2 TIMING-1 XDCV-2 XDCV-1 XDCH-2 XDCH-1 XDCC-8 XDCC-7 XDCC-6 XDCC-5 XDCC-4 XDCC-3 XDCC-2 XDCC-1 XDCB-5 XDCB-4 XDCB-3 XDCB-2 XDCB-1 CLKC-54 CLKC-53 CLKC-9 CLKC-5 CLKC-38 CLKC-37 CLKC-36 CLKC-35 CLKC-4 CLKC-18 CLKC-3 CLKC-2 CLKC-1 REQP-1959 LUTAR-1 HPDR-1 NTCN-1 CKLD-2 CKLD-1 DPIR-1 CKBF-1 SYNTH-14 SYNTH-13 SYNTH-12 SYNTH-11 SYNTH-10 SYNTH-9 SYNTH-16 SYNTH-15 SYNTH-6 SYNTH-5 SYNTH-4}
+report_utilization -name utilization_1
+report_clock_networks -name {clk}
+close_design
+open_run impl_1
+report_clock_interaction -delay_type min_max -significant_digits 3 -name timing_1
+report_datasheet -name timing_2
+close_design
