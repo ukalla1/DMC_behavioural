@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (lin64) Build 2405991 Thu Dec  6 23:36:41 MST 2018
-| Date         : Fri Oct  2 08:53:30 2020
+| Date         : Sat Oct  3 14:10:26 2020
 | Host         : ukallakuri-Lenovo-YOGA-910-13IKB running 64-bit Ubuntu 20.04.1 LTS
 | Command      : report_utilization -file chip_top_utilization_synth.rpt -pb chip_top_utilization_synth.pb
 | Design       : chip_top
@@ -147,17 +147,17 @@ Table of Contents
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
 | FDRE     |  324 |        Flop & Latch |
-| LUT6     |  155 |                 LUT |
+| LUT6     |  144 |                 LUT |
 | MUXF7    |   33 |               MuxFx |
+| LUT5     |   30 |                 LUT |
 | IBUF     |   28 |                  IO |
-| LUT4     |   24 |                 LUT |
-| LUT5     |   20 |                 LUT |
-| LUT2     |   20 |                 LUT |
+| LUT4     |   23 |                 LUT |
+| LUT2     |   18 |                 LUT |
 | OBUFT    |   16 |                  IO |
 | MUXF8    |   16 |               MuxFx |
+| LUT3     |    5 |                 LUT |
 | LUT1     |    4 |                 LUT |
 | OBUF     |    3 |                  IO |
-| LUT3     |    3 |                 LUT |
 | FDSE     |    3 |        Flop & Latch |
 | BUFG     |    1 |               Clock |
 +----------+------+---------------------+

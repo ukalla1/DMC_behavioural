@@ -2,8 +2,8 @@
 # Vivado v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:36:41 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-# Start of session at: Fri Oct  2 08:51:45 2020
-# Process ID: 12775
+# Start of session at: Sat Oct  3 14:04:02 2020
+# Process ID: 2867
 # Current directory: /home/ukallakuri/hardware_design/designs/direct_mapped_cache
 # Command line: vivado
 # Log file: /home/ukallakuri/hardware_design/designs/direct_mapped_cache/vivado.log
@@ -17,58 +17,13 @@ launch_runs impl_1 -jobs 2
 wait_on_run impl_1
 open_run impl_1
 report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
-launch_simulation -mode post-implementation -type timing
-open_wave_config /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/chip_top_tb_behav.wcfg
-source chip_top_tb.tcl
-run 10 us
 close_design
-close_sim
-launch_simulation
-open_wave_config /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/chip_top_tb_behav.wcfg
-source chip_top_tb.tcl
-run 10 us
-launch_simulation -mode post-synthesis -type functional
-open_wave_config /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/chip_top_tb_behav.wcfg
-source chip_top_tb.tcl
-run 10 us
-relaunch_sim
-run 10 us
-relaunch_sim
-run 10 us
-close_sim
-close_sim
-close_design
-launch_simulation
-open_wave_config /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/chip_top_tb_behav.wcfg
-source chip_top_tb.tcl
-run 10 us
-relaunch_sim
-run 10 us
-relaunch_sim
-run 10 us
-close_sim
-launch_simulation -mode post-synthesis -type functional
-open_wave_config /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/chip_top_tb_behav.wcfg
-source chip_top_tb.tcl
-run 10 us
-run 10 us
-relaunch_sim
-close_sim
-close_design
-launch_simulation -mode post-synthesis -type functional
-open_wave_config /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/chip_top_tb_behav.wcfg
-source chip_top_tb.tcl
-run 10 us
-close_sim
-close_design
-launch_simulation -mode post-implementation -type timing
-open_wave_config /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/chip_top_tb_behav.wcfg
-source chip_top_tb.tcl
-run 10 us
-close_sim
-close_design
+reset_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
 open_run impl_1
-report_power -name {power_1}
-report_utilization -name utilization_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
 close_design
 close_project

@@ -1,7 +1,7 @@
 // Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2018.3 (lin64) Build 2405991 Thu Dec  6 23:36:41 MST 2018
-// Date        : Fri Oct  2 09:17:05 2020
+// Date        : Sat Oct  3 13:59:21 2020
 // Host        : ukallakuri-Lenovo-YOGA-910-13IKB running 64-bit Ubuntu 20.04.1 LTS
 // Command     : write_verilog -mode timesim -nolib -sdf_anno true -force -file
 //               /home/ukallakuri/hardware_design/designs/direct_mapped_cache/DMC_behavioural/DMC_behavioural.sim/sim_1/impl/timing/xsim/chip_top_tb_time_impl.v
@@ -37,7 +37,7 @@ module IOBUF_UNIQ_BASE_
         .T(T));
 endmodule
 
-module IOBUF_HD29
+module IOBUF_HD43
    (IO,
     O,
     I,
@@ -61,7 +61,7 @@ module IOBUF_HD29
         .T(T));
 endmodule
 
-module IOBUF_HD30
+module IOBUF_HD44
    (IO,
     O,
     I,
@@ -85,7 +85,7 @@ module IOBUF_HD30
         .T(T));
 endmodule
 
-module IOBUF_HD31
+module IOBUF_HD45
    (IO,
     O,
     I,
@@ -109,7 +109,7 @@ module IOBUF_HD31
         .T(T));
 endmodule
 
-module IOBUF_HD32
+module IOBUF_HD46
    (IO,
     O,
     I,
@@ -133,7 +133,7 @@ module IOBUF_HD32
         .T(T));
 endmodule
 
-module IOBUF_HD33
+module IOBUF_HD47
    (IO,
     O,
     I,
@@ -157,7 +157,7 @@ module IOBUF_HD33
         .T(T));
 endmodule
 
-module IOBUF_HD34
+module IOBUF_HD48
    (IO,
     O,
     I,
@@ -181,7 +181,7 @@ module IOBUF_HD34
         .T(T));
 endmodule
 
-module IOBUF_HD35
+module IOBUF_HD49
    (IO,
     O,
     I,
@@ -205,7 +205,7 @@ module IOBUF_HD35
         .T(T));
 endmodule
 
-(* DATA_WIDTH = "8" *) (* ECO_CHECKSUM = "5d298eff" *) (* state0 = "3'b000" *) 
+(* DATA_WIDTH = "8" *) (* ECO_CHECKSUM = "e20bbd9" *) (* state0 = "3'b000" *) 
 (* state1 = "3'b001" *) (* state2 = "3'b010" *) (* state3 = "3'b011" *) 
 (* state4 = "3'b100" *) (* state5 = "3'b101" *) (* state6 = "3'b110" *) 
 (* state7 = "3'b111" *) 
@@ -235,8 +235,10 @@ module chip_top
   output busy;
 
   wire \FSM_sequential_currentState[0]_i_1_n_0 ;
+  wire \FSM_sequential_currentState[0]_i_4_n_0 ;
   wire \FSM_sequential_currentState[1]_i_1_n_0 ;
   wire \FSM_sequential_currentState[2]_i_2_n_0 ;
+  wire \FSM_sequential_currentState_reg[0]_i_3_n_0 ;
   wire busy;
   wire busy_OBUF;
   wire busy_reg;
@@ -259,9 +261,9 @@ module chip_top
   wire [7:0]cpu_address_IBUF;
   wire [7:0]cpu_address_reg;
   wire \cpu_address_reg[1]_i_4_n_0 ;
-  wire \cpu_address_reg[3]_i_2_n_0 ;
   wire \cpu_address_reg[4]_i_2_n_0 ;
   wire \cpu_address_reg[5]_i_2_n_0 ;
+  wire \cpu_address_reg[6]_i_2_n_0 ;
   wire \cpu_address_reg[7]_i_1_n_0 ;
   wire \cpu_address_reg[7]_i_3_n_0 ;
   wire \cpu_address_reg[7]_i_4_n_0 ;
@@ -279,9 +281,9 @@ module chip_top
   wire m0_n_0;
   wire m0_n_1;
   wire m0_n_16;
+  wire m0_n_17;
   wire m0_n_2;
   wire m0_n_3;
-  wire m0_n_4;
   wire m0_n_5;
   wire m0_n_6;
   wire m0_n_7;
@@ -300,8 +302,6 @@ module chip_top
   wire \memory_address_TRI[0] ;
   wire [7:0]memory_data;
   wire [7:0]memory_data_IBUF;
-  wire \one_b_cell[7]_i_4_n_0 ;
-  wire \one_b_cell_reg[7]_i_3_n_0 ;
   wire out_en;
   wire out_en_OBUF;
   wire \r1/t_v/hit_missb01_out ;
@@ -314,9 +314,8 @@ module chip_top
   wire \r8/t_v/hit_missb01_out ;
   wire rd_wrn;
   wire rd_wrn_IBUF;
+  wire rd_wrn_reg;
   wire rd_wrn_reg_tristate_oe_i_1_n_0;
-  wire rd_wrn_reg_tristate_oe_i_2_n_0;
-  wire rd_wrn_reg_tristate_oe_i_3_n_0;
   wire rd_wrn_reg_tristate_oe_reg_n_0;
   wire rst;
   wire rst_IBUF;
@@ -326,17 +325,25 @@ module chip_top
 initial begin
  $sdf_annotate("chip_top_tb_time_impl.sdf",,,,"tool_control");
 end
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT5 #(
     .INIT(32'h00004540)) 
     \FSM_sequential_currentState[0]_i_1 
        (.I0(currentState[1]),
-        .I1(rd_wrn_IBUF),
+        .I1(rd_wrn_reg),
         .I2(currentState[0]),
         .I3(start_IBUF),
         .I4(currentState[2]),
         .O(\FSM_sequential_currentState[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
+  LUT5 #(
+    .INIT(32'hFAFF3A00)) 
+    \FSM_sequential_currentState[0]_i_4 
+       (.I0(start_IBUF),
+        .I1(\FSM_sequential_currentState[2]_i_2_n_0 ),
+        .I2(currentState[2]),
+        .I3(\counter[1]_i_2_n_0 ),
+        .I4(\FSM_sequential_currentState_reg[0]_i_3_n_0 ),
+        .O(\FSM_sequential_currentState[0]_i_4_n_0 ));
   LUT3 #(
     .INIT(8'h04)) 
     \FSM_sequential_currentState[1]_i_1 
@@ -427,6 +434,15 @@ end
         .D(\FSM_sequential_currentState[0]_i_1_n_0 ),
         .Q(currentState[0]),
         .R(rst_IBUF));
+  FDSE #(
+    .INIT(1'b1),
+    .IS_C_INVERTED(1'b1)) 
+    \FSM_sequential_currentState_reg[0]_i_3 
+       (.C(clk_IBUF_BUFG),
+        .CE(1'b1),
+        .D(\FSM_sequential_currentState[0]_i_4_n_0 ),
+        .Q(\FSM_sequential_currentState_reg[0]_i_3_n_0 ),
+        .S(rst_IBUF));
   (* FSM_ENCODED_STATES = "state1:001,state2:011,state3:010,state0:000,state4:100" *) 
   FDRE #(
     .INIT(1'b0),
@@ -450,18 +466,19 @@ end
   OBUF busy_OBUF_inst
        (.I(busy_OBUF),
         .O(busy));
-  LUT2 #(
-    .INIT(4'h1)) 
+  LUT3 #(
+    .INIT(8'h02)) 
     busy_reg_i_2
-       (.I0(currentState[1]),
-        .I1(currentState[2]),
+       (.I0(start_IBUF),
+        .I1(currentState[1]),
+        .I2(currentState[2]),
         .O(busy_reg));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     busy_reg_reg
        (.C(clk_IBUF_BUFG),
-        .CE(m0_n_3),
+        .CE(m0_n_16),
         .D(busy_reg),
         .Q(busy_OBUF),
         .R(rst_IBUF));
@@ -638,65 +655,57 @@ end
        (.I(cpu_address[7]),
         .O(cpu_address_IBUF[7]));
   LUT5 #(
-    .INIT(32'h04040455)) 
+    .INIT(32'h00101110)) 
     \cpu_address_reg[0]_i_2 
-       (.I0(currentState[1]),
-        .I1(cpu_address_IBUF[0]),
-        .I2(currentState[2]),
-        .I3(\cpu_address_reg_reg_n_0_[0] ),
-        .I4(currentState[0]),
+       (.I0(currentState[0]),
+        .I1(currentState[1]),
+        .I2(cpu_address_IBUF[0]),
+        .I3(currentState[2]),
+        .I4(\cpu_address_reg_reg_n_0_[0] ),
         .O(cpu_address_reg[0]));
   LUT6 #(
-    .INIT(64'h0404040404555504)) 
+    .INIT(64'h0010111011100010)) 
     \cpu_address_reg[1]_i_2 
-       (.I0(currentState[1]),
-        .I1(cpu_address_IBUF[1]),
-        .I2(currentState[2]),
-        .I3(\cpu_address_reg_reg_n_0_[1] ),
-        .I4(\cpu_address_reg_reg_n_0_[0] ),
-        .I5(currentState[0]),
+       (.I0(currentState[0]),
+        .I1(currentState[1]),
+        .I2(cpu_address_IBUF[1]),
+        .I3(currentState[2]),
+        .I4(\cpu_address_reg_reg_n_0_[1] ),
+        .I5(\cpu_address_reg_reg_n_0_[0] ),
         .O(cpu_address_reg[1]));
-  LUT2 #(
-    .INIT(4'h1)) 
+  LUT3 #(
+    .INIT(8'hB8)) 
     \cpu_address_reg[1]_i_4 
-       (.I0(currentState[1]),
-        .I1(\cpu_address_reg[7]_i_3_n_0 ),
+       (.I0(\cpu_address_reg[7]_i_3_n_0 ),
+        .I1(currentState[2]),
+        .I2(start_IBUF),
         .O(\cpu_address_reg[1]_i_4_n_0 ));
-  LUT6 #(
-    .INIT(64'h0708FFFF07080708)) 
+  LUT5 #(
+    .INIT(32'h7F8F7080)) 
     \cpu_address_reg[2]_i_1 
        (.I0(\cpu_address_reg_reg_n_0_[1] ),
         .I1(\cpu_address_reg_reg_n_0_[0] ),
-        .I2(currentState[0]),
+        .I2(currentState[2]),
         .I3(memory_address_OBUF[2]),
-        .I4(currentState[2]),
-        .I5(cpu_address_IBUF[2]),
+        .I4(cpu_address_IBUF[2]),
         .O(cpu_address_reg[2]));
-  LUT5 #(
-    .INIT(32'h14FF1414)) 
+  LUT6 #(
+    .INIT(64'h7FFF80FF7F008000)) 
     \cpu_address_reg[3]_i_1 
-       (.I0(currentState[0]),
-        .I1(\cpu_address_reg[3]_i_2_n_0 ),
-        .I2(memory_address_OBUF[3]),
-        .I3(currentState[2]),
-        .I4(cpu_address_IBUF[3]),
-        .O(cpu_address_reg[3]));
-  LUT3 #(
-    .INIT(8'h80)) 
-    \cpu_address_reg[3]_i_2 
        (.I0(memory_address_OBUF[2]),
         .I1(\cpu_address_reg_reg_n_0_[0] ),
         .I2(\cpu_address_reg_reg_n_0_[1] ),
-        .O(\cpu_address_reg[3]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
-  LUT5 #(
-    .INIT(32'h14FF1414)) 
-    \cpu_address_reg[4]_i_1 
-       (.I0(currentState[0]),
-        .I1(\cpu_address_reg[4]_i_2_n_0 ),
-        .I2(memory_address_OBUF[4]),
         .I3(currentState[2]),
-        .I4(cpu_address_IBUF[4]),
+        .I4(memory_address_OBUF[3]),
+        .I5(cpu_address_IBUF[3]),
+        .O(cpu_address_reg[3]));
+  LUT4 #(
+    .INIT(16'h7B48)) 
+    \cpu_address_reg[4]_i_1 
+       (.I0(\cpu_address_reg[4]_i_2_n_0 ),
+        .I1(currentState[2]),
+        .I2(memory_address_OBUF[4]),
+        .I3(cpu_address_IBUF[4]),
         .O(cpu_address_reg[4]));
   LUT4 #(
     .INIT(16'h8000)) 
@@ -706,14 +715,13 @@ end
         .I2(\cpu_address_reg_reg_n_0_[0] ),
         .I3(memory_address_OBUF[2]),
         .O(\cpu_address_reg[4]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'h14FF1414)) 
+  LUT4 #(
+    .INIT(16'h7B48)) 
     \cpu_address_reg[5]_i_1 
-       (.I0(currentState[0]),
-        .I1(\cpu_address_reg[5]_i_2_n_0 ),
+       (.I0(\cpu_address_reg[5]_i_2_n_0 ),
+        .I1(currentState[2]),
         .I2(memory_address_OBUF[5]),
-        .I3(currentState[2]),
-        .I4(cpu_address_IBUF[5]),
+        .I3(cpu_address_IBUF[5]),
         .O(cpu_address_reg[5]));
   LUT5 #(
     .INIT(32'h80000000)) 
@@ -724,52 +732,57 @@ end
         .I3(\cpu_address_reg_reg_n_0_[1] ),
         .I4(memory_address_OBUF[3]),
         .O(\cpu_address_reg[5]_i_2_n_0 ));
-  LUT5 #(
-    .INIT(32'h14FF1414)) 
-    \cpu_address_reg[6]_i_1 
-       (.I0(currentState[0]),
-        .I1(\cpu_address_reg[7]_i_4_n_0 ),
-        .I2(memory_address_OBUF[6]),
-        .I3(currentState[2]),
-        .I4(cpu_address_IBUF[6]),
-        .O(cpu_address_reg[6]));
   LUT4 #(
-    .INIT(16'h0151)) 
-    \cpu_address_reg[7]_i_1 
-       (.I0(currentState[1]),
-        .I1(\cpu_address_reg[7]_i_3_n_0 ),
-        .I2(currentState[0]),
-        .I3(currentState[2]),
-        .O(\cpu_address_reg[7]_i_1_n_0 ));
-  LUT6 #(
-    .INIT(64'h1540FFFF15401540)) 
-    \cpu_address_reg[7]_i_2 
-       (.I0(currentState[0]),
-        .I1(\cpu_address_reg[7]_i_4_n_0 ),
+    .INIT(16'h7B48)) 
+    \cpu_address_reg[6]_i_1 
+       (.I0(\cpu_address_reg[6]_i_2_n_0 ),
+        .I1(currentState[2]),
         .I2(memory_address_OBUF[6]),
-        .I3(memory_address_OBUF[7]),
-        .I4(currentState[2]),
-        .I5(cpu_address_IBUF[7]),
-        .O(cpu_address_reg[7]));
-  LUT6 #(
-    .INIT(64'hFFFFDDDFFFFFFFFF)) 
-    \cpu_address_reg[7]_i_3 
-       (.I0(currentState[2]),
-        .I1(\counter_reg_n_0_[0] ),
-        .I2(\counter_reg_n_0_[1] ),
-        .I3(\counter_reg_n_0_[2] ),
-        .I4(\counter_reg_n_0_[4] ),
-        .I5(\counter_reg_n_0_[3] ),
-        .O(\cpu_address_reg[7]_i_3_n_0 ));
+        .I3(cpu_address_IBUF[6]),
+        .O(cpu_address_reg[6]));
   LUT6 #(
     .INIT(64'h8000000000000000)) 
-    \cpu_address_reg[7]_i_4 
+    \cpu_address_reg[6]_i_2 
        (.I0(memory_address_OBUF[5]),
         .I1(memory_address_OBUF[3]),
         .I2(\cpu_address_reg_reg_n_0_[1] ),
         .I3(\cpu_address_reg_reg_n_0_[0] ),
         .I4(memory_address_OBUF[2]),
         .I5(memory_address_OBUF[4]),
+        .O(\cpu_address_reg[6]_i_2_n_0 ));
+  LUT5 #(
+    .INIT(32'h11100010)) 
+    \cpu_address_reg[7]_i_1 
+       (.I0(currentState[0]),
+        .I1(currentState[1]),
+        .I2(start_IBUF),
+        .I3(currentState[2]),
+        .I4(\cpu_address_reg[7]_i_3_n_0 ),
+        .O(\cpu_address_reg[7]_i_1_n_0 ));
+  LUT3 #(
+    .INIT(8'hB8)) 
+    \cpu_address_reg[7]_i_2 
+       (.I0(\cpu_address_reg[7]_i_4_n_0 ),
+        .I1(currentState[2]),
+        .I2(cpu_address_IBUF[7]),
+        .O(cpu_address_reg[7]));
+  LUT5 #(
+    .INIT(32'h00002220)) 
+    \cpu_address_reg[7]_i_3 
+       (.I0(\counter_reg_n_0_[3] ),
+        .I1(\counter_reg_n_0_[4] ),
+        .I2(\counter_reg_n_0_[2] ),
+        .I3(\counter_reg_n_0_[1] ),
+        .I4(\counter_reg_n_0_[0] ),
+        .O(\cpu_address_reg[7]_i_3_n_0 ));
+  LUT5 #(
+    .INIT(32'h0000006A)) 
+    \cpu_address_reg[7]_i_4 
+       (.I0(memory_address_OBUF[7]),
+        .I1(memory_address_OBUF[6]),
+        .I2(\cpu_address_reg[6]_i_2_n_0 ),
+        .I3(currentState[0]),
+        .I4(currentState[1]),
         .O(\cpu_address_reg[7]_i_4_n_0 ));
   FDRE #(
     .INIT(1'b0),
@@ -850,43 +863,43 @@ end
         .O(cpu_data_IBUF[0]),
         .T(\cpu_data_TRI[0] ));
   (* IS_CCIO = "FALSE" *) 
-  IOBUF_HD29 \cpu_data_IOBUF[1]_inst 
+  IOBUF_HD43 \cpu_data_IOBUF[1]_inst 
        (.I(cpu_data_OBUF[1]),
         .IO(cpu_data[1]),
         .O(cpu_data_IBUF[1]),
         .T(\cpu_data_TRI[0] ));
   (* IS_CCIO = "FALSE" *) 
-  IOBUF_HD30 \cpu_data_IOBUF[2]_inst 
+  IOBUF_HD44 \cpu_data_IOBUF[2]_inst 
        (.I(cpu_data_OBUF[2]),
         .IO(cpu_data[2]),
         .O(cpu_data_IBUF[2]),
         .T(\cpu_data_TRI[0] ));
   (* IS_CCIO = "FALSE" *) 
-  IOBUF_HD31 \cpu_data_IOBUF[3]_inst 
+  IOBUF_HD45 \cpu_data_IOBUF[3]_inst 
        (.I(cpu_data_OBUF[3]),
         .IO(cpu_data[3]),
         .O(cpu_data_IBUF[3]),
         .T(\cpu_data_TRI[0] ));
   (* IS_CCIO = "FALSE" *) 
-  IOBUF_HD32 \cpu_data_IOBUF[4]_inst 
+  IOBUF_HD46 \cpu_data_IOBUF[4]_inst 
        (.I(cpu_data_OBUF[4]),
         .IO(cpu_data[4]),
         .O(cpu_data_IBUF[4]),
         .T(\cpu_data_TRI[0] ));
   (* IS_CCIO = "FALSE" *) 
-  IOBUF_HD33 \cpu_data_IOBUF[5]_inst 
+  IOBUF_HD47 \cpu_data_IOBUF[5]_inst 
        (.I(cpu_data_OBUF[5]),
         .IO(cpu_data[5]),
         .O(cpu_data_IBUF[5]),
         .T(\cpu_data_TRI[0] ));
   (* IS_CCIO = "FALSE" *) 
-  IOBUF_HD34 \cpu_data_IOBUF[6]_inst 
+  IOBUF_HD48 \cpu_data_IOBUF[6]_inst 
        (.I(cpu_data_OBUF[6]),
         .IO(cpu_data[6]),
         .O(cpu_data_IBUF[6]),
         .T(\cpu_data_TRI[0] ));
   (* IS_CCIO = "FALSE" *) 
-  IOBUF_HD35 \cpu_data_IOBUF[7]_inst 
+  IOBUF_HD49 \cpu_data_IOBUF[7]_inst 
        (.I(cpu_data_OBUF[7]),
         .IO(cpu_data[7]),
         .O(cpu_data_IBUF[7]),
@@ -896,7 +909,7 @@ end
     .IS_C_INVERTED(1'b1)) 
     \cpu_data_reg_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(m0_n_4),
+        .CE(m0_n_3),
         .D(cpu_data_reg[0]),
         .Q(cpu_data_OBUF[0]),
         .R(rst_IBUF));
@@ -905,7 +918,7 @@ end
     .IS_C_INVERTED(1'b1)) 
     \cpu_data_reg_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(m0_n_4),
+        .CE(m0_n_3),
         .D(cpu_data_reg[1]),
         .Q(cpu_data_OBUF[1]),
         .R(rst_IBUF));
@@ -914,7 +927,7 @@ end
     .IS_C_INVERTED(1'b1)) 
     \cpu_data_reg_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(m0_n_4),
+        .CE(m0_n_3),
         .D(cpu_data_reg[2]),
         .Q(cpu_data_OBUF[2]),
         .R(rst_IBUF));
@@ -923,7 +936,7 @@ end
     .IS_C_INVERTED(1'b1)) 
     \cpu_data_reg_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(m0_n_4),
+        .CE(m0_n_3),
         .D(cpu_data_reg[3]),
         .Q(cpu_data_OBUF[3]),
         .R(rst_IBUF));
@@ -932,7 +945,7 @@ end
     .IS_C_INVERTED(1'b1)) 
     \cpu_data_reg_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(m0_n_4),
+        .CE(m0_n_3),
         .D(cpu_data_reg[4]),
         .Q(cpu_data_OBUF[4]),
         .R(rst_IBUF));
@@ -941,7 +954,7 @@ end
     .IS_C_INVERTED(1'b1)) 
     \cpu_data_reg_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(m0_n_4),
+        .CE(m0_n_3),
         .D(cpu_data_reg[5]),
         .Q(cpu_data_OBUF[5]),
         .R(rst_IBUF));
@@ -950,7 +963,7 @@ end
     .IS_C_INVERTED(1'b1)) 
     \cpu_data_reg_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(m0_n_4),
+        .CE(m0_n_3),
         .D(cpu_data_reg[6]),
         .Q(cpu_data_OBUF[6]),
         .R(rst_IBUF));
@@ -959,7 +972,7 @@ end
     .IS_C_INVERTED(1'b1)) 
     \cpu_data_reg_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(m0_n_4),
+        .CE(m0_n_3),
         .D(cpu_data_reg[7]),
         .Q(cpu_data_OBUF[7]),
         .R(rst_IBUF));
@@ -1102,21 +1115,23 @@ end
   memory m0
        (.D(m0_n_6),
         .E(m0_n_2),
-        .\FSM_sequential_currentState_reg[0] (m0_n_5),
-        .\FSM_sequential_currentState_reg[0]_0 (m0_n_7),
+        .\FSM_sequential_currentState_reg[0] (m0_n_0),
+        .\FSM_sequential_currentState_reg[0]_0 (m0_n_1),
+        .\FSM_sequential_currentState_reg[0]_1 (m0_n_3),
+        .\FSM_sequential_currentState_reg[0]_2 (m0_n_5),
         .\FSM_sequential_currentState_reg[1] (cpu_data_reg),
-        .\FSM_sequential_currentState_reg[2] (m0_n_0),
-        .\FSM_sequential_currentState_reg[2]_0 (m0_n_1),
-        .\FSM_sequential_currentState_reg[2]_1 (m0_n_4),
-        .\FSM_sequential_currentState_reg[2]_2 (m0_n_16),
+        .\FSM_sequential_currentState_reg[2] (m0_n_7),
+        .\FSM_sequential_currentState_reg[2]_0 (m0_n_17),
         .Q(currentState),
-        .busy_reg_reg(\FSM_sequential_currentState[2]_i_2_n_0 ),
-        .busy_reg_reg_0(\counter_reg_n_0_[4] ),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
-        .\counter_reg[4] (m0_n_3),
+        .\counter_reg[4] (m0_n_16),
         .cpu_address_reg(cpu_address_reg[1:0]),
+        .\cpu_address_reg_reg[0] (\cpu_address_reg_reg_n_0_[0] ),
         .\cpu_address_reg_reg[1] (\cpu_address_reg[1]_i_4_n_0 ),
+        .\cpu_address_reg_reg[1]_0 (\cpu_address_reg_reg_n_0_[1] ),
         .cpu_data_IBUF(cpu_data_IBUF),
+        .\data_to_cache_reg[0] (\counter_reg_n_0_[4] ),
+        .\data_to_cache_reg[0]_0 (\FSM_sequential_currentState[2]_i_2_n_0 ),
         .hit_missb01_out(\r1/t_v/hit_missb01_out ),
         .hit_missb01_out_0(\r2/t_v/hit_missb01_out ),
         .hit_missb01_out_1(\r3/t_v/hit_missb01_out ),
@@ -1127,14 +1142,13 @@ end
         .hit_missb01_out_6(\r8/t_v/hit_missb01_out ),
         .load_tag_reg(load_tag_reg),
         .memory_address_OBUF(memory_address_OBUF),
-        .\one_b_cell_reg[0] (\cpu_address_reg_reg_n_0_[1] ),
-        .\one_b_cell_reg[0]_0 (\cpu_address_reg_reg_n_0_[0] ),
-        .\one_b_cell_reg[0]_1 (rd_wrn_reg_tristate_oe_reg_n_0),
-        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[7]_i_3_n_0 ),
+        .\one_b_cell_reg[0] (rd_wrn_reg_tristate_oe_reg_n_0),
+        .\one_b_cell_reg[0]_0 (\FSM_sequential_currentState_reg[0]_i_3_n_0 ),
         .\one_b_cell_reg[7] (data_to_cache),
         .out_en_OBUF(\cpu_data_TRI[0] ),
-        .rd_wrn_IBUF(rd_wrn_IBUF),
-        .rst_IBUF(rst_IBUF));
+        .rd_wrn_reg(rd_wrn_reg),
+        .rst_IBUF(rst_IBUF),
+        .start_IBUF(start_IBUF));
   OBUF mem_en_OBUF_inst
        (.I(mem_en_OBUF),
         .O(mem_en));
@@ -1304,24 +1318,6 @@ end
   IBUF \memory_data_IBUF[7]_inst 
        (.I(memory_data[7]),
         .O(memory_data_IBUF[7]));
-  LUT5 #(
-    .INIT(32'hFFEE0144)) 
-    \one_b_cell[7]_i_4 
-       (.I0(currentState[1]),
-        .I1(currentState[0]),
-        .I2(\FSM_sequential_currentState[2]_i_2_n_0 ),
-        .I3(currentState[2]),
-        .I4(\one_b_cell_reg[7]_i_3_n_0 ),
-        .O(\one_b_cell[7]_i_4_n_0 ));
-  FDSE #(
-    .INIT(1'b1),
-    .IS_C_INVERTED(1'b1)) 
-    \one_b_cell_reg[7]_i_3 
-       (.C(clk_IBUF_BUFG),
-        .CE(1'b1),
-        .D(\one_b_cell[7]_i_4_n_0 ),
-        .Q(\one_b_cell_reg[7]_i_3_n_0 ),
-        .S(rst_IBUF));
   (* OPT_MODIFIED = "RETARGET " *) 
   OBUF out_en_OBUF_inst
        (.I(out_en_OBUF),
@@ -1337,39 +1333,22 @@ end
     out_en_reg_reg
        (.C(clk_IBUF_BUFG),
         .CE(1'b1),
-        .D(m0_n_16),
+        .D(m0_n_17),
         .Q(\cpu_data_TRI[0] ),
         .S(rst_IBUF));
   IBUF rd_wrn_IBUF_inst
        (.I(rd_wrn),
         .O(rd_wrn_IBUF));
   LUT6 #(
-    .INIT(64'h4F44FFFF4F440000)) 
+    .INIT(64'hFCAAFFFF0CAA0000)) 
     rd_wrn_reg_tristate_oe_i_1
-       (.I0(currentState[2]),
-        .I1(rd_wrn_IBUF),
-        .I2(rd_wrn_reg_tristate_oe_i_2_n_0),
-        .I3(\counter[1]_i_2_n_0 ),
-        .I4(rd_wrn_reg_tristate_oe_i_3_n_0),
-        .I5(rd_wrn_reg_tristate_oe_reg_n_0),
-        .O(rd_wrn_reg_tristate_oe_i_1_n_0));
-  LUT5 #(
-    .INIT(32'h0000EAAA)) 
-    rd_wrn_reg_tristate_oe_i_2
-       (.I0(\counter_reg_n_0_[3] ),
-        .I1(\counter_reg_n_0_[2] ),
-        .I2(\counter_reg_n_0_[1] ),
-        .I3(\counter_reg_n_0_[0] ),
-        .I4(\counter_reg_n_0_[4] ),
-        .O(rd_wrn_reg_tristate_oe_i_2_n_0));
-  LUT4 #(
-    .INIT(16'h0155)) 
-    rd_wrn_reg_tristate_oe_i_3
-       (.I0(currentState[1]),
-        .I1(currentState[0]),
+       (.I0(rd_wrn_IBUF),
+        .I1(\counter_reg_n_0_[4] ),
         .I2(\FSM_sequential_currentState[2]_i_2_n_0 ),
         .I3(currentState[2]),
-        .O(rd_wrn_reg_tristate_oe_i_3_n_0));
+        .I4(\counter[1]_i_2_n_0 ),
+        .I5(rd_wrn_reg_tristate_oe_reg_n_0),
+        .O(rd_wrn_reg_tristate_oe_i_1_n_0));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
@@ -1390,37 +1369,38 @@ end
         .CE(1'b1),
         .D(m0_n_7),
         .Q(load_tag_reg),
-        .R(1'b0));
+        .R(rst_IBUF));
   IBUF start_IBUF_inst
        (.I(start),
         .O(start_IBUF));
 endmodule
 
 module memory
-   (\FSM_sequential_currentState_reg[2] ,
-    \FSM_sequential_currentState_reg[2]_0 ,
-    E,
-    \counter_reg[4] ,
-    \FSM_sequential_currentState_reg[2]_1 ,
-    \FSM_sequential_currentState_reg[0] ,
-    D,
+   (\FSM_sequential_currentState_reg[0] ,
     \FSM_sequential_currentState_reg[0]_0 ,
+    E,
+    \FSM_sequential_currentState_reg[0]_1 ,
+    rd_wrn_reg,
+    \FSM_sequential_currentState_reg[0]_2 ,
+    D,
+    \FSM_sequential_currentState_reg[2] ,
     \FSM_sequential_currentState_reg[1] ,
-    \FSM_sequential_currentState_reg[2]_2 ,
+    \counter_reg[4] ,
+    \FSM_sequential_currentState_reg[2]_0 ,
     rst_IBUF,
     clk_IBUF_BUFG,
     cpu_address_reg,
     Q,
     \cpu_address_reg_reg[1] ,
-    \one_b_cell_reg[0] ,
-    \one_b_cell_reg[0]_0 ,
-    busy_reg_reg,
-    busy_reg_reg_0,
+    \cpu_address_reg_reg[1]_0 ,
+    \cpu_address_reg_reg[0] ,
     memory_address_OBUF,
+    start_IBUF,
+    \data_to_cache_reg[0] ,
+    \data_to_cache_reg[0]_0 ,
     out_en_OBUF,
     load_tag_reg,
     cpu_data_IBUF,
-    rd_wrn_IBUF,
     hit_missb01_out,
     hit_missb01_out_0,
     hit_missb01_out_1,
@@ -1429,33 +1409,34 @@ module memory
     hit_missb01_out_4,
     hit_missb01_out_5,
     hit_missb01_out_6,
-    \one_b_cell_reg[0]_1 ,
-    \one_b_cell_reg[0]_2 ,
+    \one_b_cell_reg[0] ,
+    \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[7] );
-  output \FSM_sequential_currentState_reg[2] ;
-  output \FSM_sequential_currentState_reg[2]_0 ;
-  output [0:0]E;
-  output \counter_reg[4] ;
-  output [0:0]\FSM_sequential_currentState_reg[2]_1 ;
-  output [0:0]\FSM_sequential_currentState_reg[0] ;
-  output [0:0]D;
+  output \FSM_sequential_currentState_reg[0] ;
   output \FSM_sequential_currentState_reg[0]_0 ;
+  output [0:0]E;
+  output [0:0]\FSM_sequential_currentState_reg[0]_1 ;
+  output rd_wrn_reg;
+  output [0:0]\FSM_sequential_currentState_reg[0]_2 ;
+  output [0:0]D;
+  output \FSM_sequential_currentState_reg[2] ;
   output [7:0]\FSM_sequential_currentState_reg[1] ;
-  output \FSM_sequential_currentState_reg[2]_2 ;
+  output \counter_reg[4] ;
+  output \FSM_sequential_currentState_reg[2]_0 ;
   input rst_IBUF;
   input clk_IBUF_BUFG;
   input [1:0]cpu_address_reg;
   input [2:0]Q;
   input \cpu_address_reg_reg[1] ;
-  input \one_b_cell_reg[0] ;
-  input \one_b_cell_reg[0]_0 ;
-  input busy_reg_reg;
-  input [0:0]busy_reg_reg_0;
+  input \cpu_address_reg_reg[1]_0 ;
+  input \cpu_address_reg_reg[0] ;
   input [5:0]memory_address_OBUF;
+  input start_IBUF;
+  input [0:0]\data_to_cache_reg[0] ;
+  input \data_to_cache_reg[0]_0 ;
   input out_en_OBUF;
   input load_tag_reg;
   input [7:0]cpu_data_IBUF;
-  input rd_wrn_IBUF;
   input hit_missb01_out;
   input hit_missb01_out_0;
   input hit_missb01_out_1;
@@ -1464,31 +1445,33 @@ module memory
   input hit_missb01_out_4;
   input hit_missb01_out_5;
   input hit_missb01_out_6;
-  input \one_b_cell_reg[0]_1 ;
-  input \one_b_cell_reg[0]_2 ;
+  input \one_b_cell_reg[0] ;
+  input \one_b_cell_reg[0]_0 ;
   input [7:0]\one_b_cell_reg[7] ;
 
   wire [0:0]D;
   wire [0:0]E;
-  wire [0:0]\FSM_sequential_currentState_reg[0] ;
+  wire \FSM_sequential_currentState_reg[0] ;
   wire \FSM_sequential_currentState_reg[0]_0 ;
+  wire [0:0]\FSM_sequential_currentState_reg[0]_1 ;
+  wire [0:0]\FSM_sequential_currentState_reg[0]_2 ;
   wire [7:0]\FSM_sequential_currentState_reg[1] ;
   wire \FSM_sequential_currentState_reg[2] ;
   wire \FSM_sequential_currentState_reg[2]_0 ;
-  wire [0:0]\FSM_sequential_currentState_reg[2]_1 ;
-  wire \FSM_sequential_currentState_reg[2]_2 ;
   wire [2:0]Q;
-  wire busy_reg_reg;
-  wire [0:0]busy_reg_reg_0;
   wire clk_IBUF_BUFG;
   wire \counter_reg[4] ;
   wire [1:0]cpu_address_reg;
+  wire \cpu_address_reg_reg[0] ;
   wire \cpu_address_reg_reg[1] ;
+  wire \cpu_address_reg_reg[1]_0 ;
   wire [7:0]cpu_data_IBUF;
   wire [7:0]data1;
   wire [7:0]data3;
   wire [7:0]data5;
   wire [7:0]data7;
+  wire [0:0]\data_to_cache_reg[0] ;
+  wire \data_to_cache_reg[0]_0 ;
   wire hit_missb01_out;
   wire hit_missb01_out_0;
   wire hit_missb01_out_1;
@@ -1507,8 +1490,6 @@ module memory
   wire [5:0]memory_address_OBUF;
   wire \one_b_cell_reg[0] ;
   wire \one_b_cell_reg[0]_0 ;
-  wire \one_b_cell_reg[0]_1 ;
-  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7] ;
   wire out_en_OBUF;
   wire r3_n_0;
@@ -1519,6 +1500,7 @@ module memory
   wire r3_n_5;
   wire r3_n_6;
   wire r3_n_7;
+  wire r4_n_12;
   wire r5_n_0;
   wire r5_n_1;
   wire r5_n_2;
@@ -1535,10 +1517,10 @@ module memory
   wire r7_n_5;
   wire r7_n_6;
   wire r7_n_7;
-  wire r8_n_8;
-  wire rd_wrn_IBUF;
+  wire r8_n_2;
   wire rd_wrn_reg;
   wire rst_IBUF;
+  wire start_IBUF;
 
   one_row_cells r1
        (.\FSM_sequential_currentState_reg[1] (\FSM_sequential_currentState_reg[1] ),
@@ -1566,13 +1548,12 @@ module memory
         .hm_r1(hm_r1),
         .load_tag_reg(load_tag_reg),
         .memory_address_OBUF(memory_address_OBUF),
-        .\one_b_cell_reg[0] (\one_b_cell_reg[0] ),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_0 ),
-        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_1 ),
-        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_2 ),
+        .\one_b_cell_reg[0] (\cpu_address_reg_reg[1]_0 ),
+        .\one_b_cell_reg[0]_0 (\cpu_address_reg_reg[0] ),
+        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_0 ),
         .\one_b_cell_reg[7] (\one_b_cell_reg[7] ),
-        .rd_wrn_IBUF(rd_wrn_IBUF),
-        .rd_wrn_reg(rd_wrn_reg),
+        .rd_wrn_reg_tristate_oe_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_row_cells_0 r2
        (.clk_IBUF_BUFG(clk_IBUF_BUFG),
@@ -1581,10 +1562,10 @@ module memory
         .hm_r2(hm_r2),
         .load_tag_reg(load_tag_reg),
         .memory_address_OBUF(memory_address_OBUF),
-        .\one_b_cell_reg[0] (\one_b_cell_reg[0] ),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0] (\cpu_address_reg_reg[1]_0 ),
+        .\one_b_cell_reg[0]_0 (\cpu_address_reg_reg[0] ),
+        .\one_b_cell_reg[0]_1 (rd_wrn_reg),
         .\one_b_cell_reg[7] (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_row_cells_1 r3
        (.clk_IBUF_BUFG(clk_IBUF_BUFG),
@@ -1601,41 +1582,39 @@ module memory
         .hm_r3(hm_r3),
         .load_tag_reg(load_tag_reg),
         .memory_address_OBUF(memory_address_OBUF),
-        .\one_b_cell_reg[0] (\one_b_cell_reg[0] ),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0] (rd_wrn_reg),
+        .\one_b_cell_reg[0]_0 (\cpu_address_reg_reg[1]_0 ),
+        .\one_b_cell_reg[0]_1 (\cpu_address_reg_reg[0] ),
         .\one_b_cell_reg[7] (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_row_cells_2 r4
        (.D(D),
         .E(E),
-        .\FSM_sequential_currentState_reg[0] (\FSM_sequential_currentState_reg[0] ),
-        .\FSM_sequential_currentState_reg[0]_0 (\FSM_sequential_currentState_reg[0]_0 ),
+        .\FSM_sequential_currentState_reg[0] (\FSM_sequential_currentState_reg[0]_1 ),
+        .\FSM_sequential_currentState_reg[0]_0 (\FSM_sequential_currentState_reg[0]_2 ),
         .\FSM_sequential_currentState_reg[2] (\FSM_sequential_currentState_reg[2] ),
         .\FSM_sequential_currentState_reg[2]_0 (\FSM_sequential_currentState_reg[2]_0 ),
-        .\FSM_sequential_currentState_reg[2]_1 (\FSM_sequential_currentState_reg[2]_1 ),
-        .\FSM_sequential_currentState_reg[2]_2 (\FSM_sequential_currentState_reg[2]_2 ),
-        .\FSM_sequential_currentState_reg[2]_3 (r8_n_8),
         .Q(Q),
-        .busy_reg_reg(busy_reg_reg),
-        .busy_reg_reg_0(busy_reg_reg_0),
+        .busy_reg_reg(r8_n_2),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .\counter_reg[4] (\counter_reg[4] ),
-        .cpu_address_reg(cpu_address_reg),
-        .\cpu_address_reg_reg[0] (\one_b_cell_reg[0]_0 ),
-        .\cpu_address_reg_reg[1] (\cpu_address_reg_reg[1] ),
-        .\cpu_address_reg_reg[1]_0 (\one_b_cell_reg[0] ),
+        .\cpu_address_reg_reg[3] (r4_n_12),
         .data3(data3),
+        .\data_to_cache_reg[0] (\data_to_cache_reg[0] ),
+        .\data_to_cache_reg[0]_0 (\data_to_cache_reg[0]_0 ),
         .hit_missb01_out_2(hit_missb01_out_2),
         .hm_r1(hm_r1),
         .hm_r2(hm_r2),
         .hm_r3(hm_r3),
         .load_tag_reg(load_tag_reg),
         .memory_address_OBUF(memory_address_OBUF),
+        .\one_b_cell_reg[0] (\cpu_address_reg_reg[1]_0 ),
+        .\one_b_cell_reg[0]_0 (\cpu_address_reg_reg[0] ),
+        .\one_b_cell_reg[0]_1 (rd_wrn_reg),
         .\one_b_cell_reg[7] (\one_b_cell_reg[7] ),
         .out_en_OBUF(out_en_OBUF),
-        .rd_wrn_reg(rd_wrn_reg),
-        .rst_IBUF(rst_IBUF));
+        .rst_IBUF(rst_IBUF),
+        .start_IBUF(start_IBUF));
   one_row_cells_3 r5
        (.clk_IBUF_BUFG(clk_IBUF_BUFG),
         .\cpu_address_reg_reg[3] (r5_n_0),
@@ -1659,10 +1638,10 @@ module memory
         .hm_r5(hm_r5),
         .load_tag_reg(load_tag_reg),
         .memory_address_OBUF(memory_address_OBUF),
-        .\one_b_cell_reg[0] (\one_b_cell_reg[0] ),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0] (rd_wrn_reg),
+        .\one_b_cell_reg[0]_0 (\cpu_address_reg_reg[1]_0 ),
+        .\one_b_cell_reg[0]_1 (\cpu_address_reg_reg[0] ),
         .\one_b_cell_reg[7] (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_row_cells_4 r6
        (.clk_IBUF_BUFG(clk_IBUF_BUFG),
@@ -1671,10 +1650,10 @@ module memory
         .hm_r6(hm_r6),
         .load_tag_reg(load_tag_reg),
         .memory_address_OBUF(memory_address_OBUF),
-        .\one_b_cell_reg[0] (\one_b_cell_reg[0] ),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0] (\cpu_address_reg_reg[1]_0 ),
+        .\one_b_cell_reg[0]_0 (\cpu_address_reg_reg[0] ),
+        .\one_b_cell_reg[0]_1 (rd_wrn_reg),
         .\one_b_cell_reg[7] (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_row_cells_5 r7
        (.clk_IBUF_BUFG(clk_IBUF_BUFG),
@@ -1691,14 +1670,22 @@ module memory
         .hm_r7(hm_r7),
         .load_tag_reg(load_tag_reg),
         .memory_address_OBUF(memory_address_OBUF),
-        .\one_b_cell_reg[0] (\one_b_cell_reg[0] ),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0] (rd_wrn_reg),
+        .\one_b_cell_reg[0]_0 (\cpu_address_reg_reg[1]_0 ),
+        .\one_b_cell_reg[0]_1 (\cpu_address_reg_reg[0] ),
         .\one_b_cell_reg[7] (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_row_cells_6 r8
-       (.clk_IBUF_BUFG(clk_IBUF_BUFG),
-        .\cpu_address_reg_reg[3] (r8_n_8),
+       (.\FSM_sequential_currentState_reg[0] (\FSM_sequential_currentState_reg[0] ),
+        .\FSM_sequential_currentState_reg[0]_0 (\FSM_sequential_currentState_reg[0]_0 ),
+        .Q(Q),
+        .clk_IBUF_BUFG(clk_IBUF_BUFG),
+        .cpu_address_reg(cpu_address_reg),
+        .\cpu_address_reg_reg[0] (\cpu_address_reg_reg[0] ),
+        .\cpu_address_reg_reg[0]_0 (r4_n_12),
+        .\cpu_address_reg_reg[1] (\cpu_address_reg_reg[1] ),
+        .\cpu_address_reg_reg[1]_0 (\cpu_address_reg_reg[1]_0 ),
+        .\cpu_address_reg_reg[3] (r8_n_2),
         .data7(data7),
         .hit_missb01_out_6(hit_missb01_out_6),
         .hm_r5(hm_r5),
@@ -1706,27 +1693,25 @@ module memory
         .hm_r7(hm_r7),
         .load_tag_reg(load_tag_reg),
         .memory_address_OBUF(memory_address_OBUF),
-        .\one_b_cell_reg[0] (\one_b_cell_reg[0] ),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0] (rd_wrn_reg),
         .\one_b_cell_reg[7] (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
 endmodule
 
 module one_b_cell
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -1734,29 +1719,29 @@ module one_b_cell
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__29_n_0 ;
+  wire \one_b_cell[7]_i_1__23_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0000000000000080)) 
-    \one_b_cell[7]_i_1__29 
+    \one_b_cell[7]_i_1__23 
        (.I0(memory_address_OBUF[0]),
         .I1(memory_address_OBUF[2]),
         .I2(memory_address_OBUF[1]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1__29_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1__23_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__29_n_0 ),
+        .CE(\one_b_cell[7]_i_1__23_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -1765,7 +1750,7 @@ module one_b_cell
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__29_n_0 ),
+        .CE(\one_b_cell[7]_i_1__23_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -1774,7 +1759,7 @@ module one_b_cell
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__29_n_0 ),
+        .CE(\one_b_cell[7]_i_1__23_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -1783,7 +1768,7 @@ module one_b_cell
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__29_n_0 ),
+        .CE(\one_b_cell[7]_i_1__23_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -1792,7 +1777,7 @@ module one_b_cell
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__29_n_0 ),
+        .CE(\one_b_cell[7]_i_1__23_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -1801,7 +1786,7 @@ module one_b_cell
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__29_n_0 ),
+        .CE(\one_b_cell[7]_i_1__23_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -1810,7 +1795,7 @@ module one_b_cell
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__29_n_0 ),
+        .CE(\one_b_cell[7]_i_1__23_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -1819,7 +1804,7 @@ module one_b_cell
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__29_n_0 ),
+        .CE(\one_b_cell[7]_i_1__23_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
@@ -1829,17 +1814,17 @@ endmodule
 module one_b_cell_10
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -1847,29 +1832,29 @@ module one_b_cell_10
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__28_n_0 ;
+  wire \one_b_cell[7]_i_1__24_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0000000000000040)) 
-    \one_b_cell[7]_i_1__28 
+    \one_b_cell[7]_i_1__24 
        (.I0(memory_address_OBUF[0]),
         .I1(memory_address_OBUF[2]),
         .I2(memory_address_OBUF[1]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1__28_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1__24_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__28_n_0 ),
+        .CE(\one_b_cell[7]_i_1__24_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -1878,7 +1863,7 @@ module one_b_cell_10
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__28_n_0 ),
+        .CE(\one_b_cell[7]_i_1__24_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -1887,7 +1872,7 @@ module one_b_cell_10
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__28_n_0 ),
+        .CE(\one_b_cell[7]_i_1__24_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -1896,7 +1881,7 @@ module one_b_cell_10
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__28_n_0 ),
+        .CE(\one_b_cell[7]_i_1__24_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -1905,7 +1890,7 @@ module one_b_cell_10
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__28_n_0 ),
+        .CE(\one_b_cell[7]_i_1__24_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -1914,7 +1899,7 @@ module one_b_cell_10
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__28_n_0 ),
+        .CE(\one_b_cell[7]_i_1__24_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -1923,7 +1908,7 @@ module one_b_cell_10
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__28_n_0 ),
+        .CE(\one_b_cell[7]_i_1__24_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -1932,7 +1917,7 @@ module one_b_cell_10
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__28_n_0 ),
+        .CE(\one_b_cell[7]_i_1__24_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
@@ -1955,7 +1940,7 @@ module one_b_cell_11
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
     \cpu_data_reg_reg[7]_i_8_1 ,
-    rd_wrn_reg,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
@@ -1974,7 +1959,7 @@ module one_b_cell_11
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
   input [7:0]\cpu_data_reg_reg[7]_i_8_1 ;
-  input rd_wrn_reg;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -1994,9 +1979,10 @@ module one_b_cell_11
   wire [7:0]data6;
   wire [7:0]data7;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__8_n_0 ;
+  wire \one_b_cell[7]_i_1__12_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
   wire \one_b_cell_reg_n_0_[0] ;
   wire \one_b_cell_reg_n_0_[1] ;
@@ -2006,7 +1992,6 @@ module one_b_cell_11
   wire \one_b_cell_reg_n_0_[5] ;
   wire \one_b_cell_reg_n_0_[6] ;
   wire \one_b_cell_reg_n_0_[7] ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
@@ -2131,20 +2116,20 @@ module one_b_cell_11
         .S(memory_address_OBUF[0]));
   LUT6 #(
     .INIT(64'h0000000000400000)) 
-    \one_b_cell[7]_i_1__8 
+    \one_b_cell[7]_i_1__12 
        (.I0(memory_address_OBUF[0]),
         .I1(memory_address_OBUF[2]),
         .I2(memory_address_OBUF[1]),
-        .I3(rd_wrn_reg),
+        .I3(\one_b_cell_reg[0]_2 ),
         .I4(\one_b_cell_reg[0]_1 ),
         .I5(\one_b_cell_reg[0]_0 ),
-        .O(\one_b_cell[7]_i_1__8_n_0 ));
+        .O(\one_b_cell[7]_i_1__12_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__8_n_0 ),
+        .CE(\one_b_cell[7]_i_1__12_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(\one_b_cell_reg_n_0_[0] ),
         .R(rst_IBUF));
@@ -2153,7 +2138,7 @@ module one_b_cell_11
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__8_n_0 ),
+        .CE(\one_b_cell[7]_i_1__12_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(\one_b_cell_reg_n_0_[1] ),
         .R(rst_IBUF));
@@ -2162,7 +2147,7 @@ module one_b_cell_11
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__8_n_0 ),
+        .CE(\one_b_cell[7]_i_1__12_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(\one_b_cell_reg_n_0_[2] ),
         .R(rst_IBUF));
@@ -2171,7 +2156,7 @@ module one_b_cell_11
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__8_n_0 ),
+        .CE(\one_b_cell[7]_i_1__12_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(\one_b_cell_reg_n_0_[3] ),
         .R(rst_IBUF));
@@ -2180,7 +2165,7 @@ module one_b_cell_11
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__8_n_0 ),
+        .CE(\one_b_cell[7]_i_1__12_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(\one_b_cell_reg_n_0_[4] ),
         .R(rst_IBUF));
@@ -2189,7 +2174,7 @@ module one_b_cell_11
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__8_n_0 ),
+        .CE(\one_b_cell[7]_i_1__12_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(\one_b_cell_reg_n_0_[5] ),
         .R(rst_IBUF));
@@ -2198,7 +2183,7 @@ module one_b_cell_11
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__8_n_0 ),
+        .CE(\one_b_cell[7]_i_1__12_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(\one_b_cell_reg_n_0_[6] ),
         .R(rst_IBUF));
@@ -2207,7 +2192,7 @@ module one_b_cell_11
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__8_n_0 ),
+        .CE(\one_b_cell[7]_i_1__12_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(\one_b_cell_reg_n_0_[7] ),
         .R(rst_IBUF));
@@ -2217,17 +2202,17 @@ endmodule
 module one_b_cell_12
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -2235,29 +2220,29 @@ module one_b_cell_12
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__4_n_0 ;
+  wire \one_b_cell[7]_i_1__0_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0000000000400000)) 
-    \one_b_cell[7]_i_1__4 
+    \one_b_cell[7]_i_1__0 
        (.I0(memory_address_OBUF[0]),
         .I1(memory_address_OBUF[2]),
         .I2(memory_address_OBUF[1]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1__4_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1__0_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__4_n_0 ),
+        .CE(\one_b_cell[7]_i_1__0_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -2266,7 +2251,7 @@ module one_b_cell_12
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__4_n_0 ),
+        .CE(\one_b_cell[7]_i_1__0_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -2275,7 +2260,7 @@ module one_b_cell_12
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__4_n_0 ),
+        .CE(\one_b_cell[7]_i_1__0_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -2284,7 +2269,7 @@ module one_b_cell_12
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__4_n_0 ),
+        .CE(\one_b_cell[7]_i_1__0_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -2293,7 +2278,7 @@ module one_b_cell_12
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__4_n_0 ),
+        .CE(\one_b_cell[7]_i_1__0_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -2302,7 +2287,7 @@ module one_b_cell_12
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__4_n_0 ),
+        .CE(\one_b_cell[7]_i_1__0_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -2311,7 +2296,7 @@ module one_b_cell_12
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__4_n_0 ),
+        .CE(\one_b_cell[7]_i_1__0_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -2320,7 +2305,7 @@ module one_b_cell_12
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__4_n_0 ),
+        .CE(\one_b_cell[7]_i_1__0_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
@@ -2330,17 +2315,17 @@ endmodule
 module one_b_cell_13
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -2348,29 +2333,29 @@ module one_b_cell_13
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__16_n_0 ;
+  wire \one_b_cell[7]_i_1__20_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0040000000000000)) 
-    \one_b_cell[7]_i_1__16 
+    \one_b_cell[7]_i_1__20 
        (.I0(memory_address_OBUF[0]),
         .I1(memory_address_OBUF[2]),
         .I2(memory_address_OBUF[1]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1__16_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1__20_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__16_n_0 ),
+        .CE(\one_b_cell[7]_i_1__20_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -2379,7 +2364,7 @@ module one_b_cell_13
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__16_n_0 ),
+        .CE(\one_b_cell[7]_i_1__20_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -2388,7 +2373,7 @@ module one_b_cell_13
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__16_n_0 ),
+        .CE(\one_b_cell[7]_i_1__20_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -2397,7 +2382,7 @@ module one_b_cell_13
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__16_n_0 ),
+        .CE(\one_b_cell[7]_i_1__20_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -2406,7 +2391,7 @@ module one_b_cell_13
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__16_n_0 ),
+        .CE(\one_b_cell[7]_i_1__20_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -2415,7 +2400,7 @@ module one_b_cell_13
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__16_n_0 ),
+        .CE(\one_b_cell[7]_i_1__20_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -2424,7 +2409,7 @@ module one_b_cell_13
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__16_n_0 ),
+        .CE(\one_b_cell[7]_i_1__20_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -2433,7 +2418,7 @@ module one_b_cell_13
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__16_n_0 ),
+        .CE(\one_b_cell[7]_i_1__20_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
@@ -2443,17 +2428,17 @@ endmodule
 module one_b_cell_15
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -2461,29 +2446,29 @@ module one_b_cell_15
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__27_n_0 ;
+  wire \one_b_cell[7]_i_1__25_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0000000000000040)) 
-    \one_b_cell[7]_i_1__27 
+    \one_b_cell[7]_i_1__25 
        (.I0(memory_address_OBUF[1]),
         .I1(memory_address_OBUF[0]),
         .I2(memory_address_OBUF[2]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1__27_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1__25_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__27_n_0 ),
+        .CE(\one_b_cell[7]_i_1__25_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -2492,7 +2477,7 @@ module one_b_cell_15
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__27_n_0 ),
+        .CE(\one_b_cell[7]_i_1__25_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -2501,7 +2486,7 @@ module one_b_cell_15
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__27_n_0 ),
+        .CE(\one_b_cell[7]_i_1__25_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -2510,7 +2495,7 @@ module one_b_cell_15
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__27_n_0 ),
+        .CE(\one_b_cell[7]_i_1__25_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -2519,7 +2504,7 @@ module one_b_cell_15
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__27_n_0 ),
+        .CE(\one_b_cell[7]_i_1__25_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -2528,7 +2513,7 @@ module one_b_cell_15
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__27_n_0 ),
+        .CE(\one_b_cell[7]_i_1__25_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -2537,7 +2522,7 @@ module one_b_cell_15
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__27_n_0 ),
+        .CE(\one_b_cell[7]_i_1__25_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -2546,7 +2531,7 @@ module one_b_cell_15
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__27_n_0 ),
+        .CE(\one_b_cell[7]_i_1__25_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
@@ -2561,7 +2546,7 @@ module one_b_cell_16
     \one_b_cell_reg[0]_1 ,
     \cpu_data_reg_reg[7]_i_7_0 ,
     memory_address_OBUF,
-    rd_wrn_reg,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
@@ -2572,7 +2557,7 @@ module one_b_cell_16
   input \one_b_cell_reg[0]_1 ;
   input [7:0]\cpu_data_reg_reg[7]_i_7_0 ;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -2583,9 +2568,10 @@ module one_b_cell_16
   wire [7:0]\cpu_data_reg_reg[7]_i_7_0 ;
   wire [7:0]data5;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__9_n_0 ;
+  wire \one_b_cell[7]_i_1__11_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
   wire \one_b_cell_reg_n_0_[0] ;
   wire \one_b_cell_reg_n_0_[1] ;
@@ -2595,7 +2581,6 @@ module one_b_cell_16
   wire \one_b_cell_reg_n_0_[5] ;
   wire \one_b_cell_reg_n_0_[6] ;
   wire \one_b_cell_reg_n_0_[7] ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
@@ -2680,20 +2665,20 @@ module one_b_cell_16
         .O(data5[7]));
   LUT6 #(
     .INIT(64'h0000000000400000)) 
-    \one_b_cell[7]_i_1__9 
+    \one_b_cell[7]_i_1__11 
        (.I0(memory_address_OBUF[1]),
         .I1(memory_address_OBUF[0]),
         .I2(memory_address_OBUF[2]),
-        .I3(rd_wrn_reg),
+        .I3(\one_b_cell_reg[0]_2 ),
         .I4(\one_b_cell_reg[0]_1 ),
         .I5(\one_b_cell_reg[0]_0 ),
-        .O(\one_b_cell[7]_i_1__9_n_0 ));
+        .O(\one_b_cell[7]_i_1__11_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__9_n_0 ),
+        .CE(\one_b_cell[7]_i_1__11_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(\one_b_cell_reg_n_0_[0] ),
         .R(rst_IBUF));
@@ -2702,7 +2687,7 @@ module one_b_cell_16
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__9_n_0 ),
+        .CE(\one_b_cell[7]_i_1__11_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(\one_b_cell_reg_n_0_[1] ),
         .R(rst_IBUF));
@@ -2711,7 +2696,7 @@ module one_b_cell_16
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__9_n_0 ),
+        .CE(\one_b_cell[7]_i_1__11_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(\one_b_cell_reg_n_0_[2] ),
         .R(rst_IBUF));
@@ -2720,7 +2705,7 @@ module one_b_cell_16
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__9_n_0 ),
+        .CE(\one_b_cell[7]_i_1__11_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(\one_b_cell_reg_n_0_[3] ),
         .R(rst_IBUF));
@@ -2729,7 +2714,7 @@ module one_b_cell_16
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__9_n_0 ),
+        .CE(\one_b_cell[7]_i_1__11_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(\one_b_cell_reg_n_0_[4] ),
         .R(rst_IBUF));
@@ -2738,7 +2723,7 @@ module one_b_cell_16
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__9_n_0 ),
+        .CE(\one_b_cell[7]_i_1__11_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(\one_b_cell_reg_n_0_[5] ),
         .R(rst_IBUF));
@@ -2747,7 +2732,7 @@ module one_b_cell_16
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__9_n_0 ),
+        .CE(\one_b_cell[7]_i_1__11_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(\one_b_cell_reg_n_0_[6] ),
         .R(rst_IBUF));
@@ -2756,7 +2741,7 @@ module one_b_cell_16
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__9_n_0 ),
+        .CE(\one_b_cell[7]_i_1__11_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(\one_b_cell_reg_n_0_[7] ),
         .R(rst_IBUF));
@@ -2766,17 +2751,17 @@ endmodule
 module one_b_cell_17
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -2784,29 +2769,29 @@ module one_b_cell_17
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__3_n_0 ;
+  wire \one_b_cell[7]_i_1__1_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0000000000400000)) 
-    \one_b_cell[7]_i_1__3 
+    \one_b_cell[7]_i_1__1 
        (.I0(memory_address_OBUF[1]),
         .I1(memory_address_OBUF[0]),
         .I2(memory_address_OBUF[2]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1__3_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1__1_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__3_n_0 ),
+        .CE(\one_b_cell[7]_i_1__1_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -2815,7 +2800,7 @@ module one_b_cell_17
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__3_n_0 ),
+        .CE(\one_b_cell[7]_i_1__1_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -2824,7 +2809,7 @@ module one_b_cell_17
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__3_n_0 ),
+        .CE(\one_b_cell[7]_i_1__1_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -2833,7 +2818,7 @@ module one_b_cell_17
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__3_n_0 ),
+        .CE(\one_b_cell[7]_i_1__1_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -2842,7 +2827,7 @@ module one_b_cell_17
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__3_n_0 ),
+        .CE(\one_b_cell[7]_i_1__1_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -2851,7 +2836,7 @@ module one_b_cell_17
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__3_n_0 ),
+        .CE(\one_b_cell[7]_i_1__1_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -2860,7 +2845,7 @@ module one_b_cell_17
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__3_n_0 ),
+        .CE(\one_b_cell[7]_i_1__1_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -2869,7 +2854,7 @@ module one_b_cell_17
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__3_n_0 ),
+        .CE(\one_b_cell[7]_i_1__1_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
@@ -2879,17 +2864,17 @@ endmodule
 module one_b_cell_18
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -2897,29 +2882,29 @@ module one_b_cell_18
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__17_n_0 ;
+  wire \one_b_cell[7]_i_1__19_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0040000000000000)) 
-    \one_b_cell[7]_i_1__17 
+    \one_b_cell[7]_i_1__19 
        (.I0(memory_address_OBUF[1]),
         .I1(memory_address_OBUF[0]),
         .I2(memory_address_OBUF[2]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1__17_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1__19_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__17_n_0 ),
+        .CE(\one_b_cell[7]_i_1__19_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -2928,7 +2913,7 @@ module one_b_cell_18
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__17_n_0 ),
+        .CE(\one_b_cell[7]_i_1__19_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -2937,7 +2922,7 @@ module one_b_cell_18
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__17_n_0 ),
+        .CE(\one_b_cell[7]_i_1__19_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -2946,7 +2931,7 @@ module one_b_cell_18
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__17_n_0 ),
+        .CE(\one_b_cell[7]_i_1__19_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -2955,7 +2940,7 @@ module one_b_cell_18
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__17_n_0 ),
+        .CE(\one_b_cell[7]_i_1__19_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -2964,7 +2949,7 @@ module one_b_cell_18
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__17_n_0 ),
+        .CE(\one_b_cell[7]_i_1__19_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -2973,7 +2958,7 @@ module one_b_cell_18
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__17_n_0 ),
+        .CE(\one_b_cell[7]_i_1__19_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -2982,7 +2967,7 @@ module one_b_cell_18
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__17_n_0 ),
+        .CE(\one_b_cell[7]_i_1__19_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
@@ -2992,17 +2977,17 @@ endmodule
 module one_b_cell_20
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -3013,8 +2998,8 @@ module one_b_cell_20
   wire \one_b_cell[7]_i_1__26_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
@@ -3023,9 +3008,9 @@ module one_b_cell_20
        (.I0(memory_address_OBUF[1]),
         .I1(memory_address_OBUF[2]),
         .I2(memory_address_OBUF[0]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
         .O(\one_b_cell[7]_i_1__26_n_0 ));
   FDRE #(
     .INIT(1'b0),
@@ -3126,7 +3111,7 @@ module one_b_cell_21
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
     \cpu_data_reg_reg[7]_i_7_1 ,
-    rd_wrn_reg,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
@@ -3153,7 +3138,7 @@ module one_b_cell_21
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
   input [7:0]\cpu_data_reg_reg[7]_i_7_1 ;
-  input rd_wrn_reg;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -3192,6 +3177,7 @@ module one_b_cell_21
   wire \one_b_cell[7]_i_1__10_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
   wire \one_b_cell_reg_n_0_[0] ;
   wire \one_b_cell_reg_n_0_[1] ;
@@ -3201,7 +3187,6 @@ module one_b_cell_21
   wire \one_b_cell_reg_n_0_[5] ;
   wire \one_b_cell_reg_n_0_[6] ;
   wire \one_b_cell_reg_n_0_[7] ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
@@ -3370,7 +3355,7 @@ module one_b_cell_21
        (.I0(memory_address_OBUF[1]),
         .I1(memory_address_OBUF[2]),
         .I2(memory_address_OBUF[0]),
-        .I3(rd_wrn_reg),
+        .I3(\one_b_cell_reg[0]_2 ),
         .I4(\one_b_cell_reg[0]_1 ),
         .I5(\one_b_cell_reg[0]_0 ),
         .O(\one_b_cell[7]_i_1__10_n_0 ));
@@ -3452,17 +3437,17 @@ endmodule
 module one_b_cell_22
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -3473,8 +3458,8 @@ module one_b_cell_22
   wire \one_b_cell[7]_i_1__2_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
@@ -3483,9 +3468,9 @@ module one_b_cell_22
        (.I0(memory_address_OBUF[1]),
         .I1(memory_address_OBUF[2]),
         .I2(memory_address_OBUF[0]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
         .O(\one_b_cell[7]_i_1__2_n_0 ));
   FDRE #(
     .INIT(1'b0),
@@ -3565,17 +3550,17 @@ endmodule
 module one_b_cell_23
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -3586,8 +3571,8 @@ module one_b_cell_23
   wire \one_b_cell[7]_i_1__18_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
@@ -3596,9 +3581,9 @@ module one_b_cell_23
        (.I0(memory_address_OBUF[1]),
         .I1(memory_address_OBUF[2]),
         .I2(memory_address_OBUF[0]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
         .O(\one_b_cell[7]_i_1__18_n_0 ));
   FDRE #(
     .INIT(1'b0),
@@ -3678,17 +3663,17 @@ endmodule
 module one_b_cell_25
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -3696,29 +3681,29 @@ module one_b_cell_25
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__25_n_0 ;
+  wire \one_b_cell[7]_i_1__27_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0000000000000040)) 
-    \one_b_cell[7]_i_1__25 
+    \one_b_cell[7]_i_1__27 
        (.I0(memory_address_OBUF[2]),
         .I1(memory_address_OBUF[0]),
         .I2(memory_address_OBUF[1]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1__25_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1__27_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__25_n_0 ),
+        .CE(\one_b_cell[7]_i_1__27_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -3727,7 +3712,7 @@ module one_b_cell_25
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__25_n_0 ),
+        .CE(\one_b_cell[7]_i_1__27_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -3736,7 +3721,7 @@ module one_b_cell_25
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__25_n_0 ),
+        .CE(\one_b_cell[7]_i_1__27_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -3745,7 +3730,7 @@ module one_b_cell_25
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__25_n_0 ),
+        .CE(\one_b_cell[7]_i_1__27_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -3754,7 +3739,7 @@ module one_b_cell_25
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__25_n_0 ),
+        .CE(\one_b_cell[7]_i_1__27_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -3763,7 +3748,7 @@ module one_b_cell_25
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__25_n_0 ),
+        .CE(\one_b_cell[7]_i_1__27_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -3772,7 +3757,7 @@ module one_b_cell_25
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__25_n_0 ),
+        .CE(\one_b_cell[7]_i_1__27_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -3781,7 +3766,7 @@ module one_b_cell_25
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__25_n_0 ),
+        .CE(\one_b_cell[7]_i_1__27_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
@@ -3796,7 +3781,7 @@ module one_b_cell_26
     \one_b_cell_reg[0]_1 ,
     \cpu_data_reg_reg[7]_i_6_0 ,
     memory_address_OBUF,
-    rd_wrn_reg,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
@@ -3807,7 +3792,7 @@ module one_b_cell_26
   input \one_b_cell_reg[0]_1 ;
   input [7:0]\cpu_data_reg_reg[7]_i_6_0 ;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -3818,9 +3803,10 @@ module one_b_cell_26
   wire [7:0]\cpu_data_reg_reg[7]_i_6_0 ;
   wire [7:0]data3;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__11_n_0 ;
+  wire \one_b_cell[7]_i_1__9_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
   wire \one_b_cell_reg_n_0_[0] ;
   wire \one_b_cell_reg_n_0_[1] ;
@@ -3830,7 +3816,6 @@ module one_b_cell_26
   wire \one_b_cell_reg_n_0_[5] ;
   wire \one_b_cell_reg_n_0_[6] ;
   wire \one_b_cell_reg_n_0_[7] ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
@@ -3915,20 +3900,20 @@ module one_b_cell_26
         .O(data3[7]));
   LUT6 #(
     .INIT(64'h0000000000400000)) 
-    \one_b_cell[7]_i_1__11 
+    \one_b_cell[7]_i_1__9 
        (.I0(memory_address_OBUF[2]),
         .I1(memory_address_OBUF[0]),
         .I2(memory_address_OBUF[1]),
-        .I3(rd_wrn_reg),
+        .I3(\one_b_cell_reg[0]_2 ),
         .I4(\one_b_cell_reg[0]_1 ),
         .I5(\one_b_cell_reg[0]_0 ),
-        .O(\one_b_cell[7]_i_1__11_n_0 ));
+        .O(\one_b_cell[7]_i_1__9_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__11_n_0 ),
+        .CE(\one_b_cell[7]_i_1__9_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(\one_b_cell_reg_n_0_[0] ),
         .R(rst_IBUF));
@@ -3937,7 +3922,7 @@ module one_b_cell_26
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__11_n_0 ),
+        .CE(\one_b_cell[7]_i_1__9_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(\one_b_cell_reg_n_0_[1] ),
         .R(rst_IBUF));
@@ -3946,7 +3931,7 @@ module one_b_cell_26
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__11_n_0 ),
+        .CE(\one_b_cell[7]_i_1__9_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(\one_b_cell_reg_n_0_[2] ),
         .R(rst_IBUF));
@@ -3955,7 +3940,7 @@ module one_b_cell_26
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__11_n_0 ),
+        .CE(\one_b_cell[7]_i_1__9_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(\one_b_cell_reg_n_0_[3] ),
         .R(rst_IBUF));
@@ -3964,7 +3949,7 @@ module one_b_cell_26
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__11_n_0 ),
+        .CE(\one_b_cell[7]_i_1__9_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(\one_b_cell_reg_n_0_[4] ),
         .R(rst_IBUF));
@@ -3973,7 +3958,7 @@ module one_b_cell_26
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__11_n_0 ),
+        .CE(\one_b_cell[7]_i_1__9_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(\one_b_cell_reg_n_0_[5] ),
         .R(rst_IBUF));
@@ -3982,7 +3967,7 @@ module one_b_cell_26
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__11_n_0 ),
+        .CE(\one_b_cell[7]_i_1__9_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(\one_b_cell_reg_n_0_[6] ),
         .R(rst_IBUF));
@@ -3991,7 +3976,7 @@ module one_b_cell_26
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__11_n_0 ),
+        .CE(\one_b_cell[7]_i_1__9_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(\one_b_cell_reg_n_0_[7] ),
         .R(rst_IBUF));
@@ -4001,17 +3986,17 @@ endmodule
 module one_b_cell_27
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -4019,29 +4004,29 @@ module one_b_cell_27
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__1_n_0 ;
+  wire \one_b_cell[7]_i_1__3_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0000000000400000)) 
-    \one_b_cell[7]_i_1__1 
+    \one_b_cell[7]_i_1__3 
        (.I0(memory_address_OBUF[2]),
         .I1(memory_address_OBUF[0]),
         .I2(memory_address_OBUF[1]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1__1_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1__3_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__1_n_0 ),
+        .CE(\one_b_cell[7]_i_1__3_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -4050,7 +4035,7 @@ module one_b_cell_27
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__1_n_0 ),
+        .CE(\one_b_cell[7]_i_1__3_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -4059,7 +4044,7 @@ module one_b_cell_27
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__1_n_0 ),
+        .CE(\one_b_cell[7]_i_1__3_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -4068,7 +4053,7 @@ module one_b_cell_27
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__1_n_0 ),
+        .CE(\one_b_cell[7]_i_1__3_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -4077,7 +4062,7 @@ module one_b_cell_27
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__1_n_0 ),
+        .CE(\one_b_cell[7]_i_1__3_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -4086,7 +4071,7 @@ module one_b_cell_27
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__1_n_0 ),
+        .CE(\one_b_cell[7]_i_1__3_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -4095,7 +4080,7 @@ module one_b_cell_27
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__1_n_0 ),
+        .CE(\one_b_cell[7]_i_1__3_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -4104,7 +4089,7 @@ module one_b_cell_27
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__1_n_0 ),
+        .CE(\one_b_cell[7]_i_1__3_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
@@ -4114,17 +4099,17 @@ endmodule
 module one_b_cell_28
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -4132,29 +4117,29 @@ module one_b_cell_28
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__19_n_0 ;
+  wire \one_b_cell[7]_i_1__17_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0040000000000000)) 
-    \one_b_cell[7]_i_1__19 
+    \one_b_cell[7]_i_1__17 
        (.I0(memory_address_OBUF[2]),
         .I1(memory_address_OBUF[0]),
         .I2(memory_address_OBUF[1]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1__19_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1__17_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__19_n_0 ),
+        .CE(\one_b_cell[7]_i_1__17_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -4163,7 +4148,7 @@ module one_b_cell_28
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__19_n_0 ),
+        .CE(\one_b_cell[7]_i_1__17_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -4172,7 +4157,7 @@ module one_b_cell_28
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__19_n_0 ),
+        .CE(\one_b_cell[7]_i_1__17_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -4181,7 +4166,7 @@ module one_b_cell_28
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__19_n_0 ),
+        .CE(\one_b_cell[7]_i_1__17_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -4190,7 +4175,7 @@ module one_b_cell_28
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__19_n_0 ),
+        .CE(\one_b_cell[7]_i_1__17_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -4199,7 +4184,7 @@ module one_b_cell_28
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__19_n_0 ),
+        .CE(\one_b_cell[7]_i_1__17_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -4208,7 +4193,7 @@ module one_b_cell_28
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__19_n_0 ),
+        .CE(\one_b_cell[7]_i_1__17_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -4217,7 +4202,7 @@ module one_b_cell_28
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__19_n_0 ),
+        .CE(\one_b_cell[7]_i_1__17_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
@@ -4227,17 +4212,17 @@ endmodule
 module one_b_cell_30
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -4245,29 +4230,29 @@ module one_b_cell_30
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__24_n_0 ;
+  wire \one_b_cell[7]_i_1__28_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0000000000000004)) 
-    \one_b_cell[7]_i_1__24 
+    \one_b_cell[7]_i_1__28 
        (.I0(memory_address_OBUF[2]),
         .I1(memory_address_OBUF[1]),
         .I2(memory_address_OBUF[0]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1__24_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1__28_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__24_n_0 ),
+        .CE(\one_b_cell[7]_i_1__28_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -4276,7 +4261,7 @@ module one_b_cell_30
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__24_n_0 ),
+        .CE(\one_b_cell[7]_i_1__28_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -4285,7 +4270,7 @@ module one_b_cell_30
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__24_n_0 ),
+        .CE(\one_b_cell[7]_i_1__28_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -4294,7 +4279,7 @@ module one_b_cell_30
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__24_n_0 ),
+        .CE(\one_b_cell[7]_i_1__28_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -4303,7 +4288,7 @@ module one_b_cell_30
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__24_n_0 ),
+        .CE(\one_b_cell[7]_i_1__28_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -4312,7 +4297,7 @@ module one_b_cell_30
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__24_n_0 ),
+        .CE(\one_b_cell[7]_i_1__28_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -4321,7 +4306,7 @@ module one_b_cell_30
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__24_n_0 ),
+        .CE(\one_b_cell[7]_i_1__28_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -4330,7 +4315,7 @@ module one_b_cell_30
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__24_n_0 ),
+        .CE(\one_b_cell[7]_i_1__28_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
@@ -4353,7 +4338,7 @@ module one_b_cell_31
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
     \cpu_data_reg_reg[7]_i_6_1 ,
-    rd_wrn_reg,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
@@ -4372,7 +4357,7 @@ module one_b_cell_31
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
   input [7:0]\cpu_data_reg_reg[7]_i_6_1 ;
-  input rd_wrn_reg;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -4392,9 +4377,10 @@ module one_b_cell_31
   wire [7:0]data2;
   wire [7:0]data3;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__12_n_0 ;
+  wire \one_b_cell[7]_i_1__8_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
   wire \one_b_cell_reg_n_0_[0] ;
   wire \one_b_cell_reg_n_0_[1] ;
@@ -4404,7 +4390,6 @@ module one_b_cell_31
   wire \one_b_cell_reg_n_0_[5] ;
   wire \one_b_cell_reg_n_0_[6] ;
   wire \one_b_cell_reg_n_0_[7] ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
@@ -4529,20 +4514,20 @@ module one_b_cell_31
         .S(memory_address_OBUF[0]));
   LUT6 #(
     .INIT(64'h0000000000040000)) 
-    \one_b_cell[7]_i_1__12 
+    \one_b_cell[7]_i_1__8 
        (.I0(memory_address_OBUF[2]),
         .I1(memory_address_OBUF[1]),
         .I2(memory_address_OBUF[0]),
-        .I3(rd_wrn_reg),
+        .I3(\one_b_cell_reg[0]_2 ),
         .I4(\one_b_cell_reg[0]_1 ),
         .I5(\one_b_cell_reg[0]_0 ),
-        .O(\one_b_cell[7]_i_1__12_n_0 ));
+        .O(\one_b_cell[7]_i_1__8_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__12_n_0 ),
+        .CE(\one_b_cell[7]_i_1__8_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(\one_b_cell_reg_n_0_[0] ),
         .R(rst_IBUF));
@@ -4551,7 +4536,7 @@ module one_b_cell_31
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__12_n_0 ),
+        .CE(\one_b_cell[7]_i_1__8_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(\one_b_cell_reg_n_0_[1] ),
         .R(rst_IBUF));
@@ -4560,7 +4545,7 @@ module one_b_cell_31
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__12_n_0 ),
+        .CE(\one_b_cell[7]_i_1__8_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(\one_b_cell_reg_n_0_[2] ),
         .R(rst_IBUF));
@@ -4569,7 +4554,7 @@ module one_b_cell_31
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__12_n_0 ),
+        .CE(\one_b_cell[7]_i_1__8_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(\one_b_cell_reg_n_0_[3] ),
         .R(rst_IBUF));
@@ -4578,7 +4563,7 @@ module one_b_cell_31
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__12_n_0 ),
+        .CE(\one_b_cell[7]_i_1__8_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(\one_b_cell_reg_n_0_[4] ),
         .R(rst_IBUF));
@@ -4587,7 +4572,7 @@ module one_b_cell_31
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__12_n_0 ),
+        .CE(\one_b_cell[7]_i_1__8_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(\one_b_cell_reg_n_0_[5] ),
         .R(rst_IBUF));
@@ -4596,7 +4581,7 @@ module one_b_cell_31
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__12_n_0 ),
+        .CE(\one_b_cell[7]_i_1__8_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(\one_b_cell_reg_n_0_[6] ),
         .R(rst_IBUF));
@@ -4605,7 +4590,7 @@ module one_b_cell_31
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__12_n_0 ),
+        .CE(\one_b_cell[7]_i_1__8_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(\one_b_cell_reg_n_0_[7] ),
         .R(rst_IBUF));
@@ -4615,17 +4600,17 @@ endmodule
 module one_b_cell_32
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -4633,29 +4618,29 @@ module one_b_cell_32
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__0_n_0 ;
+  wire \one_b_cell[7]_i_1__4_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0000000000040000)) 
-    \one_b_cell[7]_i_1__0 
+    \one_b_cell[7]_i_1__4 
        (.I0(memory_address_OBUF[2]),
         .I1(memory_address_OBUF[1]),
         .I2(memory_address_OBUF[0]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1__0_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1__4_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__0_n_0 ),
+        .CE(\one_b_cell[7]_i_1__4_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -4664,7 +4649,7 @@ module one_b_cell_32
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__0_n_0 ),
+        .CE(\one_b_cell[7]_i_1__4_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -4673,7 +4658,7 @@ module one_b_cell_32
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__0_n_0 ),
+        .CE(\one_b_cell[7]_i_1__4_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -4682,7 +4667,7 @@ module one_b_cell_32
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__0_n_0 ),
+        .CE(\one_b_cell[7]_i_1__4_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -4691,7 +4676,7 @@ module one_b_cell_32
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__0_n_0 ),
+        .CE(\one_b_cell[7]_i_1__4_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -4700,7 +4685,7 @@ module one_b_cell_32
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__0_n_0 ),
+        .CE(\one_b_cell[7]_i_1__4_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -4709,7 +4694,7 @@ module one_b_cell_32
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__0_n_0 ),
+        .CE(\one_b_cell[7]_i_1__4_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -4718,7 +4703,7 @@ module one_b_cell_32
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__0_n_0 ),
+        .CE(\one_b_cell[7]_i_1__4_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
@@ -4728,17 +4713,17 @@ endmodule
 module one_b_cell_33
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -4746,29 +4731,29 @@ module one_b_cell_33
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__20_n_0 ;
+  wire \one_b_cell[7]_i_1__16_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0004000000000000)) 
-    \one_b_cell[7]_i_1__20 
+    \one_b_cell[7]_i_1__16 
        (.I0(memory_address_OBUF[2]),
         .I1(memory_address_OBUF[1]),
         .I2(memory_address_OBUF[0]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1__20_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1__16_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__20_n_0 ),
+        .CE(\one_b_cell[7]_i_1__16_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -4777,7 +4762,7 @@ module one_b_cell_33
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__20_n_0 ),
+        .CE(\one_b_cell[7]_i_1__16_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -4786,7 +4771,7 @@ module one_b_cell_33
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__20_n_0 ),
+        .CE(\one_b_cell[7]_i_1__16_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -4795,7 +4780,7 @@ module one_b_cell_33
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__20_n_0 ),
+        .CE(\one_b_cell[7]_i_1__16_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -4804,7 +4789,7 @@ module one_b_cell_33
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__20_n_0 ),
+        .CE(\one_b_cell[7]_i_1__16_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -4813,7 +4798,7 @@ module one_b_cell_33
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__20_n_0 ),
+        .CE(\one_b_cell[7]_i_1__16_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -4822,7 +4807,7 @@ module one_b_cell_33
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__20_n_0 ),
+        .CE(\one_b_cell[7]_i_1__16_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -4831,7 +4816,7 @@ module one_b_cell_33
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__20_n_0 ),
+        .CE(\one_b_cell[7]_i_1__16_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
@@ -4841,17 +4826,17 @@ endmodule
 module one_b_cell_35
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -4859,29 +4844,29 @@ module one_b_cell_35
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__23_n_0 ;
+  wire \one_b_cell[7]_i_1__29_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0000000000000004)) 
-    \one_b_cell[7]_i_1__23 
+    \one_b_cell[7]_i_1__29 
        (.I0(memory_address_OBUF[1]),
         .I1(memory_address_OBUF[0]),
         .I2(memory_address_OBUF[2]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1__23_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1__29_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__23_n_0 ),
+        .CE(\one_b_cell[7]_i_1__29_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -4890,7 +4875,7 @@ module one_b_cell_35
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__23_n_0 ),
+        .CE(\one_b_cell[7]_i_1__29_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -4899,7 +4884,7 @@ module one_b_cell_35
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__23_n_0 ),
+        .CE(\one_b_cell[7]_i_1__29_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -4908,7 +4893,7 @@ module one_b_cell_35
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__23_n_0 ),
+        .CE(\one_b_cell[7]_i_1__29_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -4917,7 +4902,7 @@ module one_b_cell_35
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__23_n_0 ),
+        .CE(\one_b_cell[7]_i_1__29_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -4926,7 +4911,7 @@ module one_b_cell_35
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__23_n_0 ),
+        .CE(\one_b_cell[7]_i_1__29_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -4935,7 +4920,7 @@ module one_b_cell_35
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__23_n_0 ),
+        .CE(\one_b_cell[7]_i_1__29_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -4944,7 +4929,7 @@ module one_b_cell_35
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__23_n_0 ),
+        .CE(\one_b_cell[7]_i_1__29_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
@@ -4959,7 +4944,7 @@ module one_b_cell_36
     \one_b_cell_reg[0]_1 ,
     \cpu_data_reg_reg[7]_i_5_0 ,
     memory_address_OBUF,
-    rd_wrn_reg,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
@@ -4970,7 +4955,7 @@ module one_b_cell_36
   input \one_b_cell_reg[0]_1 ;
   input [7:0]\cpu_data_reg_reg[7]_i_5_0 ;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -4981,9 +4966,10 @@ module one_b_cell_36
   wire [7:0]\cpu_data_reg_reg[7]_i_5_0 ;
   wire [7:0]data1;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__13_n_0 ;
+  wire \one_b_cell[7]_i_1__7_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
   wire \one_b_cell_reg_n_0_[0] ;
   wire \one_b_cell_reg_n_0_[1] ;
@@ -4993,7 +4979,6 @@ module one_b_cell_36
   wire \one_b_cell_reg_n_0_[5] ;
   wire \one_b_cell_reg_n_0_[6] ;
   wire \one_b_cell_reg_n_0_[7] ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
@@ -5078,20 +5063,20 @@ module one_b_cell_36
         .O(data1[7]));
   LUT6 #(
     .INIT(64'h0000000000040000)) 
-    \one_b_cell[7]_i_1__13 
+    \one_b_cell[7]_i_1__7 
        (.I0(memory_address_OBUF[1]),
         .I1(memory_address_OBUF[0]),
         .I2(memory_address_OBUF[2]),
-        .I3(rd_wrn_reg),
+        .I3(\one_b_cell_reg[0]_2 ),
         .I4(\one_b_cell_reg[0]_1 ),
         .I5(\one_b_cell_reg[0]_0 ),
-        .O(\one_b_cell[7]_i_1__13_n_0 ));
+        .O(\one_b_cell[7]_i_1__7_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__13_n_0 ),
+        .CE(\one_b_cell[7]_i_1__7_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(\one_b_cell_reg_n_0_[0] ),
         .R(rst_IBUF));
@@ -5100,7 +5085,7 @@ module one_b_cell_36
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__13_n_0 ),
+        .CE(\one_b_cell[7]_i_1__7_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(\one_b_cell_reg_n_0_[1] ),
         .R(rst_IBUF));
@@ -5109,7 +5094,7 @@ module one_b_cell_36
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__13_n_0 ),
+        .CE(\one_b_cell[7]_i_1__7_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(\one_b_cell_reg_n_0_[2] ),
         .R(rst_IBUF));
@@ -5118,7 +5103,7 @@ module one_b_cell_36
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__13_n_0 ),
+        .CE(\one_b_cell[7]_i_1__7_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(\one_b_cell_reg_n_0_[3] ),
         .R(rst_IBUF));
@@ -5127,7 +5112,7 @@ module one_b_cell_36
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__13_n_0 ),
+        .CE(\one_b_cell[7]_i_1__7_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(\one_b_cell_reg_n_0_[4] ),
         .R(rst_IBUF));
@@ -5136,7 +5121,7 @@ module one_b_cell_36
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__13_n_0 ),
+        .CE(\one_b_cell[7]_i_1__7_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(\one_b_cell_reg_n_0_[5] ),
         .R(rst_IBUF));
@@ -5145,7 +5130,7 @@ module one_b_cell_36
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__13_n_0 ),
+        .CE(\one_b_cell[7]_i_1__7_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(\one_b_cell_reg_n_0_[6] ),
         .R(rst_IBUF));
@@ -5154,7 +5139,7 @@ module one_b_cell_36
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__13_n_0 ),
+        .CE(\one_b_cell[7]_i_1__7_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(\one_b_cell_reg_n_0_[7] ),
         .R(rst_IBUF));
@@ -5164,17 +5149,17 @@ endmodule
 module one_b_cell_37
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -5182,29 +5167,29 @@ module one_b_cell_37
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1_n_0 ;
+  wire \one_b_cell[7]_i_1__5_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0000000000040000)) 
-    \one_b_cell[7]_i_1 
+    \one_b_cell[7]_i_1__5 
        (.I0(memory_address_OBUF[1]),
         .I1(memory_address_OBUF[0]),
         .I2(memory_address_OBUF[2]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1__5_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1_n_0 ),
+        .CE(\one_b_cell[7]_i_1__5_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -5213,7 +5198,7 @@ module one_b_cell_37
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1_n_0 ),
+        .CE(\one_b_cell[7]_i_1__5_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -5222,7 +5207,7 @@ module one_b_cell_37
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1_n_0 ),
+        .CE(\one_b_cell[7]_i_1__5_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -5231,7 +5216,7 @@ module one_b_cell_37
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1_n_0 ),
+        .CE(\one_b_cell[7]_i_1__5_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -5240,7 +5225,7 @@ module one_b_cell_37
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1_n_0 ),
+        .CE(\one_b_cell[7]_i_1__5_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -5249,7 +5234,7 @@ module one_b_cell_37
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1_n_0 ),
+        .CE(\one_b_cell[7]_i_1__5_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -5258,7 +5243,7 @@ module one_b_cell_37
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1_n_0 ),
+        .CE(\one_b_cell[7]_i_1__5_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -5267,7 +5252,7 @@ module one_b_cell_37
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1_n_0 ),
+        .CE(\one_b_cell[7]_i_1__5_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
@@ -5277,17 +5262,17 @@ endmodule
 module one_b_cell_38
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -5295,29 +5280,29 @@ module one_b_cell_38
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__21_n_0 ;
+  wire \one_b_cell[7]_i_1__15_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0004000000000000)) 
-    \one_b_cell[7]_i_1__21 
+    \one_b_cell[7]_i_1__15 
        (.I0(memory_address_OBUF[1]),
         .I1(memory_address_OBUF[0]),
         .I2(memory_address_OBUF[2]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1__21_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1__15_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__21_n_0 ),
+        .CE(\one_b_cell[7]_i_1__15_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -5326,7 +5311,7 @@ module one_b_cell_38
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__21_n_0 ),
+        .CE(\one_b_cell[7]_i_1__15_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -5335,7 +5320,7 @@ module one_b_cell_38
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__21_n_0 ),
+        .CE(\one_b_cell[7]_i_1__15_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -5344,7 +5329,7 @@ module one_b_cell_38
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__21_n_0 ),
+        .CE(\one_b_cell[7]_i_1__15_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -5353,7 +5338,7 @@ module one_b_cell_38
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__21_n_0 ),
+        .CE(\one_b_cell[7]_i_1__15_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -5362,7 +5347,7 @@ module one_b_cell_38
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__21_n_0 ),
+        .CE(\one_b_cell[7]_i_1__15_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -5371,7 +5356,7 @@ module one_b_cell_38
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__21_n_0 ),
+        .CE(\one_b_cell[7]_i_1__15_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -5380,7 +5365,7 @@ module one_b_cell_38
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__21_n_0 ),
+        .CE(\one_b_cell[7]_i_1__15_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
@@ -5421,6 +5406,12 @@ module one_b_cell_40
   wire rd_wrn_reg_tristate_oe_reg;
   wire rst_IBUF;
 
+  LUT2 #(
+    .INIT(4'h8)) 
+    \FSM_sequential_currentState[0]_i_2 
+       (.I0(\one_b_cell_reg[0]_2 ),
+        .I1(\one_b_cell_reg[0]_3 ),
+        .O(rd_wrn_reg_tristate_oe_reg));
   LUT6 #(
     .INIT(64'h0000000000000001)) 
     \one_b_cell[7]_i_1__30 
@@ -5431,12 +5422,6 @@ module one_b_cell_40
         .I4(\one_b_cell_reg[0]_0 ),
         .I5(\one_b_cell_reg[0]_1 ),
         .O(\one_b_cell[7]_i_1__30_n_0 ));
-  LUT2 #(
-    .INIT(4'h8)) 
-    \one_b_cell[7]_i_2 
-       (.I0(\one_b_cell_reg[0]_2 ),
-        .I1(\one_b_cell_reg[0]_3 ),
-        .O(rd_wrn_reg_tristate_oe_reg));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
@@ -5530,17 +5515,16 @@ module one_b_cell_41
     \one_b_cell_reg[0]_1 ,
     \cpu_data_reg_reg[7]_i_5_1 ,
     \one_b_cell_reg[0]_2 ,
-    cpu_data_IBUF,
-    rd_wrn_IBUF,
-    \cpu_data_reg_reg[7]_0 ,
-    \cpu_data_reg_reg[7]_1 ,
-    \cpu_data_reg_reg[6]_0 ,
-    \cpu_data_reg_reg[5]_0 ,
-    \cpu_data_reg_reg[4]_0 ,
-    \cpu_data_reg_reg[3]_0 ,
-    \cpu_data_reg_reg[2]_0 ,
-    \cpu_data_reg_reg[1]_0 ,
     \cpu_data_reg_reg[0]_0 ,
+    cpu_data_IBUF,
+    \cpu_data_reg_reg[0]_1 ,
+    \cpu_data_reg_reg[1]_0 ,
+    \cpu_data_reg_reg[2]_0 ,
+    \cpu_data_reg_reg[3]_0 ,
+    \cpu_data_reg_reg[4]_0 ,
+    \cpu_data_reg_reg[5]_0 ,
+    \cpu_data_reg_reg[6]_0 ,
+    \cpu_data_reg_reg[7]_0 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
@@ -5561,17 +5545,16 @@ module one_b_cell_41
   input \one_b_cell_reg[0]_1 ;
   input [7:0]\cpu_data_reg_reg[7]_i_5_1 ;
   input \one_b_cell_reg[0]_2 ;
+  input [0:0]\cpu_data_reg_reg[0]_0 ;
   input [7:0]cpu_data_IBUF;
-  input rd_wrn_IBUF;
-  input [0:0]\cpu_data_reg_reg[7]_0 ;
-  input \cpu_data_reg_reg[7]_1 ;
-  input \cpu_data_reg_reg[6]_0 ;
-  input \cpu_data_reg_reg[5]_0 ;
-  input \cpu_data_reg_reg[4]_0 ;
-  input \cpu_data_reg_reg[3]_0 ;
-  input \cpu_data_reg_reg[2]_0 ;
+  input \cpu_data_reg_reg[0]_1 ;
   input \cpu_data_reg_reg[1]_0 ;
-  input \cpu_data_reg_reg[0]_0 ;
+  input \cpu_data_reg_reg[2]_0 ;
+  input \cpu_data_reg_reg[3]_0 ;
+  input \cpu_data_reg_reg[4]_0 ;
+  input \cpu_data_reg_reg[5]_0 ;
+  input \cpu_data_reg_reg[6]_0 ;
+  input \cpu_data_reg_reg[7]_0 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -5581,7 +5564,8 @@ module one_b_cell_41
   wire clk_IBUF_BUFG;
   wire [7:0]cpu_data_IBUF;
   wire \cpu_data_reg_reg[0] ;
-  wire \cpu_data_reg_reg[0]_0 ;
+  wire [0:0]\cpu_data_reg_reg[0]_0 ;
+  wire \cpu_data_reg_reg[0]_1 ;
   wire \cpu_data_reg_reg[0]_i_2_n_0 ;
   wire \cpu_data_reg_reg[0]_i_4_n_0 ;
   wire \cpu_data_reg_reg[1] ;
@@ -5609,8 +5593,7 @@ module one_b_cell_41
   wire \cpu_data_reg_reg[6]_i_2_n_0 ;
   wire \cpu_data_reg_reg[6]_i_4_n_0 ;
   wire \cpu_data_reg_reg[7] ;
-  wire [0:0]\cpu_data_reg_reg[7]_0 ;
-  wire \cpu_data_reg_reg[7]_1 ;
+  wire \cpu_data_reg_reg[7]_0 ;
   wire \cpu_data_reg_reg[7]_i_3_n_0 ;
   wire [7:0]\cpu_data_reg_reg[7]_i_5_0 ;
   wire [7:0]\cpu_data_reg_reg[7]_i_5_1 ;
@@ -5631,18 +5614,16 @@ module one_b_cell_41
   wire \one_b_cell_reg_n_0_[5] ;
   wire \one_b_cell_reg_n_0_[6] ;
   wire \one_b_cell_reg_n_0_[7] ;
-  wire rd_wrn_IBUF;
   wire rst_IBUF;
 
-  LUT6 #(
-    .INIT(64'hF2F2F2020202F202)) 
+  LUT5 #(
+    .INIT(32'hEEE444E4)) 
     \cpu_data_reg[0]_i_1 
-       (.I0(cpu_data_IBUF[0]),
-        .I1(rd_wrn_IBUF),
-        .I2(\cpu_data_reg_reg[7]_0 ),
-        .I3(\cpu_data_reg_reg[0]_i_2_n_0 ),
-        .I4(memory_address_OBUF[2]),
-        .I5(\cpu_data_reg_reg[0]_0 ),
+       (.I0(\cpu_data_reg_reg[0]_0 ),
+        .I1(cpu_data_IBUF[0]),
+        .I2(\cpu_data_reg_reg[0]_i_2_n_0 ),
+        .I3(memory_address_OBUF[2]),
+        .I4(\cpu_data_reg_reg[0]_1 ),
         .O(\FSM_sequential_currentState_reg[1] [0]));
   LUT6 #(
     .INIT(64'hF0AAFFCCF0AA00CC)) 
@@ -5654,15 +5635,14 @@ module one_b_cell_41
         .I4(\one_b_cell_reg[0]_1 ),
         .I5(\cpu_data_reg_reg[7]_i_5_1 [0]),
         .O(data0[0]));
-  LUT6 #(
-    .INIT(64'hF2F2F2020202F202)) 
+  LUT5 #(
+    .INIT(32'hEEE444E4)) 
     \cpu_data_reg[1]_i_1 
-       (.I0(cpu_data_IBUF[1]),
-        .I1(rd_wrn_IBUF),
-        .I2(\cpu_data_reg_reg[7]_0 ),
-        .I3(\cpu_data_reg_reg[1]_i_2_n_0 ),
-        .I4(memory_address_OBUF[2]),
-        .I5(\cpu_data_reg_reg[1]_0 ),
+       (.I0(\cpu_data_reg_reg[0]_0 ),
+        .I1(cpu_data_IBUF[1]),
+        .I2(\cpu_data_reg_reg[1]_i_2_n_0 ),
+        .I3(memory_address_OBUF[2]),
+        .I4(\cpu_data_reg_reg[1]_0 ),
         .O(\FSM_sequential_currentState_reg[1] [1]));
   LUT6 #(
     .INIT(64'hF0AAFFCCF0AA00CC)) 
@@ -5674,15 +5654,14 @@ module one_b_cell_41
         .I4(\one_b_cell_reg[0]_1 ),
         .I5(\cpu_data_reg_reg[7]_i_5_1 [1]),
         .O(data0[1]));
-  LUT6 #(
-    .INIT(64'hF2F2F2020202F202)) 
+  LUT5 #(
+    .INIT(32'hEEE444E4)) 
     \cpu_data_reg[2]_i_1 
-       (.I0(cpu_data_IBUF[2]),
-        .I1(rd_wrn_IBUF),
-        .I2(\cpu_data_reg_reg[7]_0 ),
-        .I3(\cpu_data_reg_reg[2]_i_2_n_0 ),
-        .I4(memory_address_OBUF[2]),
-        .I5(\cpu_data_reg_reg[2]_0 ),
+       (.I0(\cpu_data_reg_reg[0]_0 ),
+        .I1(cpu_data_IBUF[2]),
+        .I2(\cpu_data_reg_reg[2]_i_2_n_0 ),
+        .I3(memory_address_OBUF[2]),
+        .I4(\cpu_data_reg_reg[2]_0 ),
         .O(\FSM_sequential_currentState_reg[1] [2]));
   LUT6 #(
     .INIT(64'hF0AAFFCCF0AA00CC)) 
@@ -5694,15 +5673,14 @@ module one_b_cell_41
         .I4(\one_b_cell_reg[0]_1 ),
         .I5(\cpu_data_reg_reg[7]_i_5_1 [2]),
         .O(data0[2]));
-  LUT6 #(
-    .INIT(64'hF2F2F2020202F202)) 
+  LUT5 #(
+    .INIT(32'hEEE444E4)) 
     \cpu_data_reg[3]_i_1 
-       (.I0(cpu_data_IBUF[3]),
-        .I1(rd_wrn_IBUF),
-        .I2(\cpu_data_reg_reg[7]_0 ),
-        .I3(\cpu_data_reg_reg[3]_i_2_n_0 ),
-        .I4(memory_address_OBUF[2]),
-        .I5(\cpu_data_reg_reg[3]_0 ),
+       (.I0(\cpu_data_reg_reg[0]_0 ),
+        .I1(cpu_data_IBUF[3]),
+        .I2(\cpu_data_reg_reg[3]_i_2_n_0 ),
+        .I3(memory_address_OBUF[2]),
+        .I4(\cpu_data_reg_reg[3]_0 ),
         .O(\FSM_sequential_currentState_reg[1] [3]));
   LUT6 #(
     .INIT(64'hF0AAFFCCF0AA00CC)) 
@@ -5714,15 +5692,14 @@ module one_b_cell_41
         .I4(\one_b_cell_reg[0]_1 ),
         .I5(\cpu_data_reg_reg[7]_i_5_1 [3]),
         .O(data0[3]));
-  LUT6 #(
-    .INIT(64'hF2F2F2020202F202)) 
+  LUT5 #(
+    .INIT(32'hEEE444E4)) 
     \cpu_data_reg[4]_i_1 
-       (.I0(cpu_data_IBUF[4]),
-        .I1(rd_wrn_IBUF),
-        .I2(\cpu_data_reg_reg[7]_0 ),
-        .I3(\cpu_data_reg_reg[4]_i_2_n_0 ),
-        .I4(memory_address_OBUF[2]),
-        .I5(\cpu_data_reg_reg[4]_0 ),
+       (.I0(\cpu_data_reg_reg[0]_0 ),
+        .I1(cpu_data_IBUF[4]),
+        .I2(\cpu_data_reg_reg[4]_i_2_n_0 ),
+        .I3(memory_address_OBUF[2]),
+        .I4(\cpu_data_reg_reg[4]_0 ),
         .O(\FSM_sequential_currentState_reg[1] [4]));
   LUT6 #(
     .INIT(64'hF0AAFFCCF0AA00CC)) 
@@ -5734,15 +5711,14 @@ module one_b_cell_41
         .I4(\one_b_cell_reg[0]_1 ),
         .I5(\cpu_data_reg_reg[7]_i_5_1 [4]),
         .O(data0[4]));
-  LUT6 #(
-    .INIT(64'hF2F2F2020202F202)) 
+  LUT5 #(
+    .INIT(32'hEEE444E4)) 
     \cpu_data_reg[5]_i_1 
-       (.I0(cpu_data_IBUF[5]),
-        .I1(rd_wrn_IBUF),
-        .I2(\cpu_data_reg_reg[7]_0 ),
-        .I3(\cpu_data_reg_reg[5]_i_2_n_0 ),
-        .I4(memory_address_OBUF[2]),
-        .I5(\cpu_data_reg_reg[5]_0 ),
+       (.I0(\cpu_data_reg_reg[0]_0 ),
+        .I1(cpu_data_IBUF[5]),
+        .I2(\cpu_data_reg_reg[5]_i_2_n_0 ),
+        .I3(memory_address_OBUF[2]),
+        .I4(\cpu_data_reg_reg[5]_0 ),
         .O(\FSM_sequential_currentState_reg[1] [5]));
   LUT6 #(
     .INIT(64'hF0AAFFCCF0AA00CC)) 
@@ -5754,15 +5730,14 @@ module one_b_cell_41
         .I4(\one_b_cell_reg[0]_1 ),
         .I5(\cpu_data_reg_reg[7]_i_5_1 [5]),
         .O(data0[5]));
-  LUT6 #(
-    .INIT(64'hF2F2F2020202F202)) 
+  LUT5 #(
+    .INIT(32'hEEE444E4)) 
     \cpu_data_reg[6]_i_1 
-       (.I0(cpu_data_IBUF[6]),
-        .I1(rd_wrn_IBUF),
-        .I2(\cpu_data_reg_reg[7]_0 ),
-        .I3(\cpu_data_reg_reg[6]_i_2_n_0 ),
-        .I4(memory_address_OBUF[2]),
-        .I5(\cpu_data_reg_reg[6]_0 ),
+       (.I0(\cpu_data_reg_reg[0]_0 ),
+        .I1(cpu_data_IBUF[6]),
+        .I2(\cpu_data_reg_reg[6]_i_2_n_0 ),
+        .I3(memory_address_OBUF[2]),
+        .I4(\cpu_data_reg_reg[6]_0 ),
         .O(\FSM_sequential_currentState_reg[1] [6]));
   LUT6 #(
     .INIT(64'hF0AAFFCCF0AA00CC)) 
@@ -5774,15 +5749,14 @@ module one_b_cell_41
         .I4(\one_b_cell_reg[0]_1 ),
         .I5(\cpu_data_reg_reg[7]_i_5_1 [6]),
         .O(data0[6]));
-  LUT6 #(
-    .INIT(64'hF2F2F2020202F202)) 
+  LUT5 #(
+    .INIT(32'hEEE444E4)) 
     \cpu_data_reg[7]_i_2 
-       (.I0(cpu_data_IBUF[7]),
-        .I1(rd_wrn_IBUF),
-        .I2(\cpu_data_reg_reg[7]_0 ),
-        .I3(\cpu_data_reg_reg[7]_i_3_n_0 ),
-        .I4(memory_address_OBUF[2]),
-        .I5(\cpu_data_reg_reg[7]_1 ),
+       (.I0(\cpu_data_reg_reg[0]_0 ),
+        .I1(cpu_data_IBUF[7]),
+        .I2(\cpu_data_reg_reg[7]_i_3_n_0 ),
+        .I3(memory_address_OBUF[2]),
+        .I4(\cpu_data_reg_reg[7]_0 ),
         .O(\FSM_sequential_currentState_reg[1] [7]));
   LUT6 #(
     .INIT(64'hF0AAFFCCF0AA00CC)) 
@@ -6193,7 +6167,7 @@ module one_b_cell_7
     \one_b_cell_reg[0]_1 ,
     \cpu_data_reg_reg[7]_i_8_0 ,
     memory_address_OBUF,
-    rd_wrn_reg,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
@@ -6204,7 +6178,7 @@ module one_b_cell_7
   input \one_b_cell_reg[0]_1 ;
   input [7:0]\cpu_data_reg_reg[7]_i_8_0 ;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -6215,9 +6189,10 @@ module one_b_cell_7
   wire [7:0]\cpu_data_reg_reg[7]_i_8_0 ;
   wire [7:0]data7;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__7_n_0 ;
+  wire \one_b_cell[7]_i_1__13_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
   wire \one_b_cell_reg_n_0_[0] ;
   wire \one_b_cell_reg_n_0_[1] ;
@@ -6227,7 +6202,6 @@ module one_b_cell_7
   wire \one_b_cell_reg_n_0_[5] ;
   wire \one_b_cell_reg_n_0_[6] ;
   wire \one_b_cell_reg_n_0_[7] ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
@@ -6312,20 +6286,20 @@ module one_b_cell_7
         .O(data7[7]));
   LUT6 #(
     .INIT(64'h0000000000800000)) 
-    \one_b_cell[7]_i_1__7 
+    \one_b_cell[7]_i_1__13 
        (.I0(memory_address_OBUF[0]),
         .I1(memory_address_OBUF[2]),
         .I2(memory_address_OBUF[1]),
-        .I3(rd_wrn_reg),
+        .I3(\one_b_cell_reg[0]_2 ),
         .I4(\one_b_cell_reg[0]_1 ),
         .I5(\one_b_cell_reg[0]_0 ),
-        .O(\one_b_cell[7]_i_1__7_n_0 ));
+        .O(\one_b_cell[7]_i_1__13_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__7_n_0 ),
+        .CE(\one_b_cell[7]_i_1__13_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(\one_b_cell_reg_n_0_[0] ),
         .R(rst_IBUF));
@@ -6334,7 +6308,7 @@ module one_b_cell_7
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__7_n_0 ),
+        .CE(\one_b_cell[7]_i_1__13_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(\one_b_cell_reg_n_0_[1] ),
         .R(rst_IBUF));
@@ -6343,7 +6317,7 @@ module one_b_cell_7
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__7_n_0 ),
+        .CE(\one_b_cell[7]_i_1__13_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(\one_b_cell_reg_n_0_[2] ),
         .R(rst_IBUF));
@@ -6352,7 +6326,7 @@ module one_b_cell_7
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__7_n_0 ),
+        .CE(\one_b_cell[7]_i_1__13_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(\one_b_cell_reg_n_0_[3] ),
         .R(rst_IBUF));
@@ -6361,7 +6335,7 @@ module one_b_cell_7
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__7_n_0 ),
+        .CE(\one_b_cell[7]_i_1__13_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(\one_b_cell_reg_n_0_[4] ),
         .R(rst_IBUF));
@@ -6370,7 +6344,7 @@ module one_b_cell_7
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__7_n_0 ),
+        .CE(\one_b_cell[7]_i_1__13_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(\one_b_cell_reg_n_0_[5] ),
         .R(rst_IBUF));
@@ -6379,7 +6353,7 @@ module one_b_cell_7
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__7_n_0 ),
+        .CE(\one_b_cell[7]_i_1__13_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(\one_b_cell_reg_n_0_[6] ),
         .R(rst_IBUF));
@@ -6388,7 +6362,7 @@ module one_b_cell_7
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__7_n_0 ),
+        .CE(\one_b_cell[7]_i_1__13_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(\one_b_cell_reg_n_0_[7] ),
         .R(rst_IBUF));
@@ -6398,17 +6372,17 @@ endmodule
 module one_b_cell_8
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -6416,29 +6390,29 @@ module one_b_cell_8
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__5_n_0 ;
+  wire \one_b_cell[7]_i_1_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0000000000800000)) 
-    \one_b_cell[7]_i_1__5 
+    \one_b_cell[7]_i_1 
        (.I0(memory_address_OBUF[0]),
         .I1(memory_address_OBUF[2]),
         .I2(memory_address_OBUF[1]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1__5_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__5_n_0 ),
+        .CE(\one_b_cell[7]_i_1_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -6447,7 +6421,7 @@ module one_b_cell_8
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__5_n_0 ),
+        .CE(\one_b_cell[7]_i_1_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -6456,7 +6430,7 @@ module one_b_cell_8
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__5_n_0 ),
+        .CE(\one_b_cell[7]_i_1_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -6465,7 +6439,7 @@ module one_b_cell_8
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__5_n_0 ),
+        .CE(\one_b_cell[7]_i_1_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -6474,7 +6448,7 @@ module one_b_cell_8
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__5_n_0 ),
+        .CE(\one_b_cell[7]_i_1_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -6483,7 +6457,7 @@ module one_b_cell_8
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__5_n_0 ),
+        .CE(\one_b_cell[7]_i_1_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -6492,7 +6466,7 @@ module one_b_cell_8
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__5_n_0 ),
+        .CE(\one_b_cell[7]_i_1_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -6501,7 +6475,7 @@ module one_b_cell_8
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__5_n_0 ),
+        .CE(\one_b_cell[7]_i_1_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
@@ -6511,17 +6485,17 @@ endmodule
 module one_b_cell_9
    (Q,
     memory_address_OBUF,
-    rd_wrn_reg,
     \one_b_cell_reg[0]_0 ,
     \one_b_cell_reg[0]_1 ,
+    \one_b_cell_reg[0]_2 ,
     rst_IBUF,
     \one_b_cell_reg[7]_0 ,
     clk_IBUF_BUFG);
   output [7:0]Q;
   input [2:0]memory_address_OBUF;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0]_0 ;
   input \one_b_cell_reg[0]_1 ;
+  input \one_b_cell_reg[0]_2 ;
   input rst_IBUF;
   input [7:0]\one_b_cell_reg[7]_0 ;
   input clk_IBUF_BUFG;
@@ -6529,29 +6503,29 @@ module one_b_cell_9
   wire [7:0]Q;
   wire clk_IBUF_BUFG;
   wire [2:0]memory_address_OBUF;
-  wire \one_b_cell[7]_i_1__15_n_0 ;
+  wire \one_b_cell[7]_i_1__21_n_0 ;
   wire \one_b_cell_reg[0]_0 ;
   wire \one_b_cell_reg[0]_1 ;
+  wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7]_0 ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   LUT6 #(
     .INIT(64'h0080000000000000)) 
-    \one_b_cell[7]_i_1__15 
+    \one_b_cell[7]_i_1__21 
        (.I0(memory_address_OBUF[0]),
         .I1(memory_address_OBUF[2]),
         .I2(memory_address_OBUF[1]),
-        .I3(rd_wrn_reg),
-        .I4(\one_b_cell_reg[0]_0 ),
-        .I5(\one_b_cell_reg[0]_1 ),
-        .O(\one_b_cell[7]_i_1__15_n_0 ));
+        .I3(\one_b_cell_reg[0]_0 ),
+        .I4(\one_b_cell_reg[0]_1 ),
+        .I5(\one_b_cell_reg[0]_2 ),
+        .O(\one_b_cell[7]_i_1__21_n_0 ));
   FDRE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[0] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__15_n_0 ),
+        .CE(\one_b_cell[7]_i_1__21_n_0 ),
         .D(\one_b_cell_reg[7]_0 [0]),
         .Q(Q[0]),
         .R(rst_IBUF));
@@ -6560,7 +6534,7 @@ module one_b_cell_9
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[1] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__15_n_0 ),
+        .CE(\one_b_cell[7]_i_1__21_n_0 ),
         .D(\one_b_cell_reg[7]_0 [1]),
         .Q(Q[1]),
         .R(rst_IBUF));
@@ -6569,7 +6543,7 @@ module one_b_cell_9
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[2] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__15_n_0 ),
+        .CE(\one_b_cell[7]_i_1__21_n_0 ),
         .D(\one_b_cell_reg[7]_0 [2]),
         .Q(Q[2]),
         .R(rst_IBUF));
@@ -6578,7 +6552,7 @@ module one_b_cell_9
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[3] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__15_n_0 ),
+        .CE(\one_b_cell[7]_i_1__21_n_0 ),
         .D(\one_b_cell_reg[7]_0 [3]),
         .Q(Q[3]),
         .R(rst_IBUF));
@@ -6587,7 +6561,7 @@ module one_b_cell_9
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[4] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__15_n_0 ),
+        .CE(\one_b_cell[7]_i_1__21_n_0 ),
         .D(\one_b_cell_reg[7]_0 [4]),
         .Q(Q[4]),
         .R(rst_IBUF));
@@ -6596,7 +6570,7 @@ module one_b_cell_9
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[5] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__15_n_0 ),
+        .CE(\one_b_cell[7]_i_1__21_n_0 ),
         .D(\one_b_cell_reg[7]_0 [5]),
         .Q(Q[5]),
         .R(rst_IBUF));
@@ -6605,7 +6579,7 @@ module one_b_cell_9
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[6] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__15_n_0 ),
+        .CE(\one_b_cell[7]_i_1__21_n_0 ),
         .D(\one_b_cell_reg[7]_0 [6]),
         .Q(Q[6]),
         .R(rst_IBUF));
@@ -6614,14 +6588,14 @@ module one_b_cell_9
     .IS_C_INVERTED(1'b1)) 
     \one_b_cell_reg[7] 
        (.C(clk_IBUF_BUFG),
-        .CE(\one_b_cell[7]_i_1__15_n_0 ),
+        .CE(\one_b_cell[7]_i_1__21_n_0 ),
         .D(\one_b_cell_reg[7]_0 [7]),
         .Q(Q[7]),
         .R(rst_IBUF));
 endmodule
 
 module one_row_cells
-   (rd_wrn_reg,
+   (rd_wrn_reg_tristate_oe_reg,
     \FSM_sequential_currentState_reg[1] ,
     hm_r1,
     rst_IBUF,
@@ -6639,22 +6613,21 @@ module one_row_cells
     \one_b_cell_reg[0] ,
     \one_b_cell_reg[0]_0 ,
     load_tag_reg,
-    cpu_data_IBUF,
-    rd_wrn_IBUF,
     Q,
-    \cpu_data_reg_reg[7]_0 ,
-    \cpu_data_reg_reg[6]_0 ,
-    \cpu_data_reg_reg[5]_0 ,
-    \cpu_data_reg_reg[4]_0 ,
-    \cpu_data_reg_reg[3]_0 ,
-    \cpu_data_reg_reg[2]_0 ,
-    \cpu_data_reg_reg[1]_0 ,
+    cpu_data_IBUF,
     \cpu_data_reg_reg[0]_0 ,
+    \cpu_data_reg_reg[1]_0 ,
+    \cpu_data_reg_reg[2]_0 ,
+    \cpu_data_reg_reg[3]_0 ,
+    \cpu_data_reg_reg[4]_0 ,
+    \cpu_data_reg_reg[5]_0 ,
+    \cpu_data_reg_reg[6]_0 ,
+    \cpu_data_reg_reg[7]_0 ,
     hit_missb01_out,
     \one_b_cell_reg[0]_1 ,
     \one_b_cell_reg[0]_2 ,
     \one_b_cell_reg[7] );
-  output rd_wrn_reg;
+  output rd_wrn_reg_tristate_oe_reg;
   output [7:0]\FSM_sequential_currentState_reg[1] ;
   output hm_r1;
   input rst_IBUF;
@@ -6672,17 +6645,16 @@ module one_row_cells
   input \one_b_cell_reg[0] ;
   input \one_b_cell_reg[0]_0 ;
   input load_tag_reg;
-  input [7:0]cpu_data_IBUF;
-  input rd_wrn_IBUF;
   input [0:0]Q;
-  input \cpu_data_reg_reg[7]_0 ;
-  input \cpu_data_reg_reg[6]_0 ;
-  input \cpu_data_reg_reg[5]_0 ;
-  input \cpu_data_reg_reg[4]_0 ;
-  input \cpu_data_reg_reg[3]_0 ;
-  input \cpu_data_reg_reg[2]_0 ;
-  input \cpu_data_reg_reg[1]_0 ;
+  input [7:0]cpu_data_IBUF;
   input \cpu_data_reg_reg[0]_0 ;
+  input \cpu_data_reg_reg[1]_0 ;
+  input \cpu_data_reg_reg[2]_0 ;
+  input \cpu_data_reg_reg[3]_0 ;
+  input \cpu_data_reg_reg[4]_0 ;
+  input \cpu_data_reg_reg[5]_0 ;
+  input \cpu_data_reg_reg[6]_0 ;
+  input \cpu_data_reg_reg[7]_0 ;
   input hit_missb01_out;
   input \one_b_cell_reg[0]_1 ;
   input \one_b_cell_reg[0]_2 ;
@@ -6735,8 +6707,7 @@ module one_row_cells
   wire \one_b_cell_reg[0]_1 ;
   wire \one_b_cell_reg[0]_2 ;
   wire [7:0]\one_b_cell_reg[7] ;
-  wire rd_wrn_IBUF;
-  wire rd_wrn_reg;
+  wire rd_wrn_reg_tristate_oe_reg;
   wire rst_IBUF;
 
   one_b_cell_40 c1
@@ -6748,7 +6719,7 @@ module one_row_cells
         .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_1 ),
         .\one_b_cell_reg[0]_3 (\one_b_cell_reg[0]_2 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg_tristate_oe_reg(rd_wrn_reg),
+        .rd_wrn_reg_tristate_oe_reg(rd_wrn_reg_tristate_oe_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_41 c2
        (.\FSM_sequential_currentState_reg[1] (\FSM_sequential_currentState_reg[1] ),
@@ -6756,7 +6727,8 @@ module one_row_cells
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .cpu_data_IBUF(cpu_data_IBUF),
         .\cpu_data_reg_reg[0] (\cpu_data_reg_reg[0] ),
-        .\cpu_data_reg_reg[0]_0 (\cpu_data_reg_reg[0]_0 ),
+        .\cpu_data_reg_reg[0]_0 (Q),
+        .\cpu_data_reg_reg[0]_1 (\cpu_data_reg_reg[0]_0 ),
         .\cpu_data_reg_reg[1] (\cpu_data_reg_reg[1] ),
         .\cpu_data_reg_reg[1]_0 (\cpu_data_reg_reg[1]_0 ),
         .\cpu_data_reg_reg[2] (\cpu_data_reg_reg[2] ),
@@ -6770,23 +6742,21 @@ module one_row_cells
         .\cpu_data_reg_reg[6] (\cpu_data_reg_reg[6] ),
         .\cpu_data_reg_reg[6]_0 (\cpu_data_reg_reg[6]_0 ),
         .\cpu_data_reg_reg[7] (\cpu_data_reg_reg[7] ),
-        .\cpu_data_reg_reg[7]_0 (Q),
-        .\cpu_data_reg_reg[7]_1 (\cpu_data_reg_reg[7]_0 ),
+        .\cpu_data_reg_reg[7]_0 (\cpu_data_reg_reg[7]_0 ),
         .\cpu_data_reg_reg[7]_i_5_0 ({c4_n_0,c4_n_1,c4_n_2,c4_n_3,c4_n_4,c4_n_5,c4_n_6,c4_n_7}),
         .\cpu_data_reg_reg[7]_i_5_1 ({c3_n_0,c3_n_1,c3_n_2,c3_n_3,c3_n_4,c3_n_5,c3_n_6,c3_n_7}),
         .data1(data1),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
         .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
-        .\one_b_cell_reg[0]_2 (rd_wrn_reg),
+        .\one_b_cell_reg[0]_2 (rd_wrn_reg_tristate_oe_reg),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_IBUF(rd_wrn_IBUF),
         .rst_IBUF(rst_IBUF));
   one_b_cell_42 c3
        (.Q({c3_n_0,c3_n_1,c3_n_2,c3_n_3,c3_n_4,c3_n_5,c3_n_6,c3_n_7}),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (rd_wrn_reg),
+        .\one_b_cell_reg[0]_0 (rd_wrn_reg_tristate_oe_reg),
         .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_0 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
@@ -6795,7 +6765,7 @@ module one_row_cells
        (.Q({c4_n_0,c4_n_1,c4_n_2,c4_n_3,c4_n_4,c4_n_5,c4_n_6,c4_n_7}),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (rd_wrn_reg),
+        .\one_b_cell_reg[0]_0 (rd_wrn_reg_tristate_oe_reg),
         .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
         .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
@@ -6818,7 +6788,7 @@ module one_row_cells_0
     \one_b_cell_reg[0] ,
     \one_b_cell_reg[0]_0 ,
     memory_address_OBUF,
-    rd_wrn_reg,
+    \one_b_cell_reg[0]_1 ,
     load_tag_reg,
     hit_missb01_out_0,
     \one_b_cell_reg[7] );
@@ -6829,7 +6799,7 @@ module one_row_cells_0
   input \one_b_cell_reg[0] ;
   input \one_b_cell_reg[0]_0 ;
   input [5:0]memory_address_OBUF;
-  input rd_wrn_reg;
+  input \one_b_cell_reg[0]_1 ;
   input load_tag_reg;
   input hit_missb01_out_0;
   input [7:0]\one_b_cell_reg[7] ;
@@ -6866,18 +6836,18 @@ module one_row_cells_0
   wire [5:0]memory_address_OBUF;
   wire \one_b_cell_reg[0] ;
   wire \one_b_cell_reg[0]_0 ;
+  wire \one_b_cell_reg[0]_1 ;
   wire [7:0]\one_b_cell_reg[7] ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   one_b_cell_35 c1
        (.Q({c1_n_0,c1_n_1,c1_n_2,c1_n_3,c1_n_4,c1_n_5,c1_n_6,c1_n_7}),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
-        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_1 ),
+        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_0 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_36 c2
        (.Q({c1_n_0,c1_n_1,c1_n_2,c1_n_3,c1_n_4,c1_n_5,c1_n_6,c1_n_7}),
@@ -6888,26 +6858,26 @@ module one_row_cells_0
         .memory_address_OBUF(memory_address_OBUF[2:0]),
         .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_1 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_37 c3
        (.Q({c3_n_0,c3_n_1,c3_n_2,c3_n_3,c3_n_4,c3_n_5,c3_n_6,c3_n_7}),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
-        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_1 ),
+        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_0 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_38 c4
        (.Q({c4_n_0,c4_n_1,c4_n_2,c4_n_3,c4_n_4,c4_n_5,c4_n_6,c4_n_7}),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_0 ),
-        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_1 ),
+        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   tag_valid_39 t_v
        (.clk_IBUF_BUFG(clk_IBUF_BUFG),
@@ -6933,9 +6903,9 @@ module one_row_cells_1
     clk_IBUF_BUFG,
     memory_address_OBUF,
     data3,
-    rd_wrn_reg,
     \one_b_cell_reg[0] ,
     \one_b_cell_reg[0]_0 ,
+    \one_b_cell_reg[0]_1 ,
     load_tag_reg,
     hit_missb01_out_1,
     \one_b_cell_reg[7] );
@@ -6952,9 +6922,9 @@ module one_row_cells_1
   input clk_IBUF_BUFG;
   input [5:0]memory_address_OBUF;
   input [7:0]data3;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0] ;
   input \one_b_cell_reg[0]_0 ;
+  input \one_b_cell_reg[0]_1 ;
   input load_tag_reg;
   input hit_missb01_out_1;
   input [7:0]\one_b_cell_reg[7] ;
@@ -6999,8 +6969,8 @@ module one_row_cells_1
   wire [5:0]memory_address_OBUF;
   wire \one_b_cell_reg[0] ;
   wire \one_b_cell_reg[0]_0 ;
+  wire \one_b_cell_reg[0]_1 ;
   wire [7:0]\one_b_cell_reg[7] ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   one_b_cell_30 c1
@@ -7009,8 +6979,8 @@ module one_row_cells_1
         .memory_address_OBUF(memory_address_OBUF[2:0]),
         .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_1 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_31 c2
        (.Q({c1_n_0,c1_n_1,c1_n_2,c1_n_3,c1_n_4,c1_n_5,c1_n_6,c1_n_7}),
@@ -7027,10 +6997,10 @@ module one_row_cells_1
         .\cpu_data_reg_reg[7]_i_6_1 ({c3_n_0,c3_n_1,c3_n_2,c3_n_3,c3_n_4,c3_n_5,c3_n_6,c3_n_7}),
         .data3(data3),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
-        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_1 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_32 c3
        (.Q({c3_n_0,c3_n_1,c3_n_2,c3_n_3,c3_n_4,c3_n_5,c3_n_6,c3_n_7}),
@@ -7038,17 +7008,17 @@ module one_row_cells_1
         .memory_address_OBUF(memory_address_OBUF[2:0]),
         .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_1 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_33 c4
        (.Q({c4_n_0,c4_n_1,c4_n_2,c4_n_3,c4_n_4,c4_n_5,c4_n_6,c4_n_7}),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_0 ),
-        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_1 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_0 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   tag_valid_34 t_v
        (.clk_IBUF_BUFG(clk_IBUF_BUFG),
@@ -7061,28 +7031,26 @@ endmodule
 
 (* ORIG_REF_NAME = "one_row_cells" *) 
 module one_row_cells_2
-   (\FSM_sequential_currentState_reg[2] ,
-    \FSM_sequential_currentState_reg[2]_0 ,
-    E,
-    \counter_reg[4] ,
-    data3,
-    \FSM_sequential_currentState_reg[2]_1 ,
+   (E,
     \FSM_sequential_currentState_reg[0] ,
-    D,
+    data3,
     \FSM_sequential_currentState_reg[0]_0 ,
-    \FSM_sequential_currentState_reg[2]_2 ,
+    D,
+    \cpu_address_reg_reg[3] ,
+    \FSM_sequential_currentState_reg[2] ,
+    \counter_reg[4] ,
+    \FSM_sequential_currentState_reg[2]_0 ,
     rst_IBUF,
     clk_IBUF_BUFG,
-    cpu_address_reg,
     Q,
-    \cpu_address_reg_reg[1] ,
-    \cpu_address_reg_reg[1]_0 ,
-    \cpu_address_reg_reg[0] ,
-    busy_reg_reg,
-    busy_reg_reg_0,
+    start_IBUF,
+    \one_b_cell_reg[0] ,
+    \one_b_cell_reg[0]_0 ,
     memory_address_OBUF,
-    rd_wrn_reg,
-    \FSM_sequential_currentState_reg[2]_3 ,
+    \one_b_cell_reg[0]_1 ,
+    \data_to_cache_reg[0] ,
+    \data_to_cache_reg[0]_0 ,
+    busy_reg_reg,
     hm_r3,
     hm_r2,
     hm_r1,
@@ -7090,28 +7058,26 @@ module one_row_cells_2
     load_tag_reg,
     hit_missb01_out_2,
     \one_b_cell_reg[7] );
-  output \FSM_sequential_currentState_reg[2] ;
-  output \FSM_sequential_currentState_reg[2]_0 ;
   output [0:0]E;
-  output \counter_reg[4] ;
-  output [7:0]data3;
-  output [0:0]\FSM_sequential_currentState_reg[2]_1 ;
   output [0:0]\FSM_sequential_currentState_reg[0] ;
+  output [7:0]data3;
+  output [0:0]\FSM_sequential_currentState_reg[0]_0 ;
   output [0:0]D;
-  output \FSM_sequential_currentState_reg[0]_0 ;
-  output \FSM_sequential_currentState_reg[2]_2 ;
+  output \cpu_address_reg_reg[3] ;
+  output \FSM_sequential_currentState_reg[2] ;
+  output \counter_reg[4] ;
+  output \FSM_sequential_currentState_reg[2]_0 ;
   input rst_IBUF;
   input clk_IBUF_BUFG;
-  input [1:0]cpu_address_reg;
   input [2:0]Q;
-  input \cpu_address_reg_reg[1] ;
-  input \cpu_address_reg_reg[1]_0 ;
-  input \cpu_address_reg_reg[0] ;
-  input busy_reg_reg;
-  input [0:0]busy_reg_reg_0;
+  input start_IBUF;
+  input \one_b_cell_reg[0] ;
+  input \one_b_cell_reg[0]_0 ;
   input [5:0]memory_address_OBUF;
-  input rd_wrn_reg;
-  input \FSM_sequential_currentState_reg[2]_3 ;
+  input \one_b_cell_reg[0]_1 ;
+  input [0:0]\data_to_cache_reg[0] ;
+  input \data_to_cache_reg[0]_0 ;
+  input busy_reg_reg;
   input hm_r3;
   input hm_r2;
   input hm_r1;
@@ -7123,15 +7089,11 @@ module one_row_cells_2
   wire [0:0]D;
   wire [0:0]E;
   wire [0:0]\FSM_sequential_currentState_reg[0] ;
-  wire \FSM_sequential_currentState_reg[0]_0 ;
+  wire [0:0]\FSM_sequential_currentState_reg[0]_0 ;
   wire \FSM_sequential_currentState_reg[2] ;
   wire \FSM_sequential_currentState_reg[2]_0 ;
-  wire [0:0]\FSM_sequential_currentState_reg[2]_1 ;
-  wire \FSM_sequential_currentState_reg[2]_2 ;
-  wire \FSM_sequential_currentState_reg[2]_3 ;
   wire [2:0]Q;
   wire busy_reg_reg;
-  wire [0:0]busy_reg_reg_0;
   wire c1_n_0;
   wire c1_n_1;
   wire c1_n_2;
@@ -7158,30 +7120,32 @@ module one_row_cells_2
   wire c4_n_7;
   wire clk_IBUF_BUFG;
   wire \counter_reg[4] ;
-  wire [1:0]cpu_address_reg;
-  wire \cpu_address_reg_reg[0] ;
-  wire \cpu_address_reg_reg[1] ;
-  wire \cpu_address_reg_reg[1]_0 ;
+  wire \cpu_address_reg_reg[3] ;
   wire [7:0]data3;
+  wire [0:0]\data_to_cache_reg[0] ;
+  wire \data_to_cache_reg[0]_0 ;
   wire hit_missb01_out_2;
   wire hm_r1;
   wire hm_r2;
   wire hm_r3;
   wire load_tag_reg;
   wire [5:0]memory_address_OBUF;
+  wire \one_b_cell_reg[0] ;
+  wire \one_b_cell_reg[0]_0 ;
+  wire \one_b_cell_reg[0]_1 ;
   wire [7:0]\one_b_cell_reg[7] ;
   wire out_en_OBUF;
-  wire rd_wrn_reg;
   wire rst_IBUF;
+  wire start_IBUF;
 
   one_b_cell_25 c1
        (.Q({c1_n_0,c1_n_1,c1_n_2,c1_n_3,c1_n_4,c1_n_5,c1_n_6,c1_n_7}),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\cpu_address_reg_reg[1]_0 ),
-        .\one_b_cell_reg[0]_1 (\cpu_address_reg_reg[0] ),
+        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_1 ),
+        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_0 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_26 c2
        (.Q({c1_n_0,c1_n_1,c1_n_2,c1_n_3,c1_n_4,c1_n_5,c1_n_6,c1_n_7}),
@@ -7190,28 +7154,28 @@ module one_row_cells_2
         .\cpu_data_reg_reg[7]_i_6_0 ({c3_n_0,c3_n_1,c3_n_2,c3_n_3,c3_n_4,c3_n_5,c3_n_6,c3_n_7}),
         .data3(data3),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\cpu_address_reg_reg[1]_0 ),
-        .\one_b_cell_reg[0]_1 (\cpu_address_reg_reg[0] ),
+        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_1 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_27 c3
        (.Q({c3_n_0,c3_n_1,c3_n_2,c3_n_3,c3_n_4,c3_n_5,c3_n_6,c3_n_7}),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\cpu_address_reg_reg[1]_0 ),
-        .\one_b_cell_reg[0]_1 (\cpu_address_reg_reg[0] ),
+        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_1 ),
+        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_0 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_28 c4
        (.Q({c4_n_0,c4_n_1,c4_n_2,c4_n_3,c4_n_4,c4_n_5,c4_n_6,c4_n_7}),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\cpu_address_reg_reg[0] ),
-        .\one_b_cell_reg[0]_1 (\cpu_address_reg_reg[1]_0 ),
+        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_1 ),
+        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   tag_valid_29 t_v
        (.D(D),
@@ -7220,18 +7184,13 @@ module one_row_cells_2
         .\FSM_sequential_currentState_reg[0]_0 (\FSM_sequential_currentState_reg[0]_0 ),
         .\FSM_sequential_currentState_reg[2] (\FSM_sequential_currentState_reg[2] ),
         .\FSM_sequential_currentState_reg[2]_0 (\FSM_sequential_currentState_reg[2]_0 ),
-        .\FSM_sequential_currentState_reg[2]_1 (\FSM_sequential_currentState_reg[2]_1 ),
-        .\FSM_sequential_currentState_reg[2]_2 (\FSM_sequential_currentState_reg[2]_2 ),
-        .\FSM_sequential_currentState_reg[2]_3 (\FSM_sequential_currentState_reg[2]_3 ),
         .Q(Q),
         .busy_reg_reg(busy_reg_reg),
-        .busy_reg_reg_0(busy_reg_reg_0),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .\counter_reg[4] (\counter_reg[4] ),
-        .cpu_address_reg(cpu_address_reg),
-        .\cpu_address_reg_reg[0] (\cpu_address_reg_reg[0] ),
-        .\cpu_address_reg_reg[1] (\cpu_address_reg_reg[1] ),
-        .\cpu_address_reg_reg[1]_0 (\cpu_address_reg_reg[1]_0 ),
+        .\cpu_address_reg_reg[3] (\cpu_address_reg_reg[3] ),
+        .\data_to_cache_reg[0] (\data_to_cache_reg[0] ),
+        .\data_to_cache_reg[0]_0 (\data_to_cache_reg[0]_0 ),
         .hit_missb01_out_2(hit_missb01_out_2),
         .hm_r1(hm_r1),
         .hm_r2(hm_r2),
@@ -7239,7 +7198,8 @@ module one_row_cells_2
         .load_tag_reg(load_tag_reg),
         .memory_address_OBUF(memory_address_OBUF),
         .out_en_OBUF(out_en_OBUF),
-        .rst_IBUF(rst_IBUF));
+        .rst_IBUF(rst_IBUF),
+        .start_IBUF(start_IBUF));
 endmodule
 
 (* ORIG_REF_NAME = "one_row_cells" *) 
@@ -7265,9 +7225,9 @@ module one_row_cells_3
     \cpu_data_reg_reg[1] ,
     \cpu_data_reg_reg[0] ,
     data5,
-    rd_wrn_reg,
     \one_b_cell_reg[0] ,
     \one_b_cell_reg[0]_0 ,
+    \one_b_cell_reg[0]_1 ,
     load_tag_reg,
     hit_missb01_out_3,
     \one_b_cell_reg[7] );
@@ -7292,9 +7252,9 @@ module one_row_cells_3
   input \cpu_data_reg_reg[1] ;
   input \cpu_data_reg_reg[0] ;
   input [7:0]data5;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0] ;
   input \one_b_cell_reg[0]_0 ;
+  input \one_b_cell_reg[0]_1 ;
   input load_tag_reg;
   input hit_missb01_out_3;
   input [7:0]\one_b_cell_reg[7] ;
@@ -7347,8 +7307,8 @@ module one_row_cells_3
   wire [5:0]memory_address_OBUF;
   wire \one_b_cell_reg[0] ;
   wire \one_b_cell_reg[0]_0 ;
+  wire \one_b_cell_reg[0]_1 ;
   wire [7:0]\one_b_cell_reg[7] ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   one_b_cell_20 c1
@@ -7357,8 +7317,8 @@ module one_row_cells_3
         .memory_address_OBUF(memory_address_OBUF[2:0]),
         .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_1 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_21 c2
        (.Q({c1_n_0,c1_n_1,c1_n_2,c1_n_3,c1_n_4,c1_n_5,c1_n_6,c1_n_7}),
@@ -7383,10 +7343,10 @@ module one_row_cells_3
         .\cpu_data_reg_reg[7]_i_7_1 ({c3_n_0,c3_n_1,c3_n_2,c3_n_3,c3_n_4,c3_n_5,c3_n_6,c3_n_7}),
         .data5(data5),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
-        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_1 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_22 c3
        (.Q({c3_n_0,c3_n_1,c3_n_2,c3_n_3,c3_n_4,c3_n_5,c3_n_6,c3_n_7}),
@@ -7394,17 +7354,17 @@ module one_row_cells_3
         .memory_address_OBUF(memory_address_OBUF[2:0]),
         .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_1 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_23 c4
        (.Q({c4_n_0,c4_n_1,c4_n_2,c4_n_3,c4_n_4,c4_n_5,c4_n_6,c4_n_7}),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_0 ),
-        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_1 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_0 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   tag_valid_24 t_v
        (.clk_IBUF_BUFG(clk_IBUF_BUFG),
@@ -7424,7 +7384,7 @@ module one_row_cells_4
     \one_b_cell_reg[0] ,
     \one_b_cell_reg[0]_0 ,
     memory_address_OBUF,
-    rd_wrn_reg,
+    \one_b_cell_reg[0]_1 ,
     load_tag_reg,
     hit_missb01_out_4,
     \one_b_cell_reg[7] );
@@ -7435,7 +7395,7 @@ module one_row_cells_4
   input \one_b_cell_reg[0] ;
   input \one_b_cell_reg[0]_0 ;
   input [5:0]memory_address_OBUF;
-  input rd_wrn_reg;
+  input \one_b_cell_reg[0]_1 ;
   input load_tag_reg;
   input hit_missb01_out_4;
   input [7:0]\one_b_cell_reg[7] ;
@@ -7472,18 +7432,18 @@ module one_row_cells_4
   wire [5:0]memory_address_OBUF;
   wire \one_b_cell_reg[0] ;
   wire \one_b_cell_reg[0]_0 ;
+  wire \one_b_cell_reg[0]_1 ;
   wire [7:0]\one_b_cell_reg[7] ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   one_b_cell_15 c1
        (.Q({c1_n_0,c1_n_1,c1_n_2,c1_n_3,c1_n_4,c1_n_5,c1_n_6,c1_n_7}),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
-        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_1 ),
+        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_0 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_16 c2
        (.Q({c1_n_0,c1_n_1,c1_n_2,c1_n_3,c1_n_4,c1_n_5,c1_n_6,c1_n_7}),
@@ -7494,26 +7454,26 @@ module one_row_cells_4
         .memory_address_OBUF(memory_address_OBUF[2:0]),
         .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_1 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_17 c3
        (.Q({c3_n_0,c3_n_1,c3_n_2,c3_n_3,c3_n_4,c3_n_5,c3_n_6,c3_n_7}),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
-        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_1 ),
+        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_0 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_18 c4
        (.Q({c4_n_0,c4_n_1,c4_n_2,c4_n_3,c4_n_4,c4_n_5,c4_n_6,c4_n_7}),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_0 ),
-        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_1 ),
+        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   tag_valid_19 t_v
        (.clk_IBUF_BUFG(clk_IBUF_BUFG),
@@ -7539,9 +7499,9 @@ module one_row_cells_5
     clk_IBUF_BUFG,
     memory_address_OBUF,
     data7,
-    rd_wrn_reg,
     \one_b_cell_reg[0] ,
     \one_b_cell_reg[0]_0 ,
+    \one_b_cell_reg[0]_1 ,
     load_tag_reg,
     hit_missb01_out_5,
     \one_b_cell_reg[7] );
@@ -7558,9 +7518,9 @@ module one_row_cells_5
   input clk_IBUF_BUFG;
   input [5:0]memory_address_OBUF;
   input [7:0]data7;
-  input rd_wrn_reg;
   input \one_b_cell_reg[0] ;
   input \one_b_cell_reg[0]_0 ;
+  input \one_b_cell_reg[0]_1 ;
   input load_tag_reg;
   input hit_missb01_out_5;
   input [7:0]\one_b_cell_reg[7] ;
@@ -7605,8 +7565,8 @@ module one_row_cells_5
   wire [5:0]memory_address_OBUF;
   wire \one_b_cell_reg[0] ;
   wire \one_b_cell_reg[0]_0 ;
+  wire \one_b_cell_reg[0]_1 ;
   wire [7:0]\one_b_cell_reg[7] ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   one_b_cell_10 c1
@@ -7615,8 +7575,8 @@ module one_row_cells_5
         .memory_address_OBUF(memory_address_OBUF[2:0]),
         .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_1 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_11 c2
        (.Q({c1_n_0,c1_n_1,c1_n_2,c1_n_3,c1_n_4,c1_n_5,c1_n_6,c1_n_7}),
@@ -7633,10 +7593,10 @@ module one_row_cells_5
         .\cpu_data_reg_reg[7]_i_8_1 ({c3_n_0,c3_n_1,c3_n_2,c3_n_3,c3_n_4,c3_n_5,c3_n_6,c3_n_7}),
         .data7(data7),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
-        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_1 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_12 c3
        (.Q({c3_n_0,c3_n_1,c3_n_2,c3_n_3,c3_n_4,c3_n_5,c3_n_6,c3_n_7}),
@@ -7644,17 +7604,17 @@ module one_row_cells_5
         .memory_address_OBUF(memory_address_OBUF[2:0]),
         .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_1 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_13 c4
        (.Q({c4_n_0,c4_n_1,c4_n_2,c4_n_3,c4_n_4,c4_n_5,c4_n_6,c4_n_7}),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_0 ),
-        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_1 ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0]_0 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   tag_valid_14 t_v
        (.clk_IBUF_BUFG(clk_IBUF_BUFG),
@@ -7667,28 +7627,40 @@ endmodule
 
 (* ORIG_REF_NAME = "one_row_cells" *) 
 module one_row_cells_6
-   (data7,
+   (\FSM_sequential_currentState_reg[0] ,
+    \FSM_sequential_currentState_reg[0]_0 ,
     \cpu_address_reg_reg[3] ,
+    data7,
     rst_IBUF,
     clk_IBUF_BUFG,
-    \one_b_cell_reg[0] ,
-    \one_b_cell_reg[0]_0 ,
+    cpu_address_reg,
+    Q,
+    \cpu_address_reg_reg[1] ,
+    \cpu_address_reg_reg[1]_0 ,
+    \cpu_address_reg_reg[0] ,
     memory_address_OBUF,
-    rd_wrn_reg,
+    \cpu_address_reg_reg[0]_0 ,
+    \one_b_cell_reg[0] ,
     hm_r7,
     hm_r6,
     hm_r5,
     load_tag_reg,
     hit_missb01_out_6,
     \one_b_cell_reg[7] );
-  output [7:0]data7;
+  output \FSM_sequential_currentState_reg[0] ;
+  output \FSM_sequential_currentState_reg[0]_0 ;
   output \cpu_address_reg_reg[3] ;
+  output [7:0]data7;
   input rst_IBUF;
   input clk_IBUF_BUFG;
-  input \one_b_cell_reg[0] ;
-  input \one_b_cell_reg[0]_0 ;
+  input [1:0]cpu_address_reg;
+  input [2:0]Q;
+  input \cpu_address_reg_reg[1] ;
+  input \cpu_address_reg_reg[1]_0 ;
+  input \cpu_address_reg_reg[0] ;
   input [5:0]memory_address_OBUF;
-  input rd_wrn_reg;
+  input \cpu_address_reg_reg[0]_0 ;
+  input \one_b_cell_reg[0] ;
   input hm_r7;
   input hm_r6;
   input hm_r5;
@@ -7696,6 +7668,9 @@ module one_row_cells_6
   input hit_missb01_out_6;
   input [7:0]\one_b_cell_reg[7] ;
 
+  wire \FSM_sequential_currentState_reg[0] ;
+  wire \FSM_sequential_currentState_reg[0]_0 ;
+  wire [2:0]Q;
   wire c1_n_0;
   wire c1_n_1;
   wire c1_n_2;
@@ -7721,6 +7696,11 @@ module one_row_cells_6
   wire c4_n_6;
   wire c4_n_7;
   wire clk_IBUF_BUFG;
+  wire [1:0]cpu_address_reg;
+  wire \cpu_address_reg_reg[0] ;
+  wire \cpu_address_reg_reg[0]_0 ;
+  wire \cpu_address_reg_reg[1] ;
+  wire \cpu_address_reg_reg[1]_0 ;
   wire \cpu_address_reg_reg[3] ;
   wire [7:0]data7;
   wire hit_missb01_out_6;
@@ -7730,9 +7710,7 @@ module one_row_cells_6
   wire load_tag_reg;
   wire [5:0]memory_address_OBUF;
   wire \one_b_cell_reg[0] ;
-  wire \one_b_cell_reg[0]_0 ;
   wire [7:0]\one_b_cell_reg[7] ;
-  wire rd_wrn_reg;
   wire rst_IBUF;
 
   one_b_cell c1
@@ -7740,9 +7718,9 @@ module one_row_cells_6
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
         .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
-        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_1 (\cpu_address_reg_reg[1]_0 ),
+        .\one_b_cell_reg[0]_2 (\cpu_address_reg_reg[0] ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_7 c2
        (.Q({c1_n_0,c1_n_1,c1_n_2,c1_n_3,c1_n_4,c1_n_5,c1_n_6,c1_n_7}),
@@ -7751,31 +7729,39 @@ module one_row_cells_6
         .\cpu_data_reg_reg[7]_i_8_0 ({c3_n_0,c3_n_1,c3_n_2,c3_n_3,c3_n_4,c3_n_5,c3_n_6,c3_n_7}),
         .data7(data7),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
-        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_0 (\cpu_address_reg_reg[1]_0 ),
+        .\one_b_cell_reg[0]_1 (\cpu_address_reg_reg[0] ),
+        .\one_b_cell_reg[0]_2 (\one_b_cell_reg[0] ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_8 c3
        (.Q({c3_n_0,c3_n_1,c3_n_2,c3_n_3,c3_n_4,c3_n_5,c3_n_6,c3_n_7}),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
         .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
-        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0]_0 ),
+        .\one_b_cell_reg[0]_1 (\cpu_address_reg_reg[1]_0 ),
+        .\one_b_cell_reg[0]_2 (\cpu_address_reg_reg[0] ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   one_b_cell_9 c4
        (.Q({c4_n_0,c4_n_1,c4_n_2,c4_n_3,c4_n_4,c4_n_5,c4_n_6,c4_n_7}),
         .clk_IBUF_BUFG(clk_IBUF_BUFG),
         .memory_address_OBUF(memory_address_OBUF[2:0]),
-        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0]_0 ),
-        .\one_b_cell_reg[0]_1 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_0 (\one_b_cell_reg[0] ),
+        .\one_b_cell_reg[0]_1 (\cpu_address_reg_reg[0] ),
+        .\one_b_cell_reg[0]_2 (\cpu_address_reg_reg[1]_0 ),
         .\one_b_cell_reg[7]_0 (\one_b_cell_reg[7] ),
-        .rd_wrn_reg(rd_wrn_reg),
         .rst_IBUF(rst_IBUF));
   tag_valid t_v
-       (.clk_IBUF_BUFG(clk_IBUF_BUFG),
+       (.\FSM_sequential_currentState_reg[0] (\FSM_sequential_currentState_reg[0] ),
+        .\FSM_sequential_currentState_reg[0]_0 (\FSM_sequential_currentState_reg[0]_0 ),
+        .Q(Q),
+        .clk_IBUF_BUFG(clk_IBUF_BUFG),
+        .cpu_address_reg(cpu_address_reg),
+        .\cpu_address_reg_reg[0] (\cpu_address_reg_reg[0] ),
+        .\cpu_address_reg_reg[0]_0 (\cpu_address_reg_reg[0]_0 ),
+        .\cpu_address_reg_reg[1] (\cpu_address_reg_reg[1] ),
+        .\cpu_address_reg_reg[1]_0 (\cpu_address_reg_reg[1]_0 ),
         .\cpu_address_reg_reg[3] (\cpu_address_reg_reg[3] ),
         .hit_missb01_out_6(hit_missb01_out_6),
         .hm_r5(hm_r5),
@@ -7787,19 +7773,35 @@ module one_row_cells_6
 endmodule
 
 module tag_valid
-   (\cpu_address_reg_reg[3] ,
+   (\FSM_sequential_currentState_reg[0] ,
+    \FSM_sequential_currentState_reg[0]_0 ,
+    \cpu_address_reg_reg[3] ,
     rst_IBUF,
     clk_IBUF_BUFG,
+    cpu_address_reg,
+    Q,
+    \cpu_address_reg_reg[1] ,
+    \cpu_address_reg_reg[1]_0 ,
+    \cpu_address_reg_reg[0] ,
     memory_address_OBUF,
+    \cpu_address_reg_reg[0]_0 ,
     hm_r7,
     hm_r6,
     hm_r5,
     load_tag_reg,
     hit_missb01_out_6);
+  output \FSM_sequential_currentState_reg[0] ;
+  output \FSM_sequential_currentState_reg[0]_0 ;
   output \cpu_address_reg_reg[3] ;
   input rst_IBUF;
   input clk_IBUF_BUFG;
+  input [1:0]cpu_address_reg;
+  input [2:0]Q;
+  input \cpu_address_reg_reg[1] ;
+  input \cpu_address_reg_reg[1]_0 ;
+  input \cpu_address_reg_reg[0] ;
   input [5:0]memory_address_OBUF;
+  input \cpu_address_reg_reg[0]_0 ;
   input hm_r7;
   input hm_r6;
   input hm_r5;
@@ -7807,7 +7809,16 @@ module tag_valid
   input hit_missb01_out_6;
 
   wire \FSM_sequential_currentState[2]_i_22_n_0 ;
+  wire \FSM_sequential_currentState_reg[0] ;
+  wire \FSM_sequential_currentState_reg[0]_0 ;
+  wire [2:0]Q;
   wire clk_IBUF_BUFG;
+  wire [1:0]cpu_address_reg;
+  wire \cpu_address_reg[1]_i_3_n_0 ;
+  wire \cpu_address_reg_reg[0] ;
+  wire \cpu_address_reg_reg[0]_0 ;
+  wire \cpu_address_reg_reg[1] ;
+  wire \cpu_address_reg_reg[1]_0 ;
   wire \cpu_address_reg_reg[3] ;
   wire hit_missb01_out_6;
   wire hit_missb0__4;
@@ -7859,6 +7870,35 @@ module tag_valid
         .I4(memory_address_OBUF[0]),
         .I5(hm_r5),
         .O(\cpu_address_reg_reg[3] ));
+  LUT6 #(
+    .INIT(64'hBFBFBABF80808A80)) 
+    \cpu_address_reg[0]_i_1 
+       (.I0(cpu_address_reg[0]),
+        .I1(\cpu_address_reg[1]_i_3_n_0 ),
+        .I2(Q[0]),
+        .I3(\cpu_address_reg_reg[1] ),
+        .I4(Q[1]),
+        .I5(\cpu_address_reg_reg[0] ),
+        .O(\FSM_sequential_currentState_reg[0]_0 ));
+  LUT6 #(
+    .INIT(64'hBFBFBABF80808A80)) 
+    \cpu_address_reg[1]_i_1 
+       (.I0(cpu_address_reg[1]),
+        .I1(\cpu_address_reg[1]_i_3_n_0 ),
+        .I2(Q[0]),
+        .I3(\cpu_address_reg_reg[1] ),
+        .I4(Q[1]),
+        .I5(\cpu_address_reg_reg[1]_0 ),
+        .O(\FSM_sequential_currentState_reg[0] ));
+  LUT5 #(
+    .INIT(32'h04000444)) 
+    \cpu_address_reg[1]_i_3 
+       (.I0(Q[2]),
+        .I1(Q[1]),
+        .I2(\cpu_address_reg_reg[3] ),
+        .I3(memory_address_OBUF[2]),
+        .I4(\cpu_address_reg_reg[0]_0 ),
+        .O(\cpu_address_reg[1]_i_3_n_0 ));
   LUT6 #(
     .INIT(64'hBFFFFFFF80000000)) 
     \tag_reg[0]_i_1 
@@ -8331,52 +8371,44 @@ endmodule
 
 (* ORIG_REF_NAME = "tag_valid" *) 
 module tag_valid_29
-   (\FSM_sequential_currentState_reg[2] ,
-    \FSM_sequential_currentState_reg[2]_0 ,
-    E,
-    \counter_reg[4] ,
-    \FSM_sequential_currentState_reg[2]_1 ,
+   (E,
     \FSM_sequential_currentState_reg[0] ,
-    D,
     \FSM_sequential_currentState_reg[0]_0 ,
-    \FSM_sequential_currentState_reg[2]_2 ,
+    D,
+    \cpu_address_reg_reg[3] ,
+    \FSM_sequential_currentState_reg[2] ,
+    \counter_reg[4] ,
+    \FSM_sequential_currentState_reg[2]_0 ,
     rst_IBUF,
     clk_IBUF_BUFG,
-    cpu_address_reg,
     Q,
-    \cpu_address_reg_reg[1] ,
-    \cpu_address_reg_reg[1]_0 ,
-    \cpu_address_reg_reg[0] ,
-    busy_reg_reg,
-    busy_reg_reg_0,
+    start_IBUF,
+    \data_to_cache_reg[0] ,
+    \data_to_cache_reg[0]_0 ,
     memory_address_OBUF,
-    \FSM_sequential_currentState_reg[2]_3 ,
+    busy_reg_reg,
     hm_r3,
     hm_r2,
     hm_r1,
     out_en_OBUF,
     load_tag_reg,
     hit_missb01_out_2);
-  output \FSM_sequential_currentState_reg[2] ;
-  output \FSM_sequential_currentState_reg[2]_0 ;
   output [0:0]E;
-  output \counter_reg[4] ;
-  output [0:0]\FSM_sequential_currentState_reg[2]_1 ;
   output [0:0]\FSM_sequential_currentState_reg[0] ;
+  output [0:0]\FSM_sequential_currentState_reg[0]_0 ;
   output [0:0]D;
-  output \FSM_sequential_currentState_reg[0]_0 ;
-  output \FSM_sequential_currentState_reg[2]_2 ;
+  output \cpu_address_reg_reg[3] ;
+  output \FSM_sequential_currentState_reg[2] ;
+  output \counter_reg[4] ;
+  output \FSM_sequential_currentState_reg[2]_0 ;
   input rst_IBUF;
   input clk_IBUF_BUFG;
-  input [1:0]cpu_address_reg;
   input [2:0]Q;
-  input \cpu_address_reg_reg[1] ;
-  input \cpu_address_reg_reg[1]_0 ;
-  input \cpu_address_reg_reg[0] ;
-  input busy_reg_reg;
-  input [0:0]busy_reg_reg_0;
+  input start_IBUF;
+  input [0:0]\data_to_cache_reg[0] ;
+  input \data_to_cache_reg[0]_0 ;
   input [5:0]memory_address_OBUF;
-  input \FSM_sequential_currentState_reg[2]_3 ;
+  input busy_reg_reg;
   input hm_r3;
   input hm_r2;
   input hm_r1;
@@ -8387,24 +8419,17 @@ module tag_valid_29
   wire [0:0]D;
   wire [0:0]E;
   wire \FSM_sequential_currentState[2]_i_14_n_0 ;
-  wire \FSM_sequential_currentState[2]_i_4_n_0 ;
   wire [0:0]\FSM_sequential_currentState_reg[0] ;
-  wire \FSM_sequential_currentState_reg[0]_0 ;
+  wire [0:0]\FSM_sequential_currentState_reg[0]_0 ;
   wire \FSM_sequential_currentState_reg[2] ;
   wire \FSM_sequential_currentState_reg[2]_0 ;
-  wire [0:0]\FSM_sequential_currentState_reg[2]_1 ;
-  wire \FSM_sequential_currentState_reg[2]_2 ;
-  wire \FSM_sequential_currentState_reg[2]_3 ;
   wire [2:0]Q;
   wire busy_reg_reg;
-  wire [0:0]busy_reg_reg_0;
   wire clk_IBUF_BUFG;
   wire \counter_reg[4] ;
-  wire [1:0]cpu_address_reg;
-  wire \cpu_address_reg[1]_i_3_n_0 ;
-  wire \cpu_address_reg_reg[0] ;
-  wire \cpu_address_reg_reg[1] ;
-  wire \cpu_address_reg_reg[1]_0 ;
+  wire \cpu_address_reg_reg[3] ;
+  wire [0:0]\data_to_cache_reg[0] ;
+  wire \data_to_cache_reg[0]_0 ;
   wire hit_missb;
   wire hit_missb01_out_2;
   wire hit_missb0__4;
@@ -8416,6 +8441,7 @@ module tag_valid_29
   wire [5:0]memory_address_OBUF;
   wire out_en_OBUF;
   wire rst_IBUF;
+  wire start_IBUF;
   wire \tag_reg[0]_i_1_n_0 ;
   wire \tag_reg[1]_i_1_n_0 ;
   wire \tag_reg[2]_i_1_n_0 ;
@@ -8428,8 +8454,8 @@ module tag_valid_29
   LUT6 #(
     .INIT(64'hB0B0BFB0B0B0B0B0)) 
     \FSM_sequential_currentState[2]_i_1 
-       (.I0(busy_reg_reg),
-        .I1(busy_reg_reg_0),
+       (.I0(\data_to_cache_reg[0]_0 ),
+        .I1(\data_to_cache_reg[0] ),
         .I2(Q[2]),
         .I3(Q[1]),
         .I4(hit_missb),
@@ -8460,7 +8486,7 @@ module tag_valid_29
         .I3(hm_r2),
         .I4(memory_address_OBUF[0]),
         .I5(hm_r1),
-        .O(\FSM_sequential_currentState[2]_i_4_n_0 ));
+        .O(\cpu_address_reg_reg[3] ));
   LUT2 #(
     .INIT(4'h8)) 
     \FSM_sequential_currentState[2]_i_6 
@@ -8468,16 +8494,16 @@ module tag_valid_29
         .I1(hit_missb01_out_2),
         .O(hm_r4));
   MUXF7 \FSM_sequential_currentState_reg[2]_i_3 
-       (.I0(\FSM_sequential_currentState[2]_i_4_n_0 ),
-        .I1(\FSM_sequential_currentState_reg[2]_3 ),
+       (.I0(\cpu_address_reg_reg[3] ),
+        .I1(busy_reg_reg),
         .O(hit_missb),
         .S(memory_address_OBUF[2]));
   LUT6 #(
-    .INIT(64'h0F0F000F0F400F40)) 
+    .INIT(64'h3333003300B800B8)) 
     busy_reg_i_1
-       (.I0(busy_reg_reg),
-        .I1(busy_reg_reg_0),
-        .I2(Q[2]),
+       (.I0(\data_to_cache_reg[0] ),
+        .I1(Q[2]),
+        .I2(start_IBUF),
         .I3(Q[0]),
         .I4(hit_missb),
         .I5(Q[1]),
@@ -8490,52 +8516,25 @@ module tag_valid_29
         .I2(Q[2]),
         .I3(Q[1]),
         .O(E));
-  LUT6 #(
-    .INIT(64'hEFAAEFFF20AA2000)) 
-    \cpu_address_reg[0]_i_1 
-       (.I0(cpu_address_reg[0]),
-        .I1(Q[2]),
-        .I2(\cpu_address_reg[1]_i_3_n_0 ),
-        .I3(Q[0]),
-        .I4(\cpu_address_reg_reg[1] ),
-        .I5(\cpu_address_reg_reg[0] ),
-        .O(\FSM_sequential_currentState_reg[2]_0 ));
-  LUT6 #(
-    .INIT(64'hEFAAEFFF20AA2000)) 
-    \cpu_address_reg[1]_i_1 
-       (.I0(cpu_address_reg[1]),
-        .I1(Q[2]),
-        .I2(\cpu_address_reg[1]_i_3_n_0 ),
-        .I3(Q[0]),
-        .I4(\cpu_address_reg_reg[1] ),
-        .I5(\cpu_address_reg_reg[1]_0 ),
-        .O(\FSM_sequential_currentState_reg[2] ));
-  LUT4 #(
-    .INIT(16'h57F7)) 
-    \cpu_address_reg[1]_i_3 
-       (.I0(Q[1]),
-        .I1(\FSM_sequential_currentState[2]_i_4_n_0 ),
-        .I2(memory_address_OBUF[2]),
-        .I3(\FSM_sequential_currentState_reg[2]_3 ),
-        .O(\cpu_address_reg[1]_i_3_n_0 ));
-  LUT4 #(
-    .INIT(16'h4500)) 
+  LUT5 #(
+    .INIT(32'h00008830)) 
     \cpu_data_reg[7]_i_1 
-       (.I0(Q[2]),
-        .I1(hit_missb),
-        .I2(Q[1]),
-        .I3(Q[0]),
-        .O(\FSM_sequential_currentState_reg[2]_1 ));
+       (.I0(hit_missb),
+        .I1(Q[0]),
+        .I2(start_IBUF),
+        .I3(Q[1]),
+        .I4(Q[2]),
+        .O(\FSM_sequential_currentState_reg[0] ));
   LUT6 #(
     .INIT(64'h0055010000000100)) 
     \data_to_cache[7]_i_1 
        (.I0(Q[0]),
-        .I1(busy_reg_reg_0),
-        .I2(busy_reg_reg),
+        .I1(\data_to_cache_reg[0] ),
+        .I2(\data_to_cache_reg[0]_0 ),
         .I3(Q[2]),
         .I4(Q[1]),
         .I5(hit_missb),
-        .O(\FSM_sequential_currentState_reg[0] ));
+        .O(\FSM_sequential_currentState_reg[0]_0 ));
   (* OPT_MODIFIED = "RETARGET " *) 
   LUT5 #(
     .INIT(32'hBFFF0101)) 
@@ -8545,17 +8544,16 @@ module tag_valid_29
         .I2(Q[0]),
         .I3(hit_missb),
         .I4(out_en_OBUF),
-        .O(\FSM_sequential_currentState_reg[2]_2 ));
-  LUT6 #(
-    .INIT(64'hFFFFEEEE00000048)) 
+        .O(\FSM_sequential_currentState_reg[2]_0 ));
+  LUT5 #(
+    .INIT(32'hFFF01040)) 
     set_valid_reg_i_1
-       (.I0(Q[0]),
-        .I1(Q[1]),
-        .I2(hit_missb),
-        .I3(Q[2]),
-        .I4(rst_IBUF),
-        .I5(load_tag_reg),
-        .O(\FSM_sequential_currentState_reg[0]_0 ));
+       (.I0(Q[2]),
+        .I1(hit_missb),
+        .I2(Q[1]),
+        .I3(Q[0]),
+        .I4(load_tag_reg),
+        .O(\FSM_sequential_currentState_reg[2] ));
   LUT6 #(
     .INIT(64'hEFFFFFFF20000000)) 
     \tag_reg[0]_i_1 

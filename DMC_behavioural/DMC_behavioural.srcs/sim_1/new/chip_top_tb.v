@@ -109,6 +109,20 @@ module chip_top_tb #( parameter DATA_WIDTH = 8
             #(2*period);
             
             write_hit_sequence;
+            
+            #(2*period);
+            
+            start = 1'b1;
+            rd_wrn = 1'b1;
+            cpu_address = 8'b001_000_10;
+            #(period);
+            start = 1'b0;
+            cpu_address = 8'bzzzz_zzzz;
+            rd_wrn = 1'bz;
+            #(2*period);
+            
+            end_sim;
+            
         end
     endtask
     
@@ -117,7 +131,7 @@ module chip_top_tb #( parameter DATA_WIDTH = 8
             start = 1'b1;
             cpu_address = 8'b001_000_00;
             rd_wrn = 1'b1;
-            #(2*period);
+            #(period);
             start = 1'b0;
             cpu_address = 8'bzzzz_zzzz;
             rd_wrn = 1'bz;
@@ -130,6 +144,7 @@ module chip_top_tb #( parameter DATA_WIDTH = 8
             #(2*period);
                 memory_data = 8'b11110000;
             #(2*period);
+                memory_data = 8'bzzzzzzzz;
         end
     endtask
     
@@ -138,7 +153,7 @@ module chip_top_tb #( parameter DATA_WIDTH = 8
             start = 1'b1;
             rd_wrn = 1'b1;
             cpu_address = 8'b001_000_10;
-            #(2*period);
+            #(period);
             start = 1'b0;
             cpu_address = 8'bzzzz_zzzz;
             rd_wrn = 1'bz;
@@ -152,12 +167,12 @@ module chip_top_tb #( parameter DATA_WIDTH = 8
             rd_wrn = 1'b0;
             cpu_address = 8'b001_000_10;
             cpu_data_reg = 8'b10100011;
-            #(2*period);
+            #(period);
             start = 1'b0;
             cpu_address = 8'bzzz_zzz_zz;
             rd_wrn = 1'bz;
             #(2*period);
-            end_sim;
+//            end_sim;
         end
     endtask
     

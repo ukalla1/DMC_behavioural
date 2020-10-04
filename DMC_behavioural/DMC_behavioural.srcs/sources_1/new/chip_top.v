@@ -91,6 +91,8 @@ module chip_top #(
             compare_tag_valid <= 1'b0;
             data_to_cache <= {(8){1'b0}};
             counter <= {(5){1'b0}};
+            set_valid_reg <= 1'b0;
+            load_tag_reg <= 1'b0;
         end
         else begin
             case(currentState)
@@ -102,6 +104,10 @@ module chip_top #(
                     rd_wrn_reg <= 1'bz;
                     if(start) begin
                         currentState <= state1;
+                        busy_reg <= 1'b1;
+                        cpu_data_reg <= cpu_data;
+                        cpu_address_reg <= cpu_address;
+                        rd_wrn_reg <= rd_wrn;
                     end
                     else begin
                         currentState <= state0;
@@ -109,19 +115,11 @@ module chip_top #(
                 end
                 
                 state1: begin
-                    if(!rd_wrn) begin
-                        cpu_data_reg <= cpu_data;
-                        cpu_address_reg <= cpu_address;
-                        rd_wrn_reg <= rd_wrn;
-                        busy_reg <= 1'b1;
+                    if(!rd_wrn_reg) begin                           //check for read or write                   
                         currentState <= state3;
                         compare_tag_valid <= 1'b1;
                     end
                     else begin
-                        cpu_data_reg <= {(DATA_WIDTH){1'b0}};
-                        cpu_address_reg <= cpu_address;
-                        rd_wrn_reg <= rd_wrn;
-                        busy_reg <= 1'b1;
                         currentState <= state2;
                         compare_tag_valid <= 1'b1;
                     end
